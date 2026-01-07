@@ -866,3 +866,13 @@ Import trace:
 [00:26:18.999] Server  LOG     [MacroPage] First Date: 1983-01-31
 [00:26:18.999] Server  LOG     [MacroPage] Last Date: 2026-01-07
 [00:26:18.999] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:45:38.433] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:45:38.434] Server  LOG     [MacroPage] Loaded 761 rows
+[00:45:38.434] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:45:38.434] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:45:38.434] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:45:38.454] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:45:38.455] Server  LOG     [MacroPage] Loaded 761 rows
+[00:45:38.455] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:45:38.455] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:45:38.455] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
