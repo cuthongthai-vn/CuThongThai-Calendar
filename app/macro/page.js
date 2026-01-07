@@ -110,7 +110,7 @@ export default async function MacroPage() {
     const latestCpi = getLatest('cpi');
 
     return (
-        <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-48">
+        <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-[500px]">
             <MacroHeader />
 
             <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto">

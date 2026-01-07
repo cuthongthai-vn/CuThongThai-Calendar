@@ -103,7 +103,6 @@
     --color-slate-300: #cad5e2;
     --color-slate-400: #90a1b9;
     --color-slate-500: #62748e;
-    --color-slate-600: #45556c;
     --color-slate-700: #314158;
     --color-slate-800: #1d293d;
     --color-slate-900: #0f172b;
@@ -200,7 +199,6 @@
       --color-slate-300: lab(84.7652% -1.94535 -7.93337);
       --color-slate-400: lab(65.5349% -2.25151 -14.5072);
       --color-slate-500: lab(48.0876% -2.03595 -16.5814);
-      --color-slate-600: lab(35.5623% -1.74978 -15.4316);
       --color-slate-700: lab(26.9569% -1.47016 -15.6993);
       --color-slate-800: lab(16.132% -.318035 -14.6672);
       --color-slate-900: lab(7.78673% 1.82345 -15.0537);
@@ -599,10 +597,6 @@
 
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
-  }
-
-  .mt-12 {
-    margin-top: calc(var(--spacing) * 12);
   }
 
   .mr-2 {
@@ -1419,8 +1413,8 @@
     padding-bottom: calc(var(--spacing) * 24);
   }
 
-  .pb-48 {
-    padding-bottom: calc(var(--spacing) * 48);
+  .pb-\[500px\] {
+    padding-bottom: 500px;
   }
 
   .pl-10 {
@@ -1632,10 +1626,6 @@
 
   .text-slate-500 {
     color: var(--color-slate-500);
-  }
-
-  .text-slate-800 {
-    color: var(--color-slate-800);
   }
 
   .text-transparent {
@@ -1855,12 +1845,6 @@
   @media (hover: hover) {
     .hover\:text-slate-300:hover {
       color: var(--color-slate-300);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:text-slate-600:hover {
-      color: var(--color-slate-600);
     }
   }
 
