@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+    /* Deep Slate Theme */
+    --background: #020617;
+    /* Slate 950 */
+    --foreground: #f8fafc;
+    /* Slate 50 */
+    --theme-yellow: #FFD700;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    /* font-family is handled by next/font in layout.js */
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}

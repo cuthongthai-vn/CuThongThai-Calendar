@@ -1,0 +1,868 @@
+[00:00:00.424] Server  LOG     ✓ Ready in 279ms
+[00:00:01.353] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.355] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.366] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.367] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.445] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:01.557] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:04.451] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.277] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.278] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.281] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.283] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.354] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:08.467] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.600] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.601] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.604] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.606] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.679] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:00:09.791] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.542] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.543] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.546] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.548] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.632] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:01:36.744] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:02:31.436] Server  LOG     [MacroPage] Loaded 516 rows
+[00:02:31.437] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:02:31.437] Server  LOG     [MacroPage] Last Date: 2016-07-31
+[00:02:31.437] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2016-07-31\",\"cpi\":1.5}"
+[00:04:02.366] Server  LOG     ✓ Compiled in 82ms
+[00:04:02.468] Browser ERROR   ./app/macro/page.js:150:13
+Parsing ecmascript source code failed
+  148 |         </div>
+  149 |             
+> 150 |             {/* DEBUG INFO */ }
+      |             ^
+  151 |     <div className="mt-12 p-4 border-t border-slate-800 text-slate-500 text-xs font-mono">
+  152 |         <p>DEBUG INFO:</p>
+  153 |         <p>Rows Loaded: {chartData.length}</p>
+
+Expected ',', got '{'
+[00:04:03.286] Browser ERROR   ./app/macro/page.js:150:13
+Parsing ecmascript source code failed
+  148 |         </div>
+  149 |             
+> 150 |             {/* DEBUG INFO */ }
+      |             ^
+  151 |     <div className="mt-12 p-4 border-t border-slate-800 text-slate-500 text-xs font-mono">
+  152 |         <p>DEBUG INFO:</p>
+  153 |         <p>Rows Loaded: {chartData.length}</p>
+
+Expected ',', got '{'
+[00:04:05.211] Browser ERROR   ./app/macro/page.js:150:13
+Parsing ecmascript source code failed
+  148 |         </div>
+  149 |             
+> 150 |             {/* DEBUG INFO */ }
+      |             ^
+  151 |     <div className="mt-12 p-4 border-t border-slate-800 text-slate-500 text-xs font-mono">
+  152 |         <p>DEBUG INFO:</p>
+  153 |         <p>Rows Loaded: {chartData.length}</p>
+
+Expected ',', got '{'
+[00:04:05.287] Browser ERROR   ./app/macro/page.js:150:13
+Parsing ecmascript source code failed
+  148 |         </div>
+  149 |             
+> 150 |             {/* DEBUG INFO */ }
+      |             ^
+  151 |     <div className="mt-12 p-4 border-t border-slate-800 text-slate-500 text-xs font-mono">
+  152 |         <p>DEBUG INFO:</p>
+  153 |         <p>Rows Loaded: {chartData.length}</p>
+
+Expected ',', got '{'
+[00:05:14.911] Server  LOG     [MacroPage] Loaded 516 rows
+[00:05:14.911] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:05:14.911] Server  LOG     [MacroPage] Last Date: 2016-07-31
+[00:05:14.912] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2016-07-31\",\"cpi\":1.5}"
+[00:05:32.325] Server  LOG     [MacroPage] Loaded 516 rows
+[00:05:32.325] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:05:32.325] Server  LOG     [MacroPage] Last Date: 2016-07-31
+[00:05:32.325] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2016-07-31\",\"cpi\":1.5}"
+[00:05:32.386] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.388] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.396] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.397] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.486] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:05:32.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:07:35.529] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:07:35.532] Server  LOG     [MacroPage] Loaded 761 rows
+[00:07:35.532] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:07:35.532] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:07:35.532] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:10:46.618] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:10:47.288] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:10:47.717] Server  LOG     ✓ Compiled in 19ms
+[00:10:47.820] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:10:48.287] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:03.631] Server  ERROR   ⨯ ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+
+
+[00:11:03.794] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:03.937] Browser ERROR   uncaughtError: Error: ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+
+
+[00:11:04.126] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:04.126] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:04.286] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:04.286] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:04.286] Browser ERROR   ./app/macro/page.js:173:3
+Parsing ecmascript source code failed
+  171 |     );
+  172 | }
+> 173 | ```
+      |   ^
+> 174 | 
+      | ^
+
+Unterminated template
+[00:11:48.724] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:11:48.726] Server  LOG     [MacroPage] Loaded 761 rows
+[00:11:48.727] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:11:48.727] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:11:48.727] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:11:48.807] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:48.815] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:48.827] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:48.828] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.035] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:11:49.599] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:27.792] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:12:27.792] Browser LOG     [Filter] Result: 8 events found.
+[00:12:27.994] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:12:27.994] Browser LOG     [Filter] Result: 8 events found.
+[00:12:39.550] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:12:39.553] Server  LOG     [MacroPage] Loaded 761 rows
+[00:12:39.553] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:12:39.553] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:12:39.553] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:12:39.729] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:13:56.601] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:13:56.601] Browser LOG     [Filter] Result: 8 events found.
+[00:13:56.812] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:13:56.813] Browser LOG     [Filter] Result: 8 events found.
+[00:14:50.305] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:14:50.307] Server  LOG     [MacroPage] Loaded 761 rows
+[00:14:50.307] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:14:50.307] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:14:50.307] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.478] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:14:50.909] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:14:50.910] Server  LOG     [MacroPage] Loaded 761 rows
+[00:14:50.910] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:14:50.911] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:14:50.911] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:17:02.352] Server  LOG     ✓ Compiled in 53ms
+[00:17:04.306] Server  LOG     ✓ Compiled in 60ms
+[00:17:04.409] Browser ERROR   ./components/MacroHeader.js:29:10
+Parsing ecmascript source code failed
+  27 |     onSuccess={handleSuccess}
+  28 | />
+> 29 |         </header >
+     |          ^^^^^^^^^
+  30 |     );
+  31 | }
+  32 |
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./components/MacroHeader.js
+    ./app/macro/page.js
+[00:17:05.287] Browser ERROR   ./components/MacroHeader.js:29:10
+Parsing ecmascript source code failed
+  27 |     onSuccess={handleSuccess}
+  28 | />
+> 29 |         </header >
+     |          ^^^^^^^^^
+  30 |     );
+  31 | }
+  32 |
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./components/MacroHeader.js
+    ./app/macro/page.js
+[00:17:13.843] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:17:13.844] Server  LOG     [MacroPage] Loaded 761 rows
+[00:17:13.844] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:17:13.844] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:17:13.844] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:17:14.943] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:17:14.944] Server  LOG     [MacroPage] Loaded 761 rows
+[00:17:14.944] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:17:14.944] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:17:14.945] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:17:14.951] Server  ERROR   ⨯ ReferenceError: FloatingCTA is not defined
+[00:17:15.086] Browser ERROR   uncaughtError: ReferenceError: FloatingCTA is not defined
+[00:17:18.037] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:17:18.038] Server  LOG     [MacroPage] Loaded 761 rows
+[00:17:18.039] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:17:18.039] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:17:18.039] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:17:18.094] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.096] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.102] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.103] Server  WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.243] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:18.410] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:17:19.047] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:17:19.048] Server  LOG     [MacroPage] Loaded 761 rows
+[00:17:19.048] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:17:19.048] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:17:19.048] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:17:35.471] Server  LOG     ✓ Compiled in 41ms
+[00:17:38.216] Server  LOG     ✓ Compiled in 21ms
+[00:17:43.016] Server  LOG     ✓ Compiled in 30ms
+[00:18:30.171] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:18:30.174] Server  LOG     [MacroPage] Loaded 761 rows
+[00:18:30.174] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:18:30.174] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:18:30.174] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.397] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.398] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:18:30.819] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:18:30.821] Server  LOG     [MacroPage] Loaded 761 rows
+[00:18:30.821] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:18:30.821] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:18:30.821] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:20:48.227] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:20:48.228] Server  LOG     [MacroPage] Loaded 761 rows
+[00:20:48.228] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:20:48.228] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:20:48.228] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:20:48.679] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:20:48.679] Browser LOG     [Filter] Result: 8 events found.
+[00:20:48.889] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:20:48.889] Browser LOG     [Filter] Result: 8 events found.
+[00:20:49.675] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:20:49.677] Server  LOG     [MacroPage] Loaded 761 rows
+[00:20:49.677] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:20:49.678] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:20:49.678] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:49.817] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:51.945] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:20:51.945] Browser LOG     [Filter] Result: 8 events found.
+[00:20:52.147] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:20:52.147] Browser LOG     [Filter] Result: 8 events found.
+[00:20:53.516] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:20:53.518] Server  LOG     [MacroPage] Loaded 761 rows
+[00:20:53.518] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:20:53.518] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:20:53.518] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:20:53.664] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:20:53.665] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:21:43.420] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:21:43.422] Server  LOG     [MacroPage] Loaded 761 rows
+[00:21:43.422] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:21:43.422] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:21:43.422] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:21:43.481] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:21:43.482] Server  LOG     [MacroPage] Loaded 761 rows
+[00:21:43.482] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:21:43.482] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:21:43.482] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:26:17.954] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:26:17.954] Browser LOG     [Filter] Result: 8 events found.
+[00:26:18.080] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:26:18.082] Server  LOG     [MacroPage] Loaded 761 rows
+[00:26:18.082] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:26:18.082] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:26:18.083] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"
+[00:26:18.262] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[00:26:18.262] Browser LOG     [Filter] Result: 8 events found.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.262] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:26:18.997] Server  LOG     [MacroPage] Total Raw Rows Fetched: 1484
+[00:26:18.999] Server  LOG     [MacroPage] Loaded 761 rows
+[00:26:18.999] Server  LOG     [MacroPage] First Date: 1983-01-31
+[00:26:18.999] Server  LOG     [MacroPage] Last Date: 2026-01-07
+[00:26:18.999] Server  LOG     [MacroPage] Last Item: "{\"date\":\"2026-01-07\",\"black_market\":26880}"

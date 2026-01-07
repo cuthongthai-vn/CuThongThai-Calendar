@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Cú Thông Thái</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'cu-yellow': '#FFD700', 'cu-black': '#0a0a0a', 'cu-gray': '#1f1f1f' },
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-cu-black text-white min-h-screen p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-cu-yellow">Admin Dashboard <span
+                class="text-white text-base font-normal opacity-50 ml-2">Manual Data Entry</span></h1>
+
+        <!-- Add New Event Form -->
+        <div class="bg-cu-gray p-6 rounded-xl border border-white/10 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Update Event Actual Data</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                <input type="text" placeholder="Event Name (e.g. CPI)"
+                    class="bg-black/50 border border-white/10 rounded p-2 text-white">
+                <input type="text" placeholder="Forecast (e.g. 3.4%)"
+                    class="bg-black/50 border border-white/10 rounded p-2 text-white">
+                <input type="text" placeholder="Actual"
+                    class="bg-black/50 border border-cu-yellow rounded p-2 text-white focus:outline-none focus:ring-1 focus:ring-cu-yellow">
+                <button class="bg-cu-yellow text-black font-bold rounded p-2 hover:bg-yellow-400 transition">Update
+                    Now</button>
+            </div>
+            <p class="text-xs text-gray-500">*Updating 'Actual' will trigger the logic processor & AI analyst
+                immediately.</p>
+        </div>
+
+        <!-- Event List Table -->
+        <div class="bg-cu-gray rounded-xl border border-white/10 overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-white/5 text-gray-400 text-sm uppercase">
+                    <tr>
+                        <th class="p-4">Time</th>
+                        <th class="p-4">Event</th>
+                        <th class="p-4">Forecast</th>
+                        <th class="p-4">Actual</th>
+                        <th class="p-4">Status</th>
+                        <th class="p-4">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                    <tr>
+                        <td class="p-4 text-gray-400">19:30</td>
+                        <td class="p-4 font-semibold">Non-Farm Payrolls</td>
+                        <td class="p-4">180K</td>
+                        <td class="p-4 text-cu-yellow font-mono">---</td>
+                        <td class="p-4"><span
+                                class="bg-yellow-500/20 text-yellow-500 text-xs px-2 py-1 rounded">Pending</span></td>
+                        <td class="p-4"><button class="text-sm text-blue-400 hover:text-blue-300">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 text-gray-400">21:00</td>
+                        <td class="p-4 font-semibold">ISM Services PMI</td>
+                        <td class="p-4">52.0</td>
+                        <td class="p-4 font-mono">53.1</td>
+                        <td class="p-4"><span
+                                class="bg-green-500/20 text-green-500 text-xs px-2 py-1 rounded">Done</span></td>
+                        <td class="p-4"><button class="text-sm text-blue-400 hover:text-blue-300">Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
