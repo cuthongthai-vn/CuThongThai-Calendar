@@ -108,20 +108,29 @@ function RootLayout({ children }) {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/lifestyle",
                                         className: "text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1",
+                                        children: "☕ Vỉa Hè"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/layout.js",
+                                        lineNumber: 55,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/population",
+                                        className: "text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1",
                                         children: [
-                                            "☕ Vỉa Hè",
+                                            "👥 Dân Số",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-[10px] bg-red-600 text-white px-1 rounded animate-pulse",
-                                                children: "Mới"
+                                                className: "text-[10px] bg-blue-600 text-white px-1 rounded animate-pulse",
+                                                children: "Hot"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/layout.js",
-                                                lineNumber: 60,
+                                                lineNumber: 66,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/layout.js",
-                                        lineNumber: 55,
+                                        lineNumber: 61,
                                         columnNumber: 29
                                     }, this)
                                 ]

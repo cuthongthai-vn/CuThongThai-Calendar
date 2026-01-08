@@ -57,7 +57,13 @@ export default function RootLayout({ children }) {
                                 className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1"
                             >
                                 ☕ Vỉa Hè
-                                <span className="text-[10px] bg-red-600 text-white px-1 rounded animate-pulse">Mới</span>
+                            </Link>
+                            <Link
+                                href="/population"
+                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1"
+                            >
+                                👥 Dân Số
+                                <span className="text-[10px] bg-blue-600 text-white px-1 rounded animate-pulse">Hot</span>
                             </Link>
                         </nav>
                     </div>
