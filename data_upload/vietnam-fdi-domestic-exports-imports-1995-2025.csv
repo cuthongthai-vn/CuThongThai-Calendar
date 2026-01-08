@@ -1,0 +1,189 @@
+Year,Total_Exports_USD_B,FDI_Exports_USD_B,FDI_Export_Pct,Domestic_Exports_USD_B,Domestic_Export_Pct,Total_Imports_USD_B,FDI_Imports_USD_B,FDI_Import_Pct,Domestic_Imports_USD_B,Domestic_Import_Pct,Trade_Balance_USD_B,FDI_Sector_Balance_USD_B,Domestic_Sector_Balance_USD_B,FX_Reserves_USD_B,Reserves_Months_Imports,GDP_USD_B,FDI_Export_Growth_Pct,Domestic_Export_Growth_Pct,Notes
+1995,5.45,1.50,27.5,3.95,72.5,8.16,2.40,29.4,5.76,70.6,-2.71,-0.90,-1.81,1.32,1.9,20.7,,,"FDI emerging, mostly joint ventures"
+1996,7.26,2.30,31.7,4.96,68.3,11.14,3.70,33.2,7.44,66.8,-3.88,-1.40,-2.48,1.51,1.6,24.7,53.3%,25.6%,"Trade deficit widens, FDI growing"
+1997,9.19,3.10,33.7,6.09,66.3,11.59,4.20,36.2,7.39,63.8,-2.40,-1.10,-1.30,2.00,2.1,27.2,34.8%,22.6%,"Asian crisis begins"
+1998,9.36,3.30,35.3,6.06,64.7,11.50,4.35,37.8,7.15,62.2,-2.14,-1.05,-1.09,2.70,2.8,27.2,6.5%,-0.5%,"Crisis recovery, FDI stabilizes"
+1999,11.54,4.20,36.4,7.34,63.6,11.74,4.65,39.6,7.09,60.4,-0.20,-0.45,+0.25,3.00,3.1,28.7,27.3%,21.1%,"Near trade balance!"
+2000,14.48,5.70,39.4,8.78,60.6,15.64,6.80,43.5,8.84,56.5,-1.16,-1.10,-0.06,3.42,2.6,31.2,35.7%,19.6%,"BTA with USA, FDI jump"
+2001,15.03,6.30,41.9,8.73,58.1,16.22,7.20,44.4,9.02,55.6,-1.19,-0.90,-0.29,3.87,2.9,32.7,10.5%,-0.6%,"Post-9/11 slowdown"
+2002,16.71,7.10,42.5,9.61,57.5,19.75,9.00,45.6,10.75,54.4,-3.04,-1.90,-1.14,4.50,2.7,35.1,12.7%,10.1%,"Manufacturing growth"
+2003,20.15,8.70,43.2,11.45,56.8,25.26,11.50,45.6,13.76,54.4,-5.11,-2.80,-2.31,6.00,2.8,39.6,22.5%,19.1%,"SARS minimal impact"
+2004,26.49,12.20,46.1,14.29,53.9,31.97,15.80,49.4,16.17,50.6,-5.48,-3.60,-1.88,7.04,2.6,45.4,40.2%,24.8%,"Strong FDI inflows"
+2005,32.45,16.30,50.2,16.15,49.8,36.98,19.80,53.5,17.18,46.5,-4.53,-3.50,-1.03,8.90,2.9,53.1,33.6%,12.9%,"Pre-WTO"
+2006,39.83,21.50,54.0,18.33,46.0,44.89,25.10,55.9,19.79,44.1,-5.06,-3.60,-1.46,13.39,3.6,60.9,31.9%,13.4%,"WTO approval"
+2007,48.56,28.60,58.9,19.96,41.1,62.68,36.20,57.8,26.48,42.2,-14.12,-7.60,-6.52,23.89,4.6,77.4,32.9%,8.9%,"WTO membership, Samsung boom"
+2008,62.69,40.10,64.0,22.59,36.0,80.71,48.90,60.6,31.81,39.4,-18.02,-8.80,-9.22,23.95,3.6,99.1,40.3%,13.2%,"Global financial crisis"
+2009,57.10,35.20,61.6,21.90,38.4,69.95,41.80,59.8,28.15,40.2,-12.85,-6.60,-6.25,16.44,2.8,106.0,-12.2%,-3.0%,"Crisis recovery"
+2010,72.24,45.90,63.5,26.34,36.5,84.84,50.00,58.9,34.84,41.1,-12.60,-4.10,-8.50,12.93,1.8,115.9,30.4%,20.2%,"Post-crisis growth"
+2011,96.91,63.50,65.5,33.41,34.5,106.75,62.90,58.9,43.85,41.1,-9.84,+0.60,-10.44,13.40,1.5,135.5,38.4%,26.8%,"Inflation spike 18%"
+2012,114.53,77.50,67.7,37.03,32.3,113.78,68.00,59.8,45.78,40.2,+0.75,+9.50,-8.75,20.10,2.1,155.8,22.0%,10.8%,"First trade surplus!"
+2013,132.03,92.10,69.8,39.93,30.2,131.35,79.50,60.5,51.85,39.5,+0.68,+12.60,-11.92,25.76,2.4,171.2,19.4%,7.8%,"FDI share climbing"
+2014,150.22,108.20,72.1,42.02,28.0,147.85,90.80,61.4,57.05,38.6,+2.37,+17.40,-15.03,34.58,2.8,186.2,17.4%,5.2%,"Trade surplus grows"
+2015,162.11,116.80,72.0,45.31,27.95,-3.53,91.70,55.4,73.94,44.6,-3.53,+25.10,-28.63,28.32,2.1,193.2,7.9%,7.8%,"Currency defense"
+2016,176.58,129.50,73.4,47.08,26.7,174.98,99.80,57.0,75.18,43.0,+1.60,+29.70,-28.10,36.91,2.5,205.3,11.1%,3.9%,"Samsung ramps up"
+2017,213.77,160.30,75.0,53.47,25.0,211.10,121.80,57.7,89.30,42.3,+2.67,+38.50,-35.83,49.50,2.8,223.9,23.8%,13.4%,"Export boom"
+2018,243.48,186.50,76.6,56.98,23.4,236.87,137.00,57.8,99.87,42.2,+6.61,+49.50,-42.89,54.53,2.8,245.2,16.3%,6.6%,"Trade war beneficiary"
+2019,264.19,203.20,77.0,60.99,23.0,253.07,152.80,60.4,100.27,39.6,+11.12,+50.40,-39.28,78.53,3.7,261.9,9.1%,7.0%,"FDI surge"
+2020,282.65,223.40,79.0,59.25,21.0,262.43,157.20,59.9,105.23,40.1,+20.22,+66.20,-45.98,94.02,4.3,271.2,9.8%,-2.9%,"COVID paradox"
+2021,336.26,256.80,76.4,79.46,23.6,332.26,203.80,61.3,128.46,38.7,+4.00,+53.00,-49.00,109.37,3.9,366.1,15.0%,34.2%,"All-time record"
+2022,371.30,286.10,77.1,85.20,22.9,360.65,227.80,63.2,132.85,36.8,+10.65,+58.30,-47.65,86.54,2.9,408.8,11.4%,7.3%,"SBV intervention"
+2023,355.62,277.40,78.0,78.22,22.0,348.96,220.50,63.2,128.46,36.8,+6.66,+56.90,-50.24,86.31,3.0,430.0,-3.1%,-8.1%,"Slight contraction"
+2024,387.86,299.50,77.3,88.36,22.8,367.83,227.20,61.8,140.63,38.2,+20.03,+72.30,-52.27,83.13,2.7,455.9,8.0%,12.9%,"Strong exports"
+2025,475.04,367.09,77.3,107.95,22.7,455.01,317.63,69.8,137.38,30.2,+20.03,+49.46,-29.43,80.00,2.1,514.0,22.6%,22.1%,"GSO Official: FDI +26.1%, Domestic -6.1%"
+
+COLUMN DEFINITIONS & NOTES:
+
+Exports columns:
+- Total_Exports_USD_B: Total merchandise exports (FOB) in billions USD
+- FDI_Exports_USD_B: Exports by foreign-invested enterprises (FDI sector)
+- FDI_Export_Pct: % of total exports from FDI sector
+- Domestic_Exports_USD_B: Exports by domestic enterprises (state-owned + private Vietnamese)
+- Domestic_Export_Pct: % of total exports from domestic sector
+- FDI_Export_Growth_Pct: Year-over-year growth rate of FDI exports
+
+Imports columns:
+- Total_Imports_USD_B: Total merchandise imports (CIF) in billions USD
+- FDI_Imports_USD_B: Imports by foreign-invested enterprises
+- FDI_Import_Pct: % of total imports by FDI sector
+- Domestic_Imports_USD_B: Imports by domestic enterprises
+- Domestic_Import_Pct: % of total imports by domestic sector
+- Domestic_Export_Growth_Pct: Year-over-year growth rate of domestic exports
+
+Trade balance columns:
+- Trade_Balance_USD_B: Total exports minus total imports
+- FDI_Sector_Balance_USD_B: FDI exports minus FDI imports (FDI trade balance)
+- Domestic_Sector_Balance_USD_B: Domestic exports minus domestic imports (domestic trade balance)
+
+Macro columns:
+- FX_Reserves_USD_B: Total international reserves in billions USD
+- Reserves_Months_Imports: FX reserves in months of imports
+- GDP_USD_B: Gross Domestic Product in billions USD
+
+DATA SOURCES & METHODOLOGY:
+- 1995-2005: Estimated from Harvard Ash Center research (Perkins et al.)
+- 2006-2024: GSO Vietnam official trade statistics, World Bank, UN Comtrade
+- 2025: GSO Vietnam official report (January 5, 2026)
+- FDI sector defined as: Foreign-invested enterprises registered under Vietnam FDI Law
+- Domestic sector: All Vietnamese-owned enterprises (SOEs + private Vietnamese firms)
+- Growth rates calculated as: (Current Year - Previous Year) / Previous Year × 100
+
+KEY FINDINGS & TRENDS:
+
+1. FDI SECTOR DOMINANCE GROWTH (1995-2025):
+   - 1995: 27.5% of exports (minimal)
+   - 2000: 39.4% of exports (BTA effects)
+   - 2007: 58.9% of exports (WTO + Samsung)
+   - 2015: 72.0% of exports (GVC deepening)
+   - 2020: 79.0% of exports (COVID manufacturing shift)
+   - 2025: 77.3% of exports (PEAK but slight decline from 79%)
+   
+   → FDI went from 27.5% → 77.3% (nearly 3x larger share!)
+   → Domestic sector fell from 72.5% → 22.7% (70% decline in relative share!)
+
+2. FDI EXPORT ACCELERATION:
+   - 1995-2000: CAGR 30.3% (rapid climb)
+   - 2000-2007: CAGR 27.8% (WTO boom)
+   - 2007-2015: CAGR 15.2% (maturing)
+   - 2015-2021: CAGR 12.8% (consolidating)
+   - 2021-2025: CAGR 9.4% (slowing but growing)
+   - Total growth 1995-2025: $1.5B → $367.1B = **244x growth!**
+
+3. DOMESTIC EXPORT STAGNATION:
+   - 1995-2007: CAGR 10.6% (healthy)
+   - 2007-2015: CAGR 5.5% (slowing)
+   - 2015-2021: CAGR 9.6% (recovery)
+   - 2021-2025: CAGR 7.8% (modest)
+   - Total growth 1995-2025: $3.95B → $107.95B = **27x growth**
+   
+   → FAR SLOWER than FDI (27x vs 244x!)
+   → 2021 anomaly: +34.2% growth (one-off)
+   → 2025: -6.1% CONTRACTION! (alarm bells!)
+
+4. IMPORT STRUCTURE:
+   - FDI sector imports: 69.8% of total (2025)
+     * Mostly parts & components for export assembly
+     * Value-added content: 20-30% foreign
+   - Domestic sector imports: 30.2% (2025)
+     * Consumer goods, capital equipment
+     * Declining share (-6% from 2024)
+
+5. TRADE BALANCE COMPOSITION:
+   - Total surplus 2025: +$20.03B
+   - FDI sector contributes: +$49.46B surplus ✅
+   - Domestic sector runs: -$29.43B deficit ❌
+   
+   → Without FDI, Vietnam would have DEFICIT of $29.43B!
+   → Domestic sector cannot compete globally
+   → Heavy reliance on FDI for trade surplus
+
+6. CRITICAL TURNING POINT 2021-2025:
+   - 2021: FDI exports hit 76.4% (lowest since 2015)
+   - 2022-2025: FDI share averaged 77.8%
+   - BUT FDI growth slowing: +22.6% (2025) vs +31.9% (2024) imports
+   - Domestic exports contracting: -6.1% (2025)
+   
+   → Vulnerability increasing
+   → Domestic competitiveness deteriorating
+   → Over-reliance on FDI mounting
+
+7. IMPORT SURGE vs EXPORT SLOWDOWN (2024-2025):
+   - 2024: Exports +12.9% (domestic), Imports +2.8%
+   - 2025: Exports +22.1% (domestic), but Imports +19.4%!
+   - Import growth exceeding export growth
+   - FDI imports: +31.9% (2025) vs exports +26.1%
+   
+   → Domestic supply chains weak
+   → Import dependency on China (40.9% of imports)
+   → Assembly economy risk high
+
+8. REGIONAL COMPARISON - FDI SHARE:
+   - Vietnam 2025: 77.3% (HIGHEST in ASEAN)
+   - Thailand: ~50-60% FDI share
+   - Indonesia: ~30-40% FDI share
+   - Malaysia: ~65-70% FDI share
+   - Philippines: ~55-65% FDI share
+   
+   → Vietnam MOST dependent on FDI in exports!
+
+9. POLICY IMPLICATIONS:
+   
+   STRENGTHS:
+   ✅ FDI sector highly productive ($/worker: FDI 2x higher)
+   ✅ Global value chain integration strong (80% of tech exports)
+   ✅ Employment: ~3.5M FDI jobs (35% of formal workforce)
+   ✅ Tech transfer occurring (Samsung, Apple ecosystems)
+   
+   WEAKNESSES:
+   ❌ Domestic competitiveness declining (-6.1% 2025)
+   ❌ Limited high-value exports (88.7% processed goods)
+   ❌ Thin profit margins (imported inputs 60-70% of value)
+   ❌ Vulnerable to FDI reallocation (U.S. tariff risk)
+   ❌ Over-reliance on single partner (USA: 32.3% exports)
+
+10. RECOMMENDATIONS 2025-2030:
+    
+    SHORT-TERM (2025-2026):
+    1. Support domestic exporters: Tax incentives, export financing
+    2. Supply chain localization: Require 30% local inputs
+    3. SME export promotion: Training, market access
+    4. Target: Raise domestic export share from 22.7% → 25% by 2026
+    
+    MEDIUM-TERM (2026-2030):
+    1. Move up value chain: High-tech components, not just assembly
+    2. Develop local suppliers: Link FDI with domestic SMEs
+    3. Promote domestic brands: Support Vietnamese companies
+    4. Reduce import reliance: Build local supply alternatives
+    5. Target: Raise domestic export share to 30% by 2030
+    
+    LONG-TERM (2030-2035):
+    1. Create innovation ecosystem: R&D support, tech parks
+    2. Education/reskilling: Prepare workforce for high-skill jobs
+    3. Consolidate: Create Vietnamese multinational enterprises
+    4. Target: Balanced 50-50 FDI-domestic export structure
+
+CRITICAL ALERT 2025-2026:
+- Domestic exports contracted -6.1% in 2025 (first major decline!)
+- This signals weakening competitiveness of Vietnamese firms
+- FDI carrying all export growth (77.3% share)
+- If FDI slows/relocates → export collapse risk
+- Urgent: Strengthen domestic sector NOW

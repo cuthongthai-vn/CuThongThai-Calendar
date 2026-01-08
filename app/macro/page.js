@@ -2,6 +2,12 @@ import { createClient } from '@supabase/supabase-js';
 import MacroChart from '../../components/ui/MacroChart';
 import MacroHeader from '../../components/features/macro/MacroHeader';
 import FloatingCTA from '../../components/ui/FloatingCTA';
+import TradeBalanceSection from '../../components/features/macro/TradeBalanceSection';
+import ReservesHealthSection from '../../components/features/macro/ReservesHealthSection';
+import FDIStructureSection from '../../components/features/macro/FDIStructureSection';
+import PolicyStanceSection from '../../components/features/macro/PolicyStanceSection';
+import DebtSustainabilitySection from '../../components/features/macro/DebtSustainabilitySection';
+import OverheatingMonitorSection from '../../components/features/macro/OverheatingMonitorSection';
 
 export const dynamic = 'force-dynamic'; // Disable caching to fetch fresh data on every request
 
@@ -162,6 +168,11 @@ export default async function MacroPage() {
 
             <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto">
 
+                {/* --- PART I: MARKET INDICATORS --- */}
+                <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-green-500 pl-4 uppercase">
+                    I. Chỉ Số Thị Trường (Market Indicators)
+                </h3>
+
                 {/* SECTION 1: EXCHANGE RATE */}
                 <section>
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
@@ -260,6 +271,33 @@ export default async function MacroPage() {
                             ]}
                         />
                     </section>
+                </div>
+
+                {/* --- PART II: MACRO BALANCE NEW SECTION --- */}
+                <div className="mt-16 mb-8 border-t border-slate-800 pt-8">
+                    <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-yellow-500 pl-4 uppercase">
+                        II. Sức Khỏe & Cân Đối Vĩ Mô (Stability)
+                    </h3>
+
+                    <TradeBalanceSection />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <ReservesHealthSection />
+                        <FDIStructureSection />
+                    </div>
+                </div>
+
+                {/* --- PART III: POLICY & HEALTH NEW SECTION --- */}
+                <div className="mt-16 mb-8 border-t border-slate-800 pt-8">
+                    <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-pink-500 pl-4 uppercase">
+                        III. Chính Sách & Sức Bền (Policy & Health)
+                    </h3>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <PolicyStanceSection />
+                        <OverheatingMonitorSection />
+                    </div>
+                    <DebtSustainabilitySection />
                 </div>
             </div>
 
