@@ -266,44 +266,29 @@ const EventCard = ({ event })=>{
         });
     };
     const highlightClass = isToday() ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-theme-yellow shadow-[0_0_20px_rgba(255,215,0,0.15)] relative z-10" : "bg-slate-900/50 hover:bg-slate-800/80 border border-slate-700 hover:border-theme-yellow/50 backdrop-blur-sm shadow-sm hover:shadow-md";
-    // Mascot Image Selection Logic
-    const getBullishImage = ()=>{
-        // Deterministic random based on Event ID or Name to avoid re-render flickering
-        // Use a simple hash of the event ID or name
+    // Mascot Selection Logic based on Commentary Content
+    const getMascotImage = ()=>{
+        const commentary = event.ai_commentary || "";
+        let character = 'owl'; // Default
+        if (commentary.includes("🦉") || commentary.includes("Cú Thông Thái")) character = 'owl';
+        else if (commentary.includes("📈") || commentary.includes("Bìm Bịp")) character = 'bimbip';
+        else if (commentary.includes("📉") || commentary.includes("Chim Lợn")) character = 'chimlon';
+        else if (commentary.includes("🦈") || commentary.includes("Cá Mập")) character = 'camap';
+        else if (commentary.includes("🎀") || commentary.includes("Cú Hồng")) character = 'cuhong';
+        else if (commentary.includes("🦓") || commentary.includes("Ngựa Vằn")) character = 'nguavan';
+        // Deterministic random based on Event ID to avoid flickering
         const seedStr = event.id || event.event_name || 'default';
         let hash = 0;
         for(let i = 0; i < seedStr.length; i++){
             hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
         }
-        const bullishImages = [
-            '/bimbip_1.png',
-            '/bimbip_2.png',
-            '/bimbip_3.png',
-            '/bimbip_4.png',
-            '/bimbip_5.png'
-        ];
-        // Use absolute value of hash to pick index
-        const index = Math.abs(hash) % bullishImages.length;
-        return bullishImages[index];
+        // Pick one of 5 images (1-5)
+        const imageIndex = Math.abs(hash) % 5 + 1;
+        // Return constructed path. Assumes images are in public root or /images/
+        // User instruction: Upload files like owl_1.png, camap_2.png, etc.
+        return `/${character}_${imageIndex}.png`;
     };
-    // Use getBearishImage logic
-    const getBearishImage = ()=>{
-        const seedStr = event.id || event.event_name || 'default';
-        let hash = 0;
-        for(let i = 0; i < seedStr.length; i++){
-            hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        const bearishImages = [
-            '/chimlon_1.png',
-            '/chimlon_2.png',
-            '/chimlon_3.png',
-            '/chimlon_4.png',
-            '/chimlon_5.png'
-        ];
-        // Use absolute value of hash to pick index
-        const index = Math.abs(hash) % bearishImages.length;
-        return bearishImages[index];
-    };
+    const mascotImage = getMascotImage();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: `${highlightClass} p-5 rounded-xl flex flex-col md:flex-row gap-5 transition-all duration-300 mb-4 relative group`,
         children: [
@@ -312,7 +297,7 @@ const EventCard = ({ event })=>{
                 children: "🔥 Hôm nay"
             }, void 0, false, {
                 fileName: "[project]/components/EventCard.js",
-                lineNumber: 141,
+                lineNumber: 126,
                 columnNumber: 17
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -326,7 +311,7 @@ const EventCard = ({ event })=>{
                                 children: time
                             }, void 0, false, {
                                 fileName: "[project]/components/EventCard.js",
-                                lineNumber: 150,
+                                lineNumber: 135,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -334,13 +319,13 @@ const EventCard = ({ event })=>{
                                 children: date
                             }, void 0, false, {
                                 fileName: "[project]/components/EventCard.js",
-                                lineNumber: 151,
+                                lineNumber: 136,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/EventCard.js",
-                        lineNumber: 149,
+                        lineNumber: 134,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -355,12 +340,12 @@ const EventCard = ({ event })=>{
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/EventCard.js",
-                            lineNumber: 155,
+                            lineNumber: 140,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/EventCard.js",
-                        lineNumber: 154,
+                        lineNumber: 139,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -372,13 +357,13 @@ const EventCard = ({ event })=>{
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/EventCard.js",
-                        lineNumber: 160,
+                        lineNumber: 145,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/EventCard.js",
-                lineNumber: 148,
+                lineNumber: 133,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -390,7 +375,7 @@ const EventCard = ({ event })=>{
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/EventCard.js",
-                lineNumber: 163,
+                lineNumber: 148,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -406,7 +391,7 @@ const EventCard = ({ event })=>{
                                     children: "Kỳ trước"
                                 }, void 0, false, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 170,
+                                    lineNumber: 155,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -414,13 +399,13 @@ const EventCard = ({ event })=>{
                                     children: event.previous || '-'
                                 }, void 0, false, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 171,
+                                    lineNumber: 156,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/EventCard.js",
-                            lineNumber: 169,
+                            lineNumber: 154,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -431,7 +416,7 @@ const EventCard = ({ event })=>{
                                     children: "Dự báo"
                                 }, void 0, false, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 174,
+                                    lineNumber: 159,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -439,13 +424,13 @@ const EventCard = ({ event })=>{
                                     children: event.forecast || '-'
                                 }, void 0, false, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 175,
+                                    lineNumber: 160,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/EventCard.js",
-                            lineNumber: 173,
+                            lineNumber: 158,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -456,7 +441,7 @@ const EventCard = ({ event })=>{
                                     children: "Kỳ này"
                                 }, void 0, false, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 178,
+                                    lineNumber: 163,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -467,7 +452,7 @@ const EventCard = ({ event })=>{
                                             children: event.actual || '--'
                                         }, void 0, false, {
                                             fileName: "[project]/components/EventCard.js",
-                                            lineNumber: 180,
+                                            lineNumber: 165,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         getConsensusBadge(),
@@ -479,35 +464,35 @@ const EventCard = ({ event })=>{
                                                 height: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/components/EventCard.js",
-                                                lineNumber: 187,
+                                                lineNumber: 172,
                                                 columnNumber: 37
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/components/EventCard.js",
-                                            lineNumber: 186,
+                                            lineNumber: 171,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 179,
+                                    lineNumber: 164,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/EventCard.js",
-                            lineNumber: 177,
+                            lineNumber: 162,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/EventCard.js",
-                    lineNumber: 168,
+                    lineNumber: 153,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/EventCard.js",
-                lineNumber: 167,
+                lineNumber: 152,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -515,86 +500,63 @@ const EventCard = ({ event })=>{
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex flex-row items-center gap-4",
                     children: [
-                        event.ai_sentiment === 'BULLISH' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "animate-bounce",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex-shrink-0",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: getBullishImage(),
-                                alt: "Bìm Bịp Bullish",
-                                className: "w-16 h-16 object-contain"
+                                src: event.ai_commentary ? mascotImage : "/Cu_thinking.png",
+                                alt: "Mascot",
+                                className: "w-16 h-16 object-contain animate-bounce",
+                                onError: (e)=>{
+                                    e.target.onerror = null;
+                                    e.target.src = "/Cu_thinking.png";
+                                }
                             }, void 0, false, {
                                 fileName: "[project]/components/EventCard.js",
-                                lineNumber: 201,
-                                columnNumber: 29
+                                lineNumber: 185,
+                                columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/EventCard.js",
-                            lineNumber: 200,
-                            columnNumber: 25
-                        }, ("TURBOPACK compile-time value", void 0)),
-                        event.ai_sentiment === 'BEARISH' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "animate-bounce",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: getBearishImage(),
-                                alt: "Chim Lợn Bearish",
-                                className: "w-16 h-16 object-contain"
-                            }, void 0, false, {
-                                fileName: "[project]/components/EventCard.js",
-                                lineNumber: 206,
-                                columnNumber: 29
-                            }, ("TURBOPACK compile-time value", void 0))
-                        }, void 0, false, {
-                            fileName: "[project]/components/EventCard.js",
-                            lineNumber: 205,
-                            columnNumber: 25
+                            lineNumber: 184,
+                            columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-start gap-2 flex-1",
-                            children: [
-                                !event.ai_sentiment && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: "/Cu_thinking.png",
-                                    alt: "Cú Suy Ngẫm",
-                                    className: "w-16 h-16 object-contain opacity-80"
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-sm text-gray-300 italic",
+                                children: event.ai_commentary ? `"${event.ai_commentary}"` : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-gray-600",
+                                    children: "Đang chờ Cú Thông Thái suy ngẫm..."
                                 }, void 0, false, {
                                     fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 213,
-                                    columnNumber: 29
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "text-sm text-gray-300 italic",
-                                    children: event.ai_commentary ? `"${event.ai_commentary}"` : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-gray-600",
-                                        children: "Đang chờ Cú Thông Thái suy ngẫm..."
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/EventCard.js",
-                                        lineNumber: 219,
-                                        columnNumber: 33
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, void 0, false, {
-                                    fileName: "[project]/components/EventCard.js",
-                                    lineNumber: 215,
-                                    columnNumber: 25
+                                    lineNumber: 199,
+                                    columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, void 0, true, {
+                            }, void 0, false, {
+                                fileName: "[project]/components/EventCard.js",
+                                lineNumber: 195,
+                                columnNumber: 25
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, void 0, false, {
                             fileName: "[project]/components/EventCard.js",
-                            lineNumber: 211,
+                            lineNumber: 194,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/EventCard.js",
-                    lineNumber: 197,
+                    lineNumber: 182,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/EventCard.js",
-                lineNumber: 196,
+                lineNumber: 181,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/EventCard.js",
-        lineNumber: 138,
+        lineNumber: 123,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -6956,3 +6956,175 @@ Import traces:
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
+[04:49:26.543] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[04:49:26.543] Browser LOG     [Filter] Result: 158 events found.
+[04:49:26.791] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[04:49:26.791] Browser LOG     [Filter] Result: 158 events found.
+[04:49:28.243] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[04:49:28.243] Browser LOG     [Filter] Result: 72 events found.
+[04:53:14.888] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[04:53:15.488] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[04:53:15.488] Browser LOG     [Filter] Result: 158 events found.
+[04:53:17.804] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[04:53:17.804] Browser LOG     [Filter] Result: 72 events found.
+[05:01:12.289] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:01:13.061] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[05:01:13.061] Browser LOG     [Filter] Result: 158 events found.
+[05:01:17.224] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[05:01:17.224] Browser LOG     [Filter] Result: 72 events found.
+[05:05:53.420] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:05:54.221] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[05:05:54.221] Browser LOG     [Filter] Result: 158 events found.
+[05:05:56.771] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[05:05:56.772] Browser LOG     [Filter] Result: 72 events found.
+[05:07:43.311] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:07:44.189] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[05:07:44.189] Browser LOG     [Filter] Result: 158 events found.
+[05:07:55.671] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[05:07:55.671] Browser LOG     [Filter] Result: 72 events found.
+[05:17:14.823] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:17:15.557] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[05:17:15.557] Browser LOG     [Filter] Result: 158 events found.
+[05:17:18.008] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[05:17:18.008] Browser LOG     [Filter] Result: 72 events found.
+[05:18:13.384] Browser LOG     [Filter] Range: today 1/8/2026, 12:00:00 AM 1/8/2026, 11:59:59 PM
+[05:18:13.384] Browser LOG     [Filter] Result: 31 events found.
+[05:26:09.611] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:26:11.369] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[05:26:11.369] Browser LOG     [Filter] Result: 158 events found.
+[05:26:25.826] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[05:26:25.826] Browser LOG     [Filter] Result: 72 events found.
+[05:31:42.908] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[05:31:44.081] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[05:31:44.081] Browser LOG     [Filter] Result: 158 events found.
+[05:34:32.882] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[05:34:32.885] Server  LOG     [MacroPage] Loaded 803 rows
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[05:34:33.260] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[06:18:06.625] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[06:18:06.625] Browser LOG     [Filter] Result: 158 events found.
+[06:18:06.875] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[06:18:06.875] Browser LOG     [Filter] Result: 158 events found.
+[06:18:08.817] Browser LOG     [Filter] Range: today 1/8/2026, 12:00:00 AM 1/8/2026, 11:59:59 PM
+[06:18:08.817] Browser LOG     [Filter] Result: 31 events found.
+[06:19:48.575] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[06:19:48.575] Browser LOG     [Filter] Result: 72 events found.
+[06:37:47.902] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:37:49.055] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[06:37:49.055] Browser LOG     [Filter] Result: 158 events found.
+[06:37:52.411] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[06:37:52.411] Browser LOG     [Filter] Result: 72 events found.
+[06:41:19.181] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:41:19.888] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[06:41:19.888] Browser LOG     [Filter] Result: 158 events found.
+[06:41:21.449] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[06:41:21.449] Browser LOG     [Filter] Result: 72 events found.
+[06:42:00.024] Browser LOG     [Filter] Range: next_week 1/12/2026, 12:00:00 AM 1/18/2026, 11:59:59 PM
+[06:42:00.024] Browser LOG     [Filter] Result: 108 events found.
+[06:42:01.347] Browser LOG     [Filter] Range: next_month 2/1/2026, 12:00:00 AM 2/28/2026, 11:59:59 PM
+[06:42:01.347] Browser LOG     [Filter] Result: 231 events found.
+[06:42:03.117] Browser LOG     [Filter] Range: next_week 1/12/2026, 12:00:00 AM 1/18/2026, 11:59:59 PM
+[06:42:03.117] Browser LOG     [Filter] Result: 108 events found.
+[06:44:39.623] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[06:44:39.623] Browser LOG     [Filter] Result: 72 events found.
+[06:46:46.434] Server  LOG     ✓ Compiled in 133ms
+[06:47:48.010] Server  LOG     ✓ Compiled in 49ms
+[07:00:26.725] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[07:00:28.129] Browser LOG     [Filter] Range: this_week 1/5/2026, 12:00:00 AM 1/11/2026, 11:59:59 PM
+[07:00:28.129] Browser LOG     [Filter] Result: 158 events found.
+[07:00:35.410] Browser LOG     [Filter] Range: last_week 12/29/2025, 12:00:00 AM 1/4/2026, 11:59:59 PM
+[07:00:35.411] Browser LOG     [Filter] Result: 72 events found.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[07:01:13.070] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.

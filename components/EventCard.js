@@ -90,49 +90,34 @@ const EventCard = ({ event }) => {
         ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-theme-yellow shadow-[0_0_20px_rgba(255,215,0,0.15)] relative z-10"
         : "bg-slate-900/50 hover:bg-slate-800/80 border border-slate-700 hover:border-theme-yellow/50 backdrop-blur-sm shadow-sm hover:shadow-md";
 
-    // Mascot Image Selection Logic
-    const getBullishImage = () => {
-        // Deterministic random based on Event ID or Name to avoid re-render flickering
-        // Use a simple hash of the event ID or name
+    // Mascot Selection Logic based on Commentary Content
+    const getMascotImage = () => {
+        const commentary = event.ai_commentary || "";
+        let character = 'owl'; // Default
+
+        if (commentary.includes("🦉") || commentary.includes("Cú Thông Thái")) character = 'owl';
+        else if (commentary.includes("📈") || commentary.includes("Bìm Bịp")) character = 'bimbip';
+        else if (commentary.includes("📉") || commentary.includes("Chim Lợn")) character = 'chimlon';
+        else if (commentary.includes("🦈") || commentary.includes("Cá Mập")) character = 'camap';
+        else if (commentary.includes("🎀") || commentary.includes("Cú Hồng")) character = 'cuhong';
+        else if (commentary.includes("🦓") || commentary.includes("Ngựa Vằn")) character = 'nguavan';
+
+        // Deterministic random based on Event ID to avoid flickering
         const seedStr = event.id || event.event_name || 'default';
         let hash = 0;
         for (let i = 0; i < seedStr.length; i++) {
             hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
         }
 
-        const bullishImages = [
-            '/bimbip_1.png',
-            '/bimbip_2.png',
-            '/bimbip_3.png',
-            '/bimbip_4.png',
-            '/bimbip_5.png'
-        ];
+        // Pick one of 5 images (1-5)
+        const imageIndex = (Math.abs(hash) % 5) + 1;
 
-        // Use absolute value of hash to pick index
-        const index = Math.abs(hash) % bullishImages.length;
-        return bullishImages[index];
+        // Return constructed path. Assumes images are in public root or /images/
+        // User instruction: Upload files like owl_1.png, camap_2.png, etc.
+        return `/${character}_${imageIndex}.png`;
     };
 
-    // Use getBearishImage logic
-    const getBearishImage = () => {
-        const seedStr = event.id || event.event_name || 'default';
-        let hash = 0;
-        for (let i = 0; i < seedStr.length; i++) {
-            hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
-        }
-
-        const bearishImages = [
-            '/chimlon_1.png',
-            '/chimlon_2.png',
-            '/chimlon_3.png',
-            '/chimlon_4.png',
-            '/chimlon_5.png'
-        ];
-
-        // Use absolute value of hash to pick index
-        const index = Math.abs(hash) % bearishImages.length;
-        return bearishImages[index];
-    };
+    const mascotImage = getMascotImage();
 
     return (
         <div className={`${highlightClass} p-5 rounded-xl flex flex-col md:flex-row gap-5 transition-all duration-300 mb-4 relative group`}>
@@ -196,22 +181,17 @@ const EventCard = ({ event }) => {
             <div className="md:w-1/2 flex flex-col justify-center gap-4">
                 <div className="flex flex-row items-center gap-4">
                     {/* Mascot Display */}
-                    {event.ai_sentiment === 'BULLISH' && (
-                        <div className="animate-bounce">
-                            <img src={getBullishImage()} alt="Bìm Bịp Bullish" className="w-16 h-16 object-contain" />
-                        </div>
-                    )}
-                    {event.ai_sentiment === 'BEARISH' && (
-                        <div className="animate-bounce">
-                            <img src={getBearishImage()} alt="Chim Lợn Bearish" className="w-16 h-16 object-contain" />
-                        </div>
-                    )}
+                    <div className="flex-shrink-0">
+                        <img
+                            src={event.ai_commentary ? mascotImage : "/Cu_thinking.png"}
+                            alt="Mascot"
+                            className="w-16 h-16 object-contain animate-bounce"
+                            onError={(e) => { e.target.onerror = null; e.target.src = "/Cu_thinking.png"; }} // Fallback
+                        />
+                    </div>
 
                     {/* Commentary */}
                     <div className="flex items-start gap-2 flex-1">
-                        {!event.ai_sentiment && (
-                            <img src="/Cu_thinking.png" alt="Cú Suy Ngẫm" className="w-16 h-16 object-contain opacity-80" />
-                        )}
                         <div className="text-sm text-gray-300 italic">
                             {event.ai_commentary ? (
                                 `"${event.ai_commentary}"`
