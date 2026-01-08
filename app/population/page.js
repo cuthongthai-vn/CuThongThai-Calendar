@@ -46,8 +46,8 @@ export default async function PopulationPage() {
                     </p>
                     <div className="flex justify-center gap-4 mt-6">
                         <div className="bg-gray-900 border border-gray-800 px-4 py-2 rounded-lg">
-                            <p className="text-xs text-slate-500 uppercase">Dân số 2024</p>
-                            <span className="text-2xl font-bold text-green-500">101.3M</span>
+                            <p className="text-xs text-slate-500 uppercase">Dân số 2025</p>
+                            <span className="text-2xl font-bold text-green-500">102.3M</span>
                         </div>
                         <div className="bg-gray-900 border border-gray-800 px-4 py-2 rounded-lg">
                             <p className="text-xs text-slate-500 uppercase">Đỉnh Dân Số (2060)</p>

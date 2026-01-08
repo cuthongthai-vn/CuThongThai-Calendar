@@ -6,5 +6,6 @@
   "/assets/page": "app/assets/page.js",
   "/lifestyle/page": "app/lifestyle/page.js",
   "/macro/page": "app/macro/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/population/page": "app/population/page.js"
 }
