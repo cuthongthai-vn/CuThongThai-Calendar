@@ -7,11 +7,15 @@ import AgingUrbanSection from '../../components/features/population/AgingUrbanSe
 export const dynamic = 'force-dynamic'; // Always fetch fresh data
 
 export default async function PopulationPage() {
-    const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-        // Use service role if available for RLS bypass (though we set public select), else anon
-    );
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_KEY;
+
+    if (!supabaseUrl) {
+        console.error('❌ Missing Supabase URL. Check .env');
+        return <div className="text-red-500 p-10 text-center">Lỗi cấu hình Database (Missing URL).</div>;
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data, error } = await supabase
         .from('population_stats')
