@@ -262,7 +262,7 @@ export default function LifestyleDashboard({ data }) {
                     <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
                         <div className="flex justify-between items-end mb-4">
                             <div>
-                                <h3 className="text-lg font-bold text-slate-200">Mặc Đẹp 💄</h3>
+                                <h3 className="text-lg font-bold text-slate-200">Làm Đẹp 💄</h3>
                                 <p className="text-slate-400 text-xs">Chi tiêu Nhan Sắc.</p>
                             </div>
                             <div className="text-right">

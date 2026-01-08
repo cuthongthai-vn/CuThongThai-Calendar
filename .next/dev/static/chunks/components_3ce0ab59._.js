@@ -103,21 +103,38 @@ function MacroChart({ data, title, dataKeys = [
     };
     const filteredData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "MacroChart.useMemo[filteredData]": ()=>{
-            if (timeRange === 'ALL') return data;
-            const now = new Date();
-            const cutoff = new Date();
-            if (timeRange === '1Y') cutoff.setFullYear(now.getFullYear() - 1);
-            if (timeRange === '3Y') cutoff.setFullYear(now.getFullYear() - 3);
-            if (timeRange === '5Y') cutoff.setFullYear(now.getFullYear() - 5);
-            if (timeRange === '10Y') cutoff.setFullYear(now.getFullYear() - 10);
-            if (timeRange === '25Y') cutoff.setFullYear(now.getFullYear() - 25);
+            let cutoff = new Date('1900-01-01'); // Default for ALL (very old)
+            if (timeRange !== 'ALL') {
+                const now = new Date();
+                cutoff = new Date();
+                if (timeRange === '1Y') cutoff.setFullYear(now.getFullYear() - 1);
+                if (timeRange === '3Y') cutoff.setFullYear(now.getFullYear() - 3);
+                if (timeRange === '5Y') cutoff.setFullYear(now.getFullYear() - 5);
+                if (timeRange === '10Y') cutoff.setFullYear(now.getFullYear() - 10);
+                if (timeRange === '25Y') cutoff.setFullYear(now.getFullYear() - 25);
+            }
             return data.filter({
-                "MacroChart.useMemo[filteredData]": (d)=>new Date(d.date) >= cutoff
+                "MacroChart.useMemo[filteredData]": (d)=>{
+                    const passesDate = new Date(d.date) >= cutoff;
+                    if (!passesDate) return false;
+                    // Check if ANY of the dataKeys has a value in this row
+                    // We shouldn't filter by 'hiddenKeys' here because logic implies "data availability"
+                    // But if the user hides a key, maybe they want to see the other key's full range?
+                    // Usually, "max available" means available for the keys *passed* to the chart.
+                    const hasData = dataKeys.some({
+                        "MacroChart.useMemo[filteredData].hasData": (k)=>{
+                            const val = d[k.key];
+                            return val !== undefined && val !== null && val !== '';
+                        }
+                    }["MacroChart.useMemo[filteredData].hasData"]);
+                    return hasData;
+                }
             }["MacroChart.useMemo[filteredData]"]);
         }
     }["MacroChart.useMemo[filteredData]"], [
         data,
-        timeRange
+        timeRange,
+        dataKeys
     ]);
     const handleLegendClick = (e)=>{
         const { dataKey } = e;
@@ -150,7 +167,7 @@ function MacroChart({ data, title, dataKeys = [
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 109,
+                        lineNumber: 125,
                         columnNumber: 27
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -168,21 +185,20 @@ function MacroChart({ data, title, dataKeys = [
                                 children: range
                             }, range, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 112,
+                                lineNumber: 128,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 110,
+                        lineNumber: 126,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/MacroChart.js",
-                lineNumber: 108,
+                lineNumber: 124,
                 columnNumber: 13
             }, this),
-            "EMPTY_STRING",
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-wrap justify-end gap-3 mb-2 px-2",
                 children: filteredData.length > 0 && dataKeys.map((k)=>{
@@ -201,7 +217,7 @@ function MacroChart({ data, title, dataKeys = [
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 142,
+                                lineNumber: 158,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -212,7 +228,7 @@ function MacroChart({ data, title, dataKeys = [
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 143,
+                                lineNumber: 159,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -224,25 +240,25 @@ function MacroChart({ data, title, dataKeys = [
                                         children: unit
                                     }, void 0, false, {
                                         fileName: "[project]/components/MacroChart.js",
-                                        lineNumber: 146,
+                                        lineNumber: 162,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 144,
+                                lineNumber: 160,
                                 columnNumber: 29
                             }, this)
                         ]
                     }, k.key, true, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 141,
+                        lineNumber: 157,
                         columnNumber: 25
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/components/MacroChart.js",
-                lineNumber: 125,
+                lineNumber: 141,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -278,7 +294,7 @@ function MacroChart({ data, title, dataKeys = [
                                                 stopOpacity: 0.3
                                             }, void 0, false, {
                                                 fileName: "[project]/components/MacroChart.js",
-                                                lineNumber: 163,
+                                                lineNumber: 179,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
@@ -287,18 +303,18 @@ function MacroChart({ data, title, dataKeys = [
                                                 stopOpacity: 0
                                             }, void 0, false, {
                                                 fileName: "[project]/components/MacroChart.js",
-                                                lineNumber: 164,
+                                                lineNumber: 180,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/MacroChart.js",
-                                        lineNumber: 162,
+                                        lineNumber: 178,
                                         columnNumber: 33
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 160,
+                                lineNumber: 176,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartesianGrid"], {
@@ -308,7 +324,7 @@ function MacroChart({ data, title, dataKeys = [
                                 vertical: false
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 168,
+                                lineNumber: 184,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["XAxis"], {
@@ -321,7 +337,7 @@ function MacroChart({ data, title, dataKeys = [
                                 minTickGap: 30
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 169,
+                                lineNumber: 185,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
@@ -337,7 +353,7 @@ function MacroChart({ data, title, dataKeys = [
                                 tickFormatter: (val)=>val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 176,
+                                lineNumber: 192,
                                 columnNumber: 25
                             }, this),
                             hasRightAxis && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
@@ -349,7 +365,7 @@ function MacroChart({ data, title, dataKeys = [
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 184,
+                                lineNumber: 200,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
@@ -357,19 +373,19 @@ function MacroChart({ data, title, dataKeys = [
                                     dataKeysConfig: dataKeys
                                 }, void 0, false, {
                                     fileName: "[project]/components/MacroChart.js",
-                                    lineNumber: 191,
+                                    lineNumber: 207,
                                     columnNumber: 43
                                 }, void 0)
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 191,
+                                lineNumber: 207,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Legend"], {
                                 onClick: handleLegendClick
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 192,
+                                lineNumber: 208,
                                 columnNumber: 25
                             }, this),
                             dataKeys.map((k)=>{
@@ -392,7 +408,7 @@ function MacroChart({ data, title, dataKeys = [
                                         hide: isHidden
                                     }, k.key, false, {
                                         fileName: "[project]/components/MacroChart.js",
-                                        lineNumber: 200,
+                                        lineNumber: 216,
                                         columnNumber: 37
                                     }, this);
                                 } else if (k.type === 'line') {
@@ -411,7 +427,7 @@ function MacroChart({ data, title, dataKeys = [
                                         hide: isHidden
                                     }, k.key, false, {
                                         fileName: "[project]/components/MacroChart.js",
-                                        lineNumber: 214,
+                                        lineNumber: 230,
                                         columnNumber: 37
                                     }, this);
                                 }
@@ -432,30 +448,30 @@ function MacroChart({ data, title, dataKeys = [
                                     hide: isHidden
                                 }, k.key, false, {
                                     fileName: "[project]/components/MacroChart.js",
-                                    lineNumber: 231,
+                                    lineNumber: 247,
                                     columnNumber: 33
                                 }, this);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 155,
+                        lineNumber: 171,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/MacroChart.js",
-                    lineNumber: 154,
+                    lineNumber: 170,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/MacroChart.js",
-                lineNumber: 153,
+                lineNumber: 169,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/MacroChart.js",
-        lineNumber: 106,
+        lineNumber: 122,
         columnNumber: 9
     }, this);
 }
@@ -483,51 +499,48 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 function MacroHeader({ activeTab = 'macro' }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "mb-8",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                className: "flex items-end justify-between relative mb-6",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600 mb-2",
-                                children: "VĨ MÔ VIỆT NAM"
-                            }, void 0, false, {
-                                fileName: "[project]/components/MacroHeader.js",
-                                lineNumber: 10,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-slate-400",
-                                children: "Bức tranh sức khỏe nền kinh tế qua các con số biết nói."
-                            }, void 0, false, {
-                                fileName: "[project]/components/MacroHeader.js",
-                                lineNumber: 13,
-                                columnNumber: 21
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/components/MacroHeader.js",
-                        lineNumber: 9,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-xs text-slate-500 absolute top-0 right-0 text-right",
-                        children: "** Nguồn: WB, IMF, GSO và Tổng hợp"
-                    }, void 0, false, {
-                        fileName: "[project]/components/MacroHeader.js",
-                        lineNumber: 17,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/MacroHeader.js",
-                lineNumber: 8,
-                columnNumber: 13
-            }, this),
-            "EMPTY_STRING"
-        ]
-    }, void 0, true, {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+            className: "flex items-end justify-between relative mb-6",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                            className: "text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600 mb-2",
+                            children: "VĨ MÔ VIỆT NAM"
+                        }, void 0, false, {
+                            fileName: "[project]/components/MacroHeader.js",
+                            lineNumber: 10,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-slate-400",
+                            children: "Bức tranh sức khỏe nền kinh tế qua các con số biết nói."
+                        }, void 0, false, {
+                            fileName: "[project]/components/MacroHeader.js",
+                            lineNumber: 13,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/MacroHeader.js",
+                    lineNumber: 9,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "text-xs text-slate-500 absolute top-0 right-0 text-right",
+                    children: "** Nguồn: WB, IMF, GSO và Tổng hợp"
+                }, void 0, false, {
+                    fileName: "[project]/components/MacroHeader.js",
+                    lineNumber: 17,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/components/MacroHeader.js",
+            lineNumber: 8,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/components/MacroHeader.js",
         lineNumber: 7,
         columnNumber: 9

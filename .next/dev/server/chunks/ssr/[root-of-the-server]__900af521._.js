@@ -210,13 +210,47 @@ async function MacroPage() {
     // Alias for compatibility with existing code
     const rawData = allRows;
     console.log(`[MacroPage] Total Raw Rows Fetched: ${rawData.length}`);
-    const chartData = pivotData(rawData);
+    // Helper to interpolate data (Linear fill + Forward fill)
+    const interpolateData = (data, key)=>{
+        let lastIndex = -1;
+        // Find first valid
+        for(let i = 0; i < data.length; i++){
+            if (data[i][key] !== undefined && data[i][key] !== null) {
+                lastIndex = i;
+                break;
+            }
+        }
+        if (lastIndex === -1) return data;
+        for(let i = lastIndex + 1; i < data.length; i++){
+            if (data[i][key] !== undefined && data[i][key] !== null) {
+                const startVal = data[lastIndex][key];
+                const endVal = data[i][key];
+                const steps = i - lastIndex;
+                const stepValue = (endVal - startVal) / steps;
+                for(let j = 1; j < steps; j++){
+                    data[lastIndex + j][key] = startVal + stepValue * j;
+                }
+                lastIndex = i;
+            }
+        }
+        // Forward fill
+        if (lastIndex < data.length - 1) {
+            const lastVal = data[lastIndex][key];
+            for(let i = lastIndex + 1; i < data.length; i++){
+                data[i][key] = lastVal;
+            }
+        }
+        return data;
+    };
+    let chartData = pivotData(rawData);
     console.log(`[MacroPage] Loaded ${chartData.length} rows`);
-    if (chartData.length > 0) {
-        console.log(`[MacroPage] First Date: ${chartData[0].date}`);
-        console.log(`[MacroPage] Last Date: ${chartData[chartData.length - 1].date}`);
-        console.log(`[MacroPage] Last Item:`, JSON.stringify(chartData[chartData.length - 1]));
-    }
+    // Interpolate to fill gaps (Quarterly GDP vs Monthly CPI, erratic Forex)
+    chartData = interpolateData(chartData, 'official');
+    chartData = interpolateData(chartData, 'black_market');
+    chartData = interpolateData(chartData, 'gdp');
+    chartData = interpolateData(chartData, 'cpi');
+    chartData = interpolateData(chartData, 'ref_rate');
+    chartData = interpolateData(chartData, 'savings_rate');
     // Filter subsets for specific charts
     // 1. Forex: Filter out days where NO forex data exists at all
     // Pass FULL history, MacroChart handles time-range slicing now.
@@ -257,7 +291,7 @@ async function MacroPage() {
                 activeTab: "macro"
             }, void 0, false, {
                 fileName: "[project]/app/macro/page.js",
-                lineNumber: 124,
+                lineNumber: 161,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -275,14 +309,14 @@ async function MacroPage() {
                                                 className: "bg-green-500 w-1 h-6 mr-3 rounded-full"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 132,
+                                                lineNumber: 169,
                                                 columnNumber: 29
                                             }, this),
                                             "Tỷ Giá USD/VND"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 131,
+                                        lineNumber: 168,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -300,7 +334,7 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 137,
+                                                        lineNumber: 174,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -311,13 +345,13 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 138,
+                                                        lineNumber: 175,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 136,
+                                                lineNumber: 173,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -332,7 +366,7 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 141,
+                                                        lineNumber: 178,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -343,25 +377,25 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 142,
+                                                        lineNumber: 179,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 140,
+                                                lineNumber: 177,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 135,
+                                        lineNumber: 172,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/macro/page.js",
-                                lineNumber: 130,
+                                lineNumber: 167,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MacroChart$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -381,13 +415,13 @@ async function MacroPage() {
                                 height: 400
                             }, void 0, false, {
                                 fileName: "[project]/app/macro/page.js",
-                                lineNumber: 146,
+                                lineNumber: 183,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/macro/page.js",
-                        lineNumber: 129,
+                        lineNumber: 166,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -405,14 +439,14 @@ async function MacroPage() {
                                                         className: "bg-purple-500 w-1 h-6 mr-3 rounded-full"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 163,
+                                                        lineNumber: 200,
                                                         columnNumber: 33
                                                     }, this),
                                                     "Lãi Suất (%)"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 162,
+                                                lineNumber: 199,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -427,7 +461,7 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 167,
+                                                        lineNumber: 204,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -438,19 +472,19 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 168,
+                                                        lineNumber: 205,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 166,
+                                                lineNumber: 203,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 161,
+                                        lineNumber: 198,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MacroChart$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -469,13 +503,13 @@ async function MacroPage() {
                                         ]
                                     }, void 0, false, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 171,
+                                        lineNumber: 208,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/macro/page.js",
-                                lineNumber: 160,
+                                lineNumber: 197,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -490,14 +524,14 @@ async function MacroPage() {
                                                         className: "bg-emerald-500 w-1 h-6 mr-3 rounded-full"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 184,
+                                                        lineNumber: 221,
                                                         columnNumber: 33
                                                     }, this),
                                                     "Quy Mô GDP (Tỷ USD)"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 183,
+                                                lineNumber: 220,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -511,7 +545,7 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 188,
+                                                        lineNumber: 225,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -522,19 +556,19 @@ async function MacroPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 189,
+                                                        lineNumber: 226,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 187,
+                                                lineNumber: 224,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 182,
+                                        lineNumber: 219,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MacroChart$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -549,13 +583,13 @@ async function MacroPage() {
                                         ]
                                     }, void 0, false, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 192,
+                                        lineNumber: 229,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/macro/page.js",
-                                lineNumber: 181,
+                                lineNumber: 218,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -571,14 +605,14 @@ async function MacroPage() {
                                                         className: "bg-cyan-500 w-1 h-6 mr-3 rounded-full"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 204,
+                                                        lineNumber: 241,
                                                         columnNumber: 33
                                                     }, this),
                                                     "Tăng Trưởng & Lạm Phát (%)"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 203,
+                                                lineNumber: 240,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -596,7 +630,7 @@ async function MacroPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/macro/page.js",
-                                                                lineNumber: 209,
+                                                                lineNumber: 246,
                                                                 columnNumber: 37
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -607,13 +641,13 @@ async function MacroPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/macro/page.js",
-                                                                lineNumber: 210,
+                                                                lineNumber: 247,
                                                                 columnNumber: 37
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 208,
+                                                        lineNumber: 245,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -628,7 +662,7 @@ async function MacroPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/macro/page.js",
-                                                                lineNumber: 213,
+                                                                lineNumber: 250,
                                                                 columnNumber: 37
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -639,25 +673,25 @@ async function MacroPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/macro/page.js",
-                                                                lineNumber: 214,
+                                                                lineNumber: 251,
                                                                 columnNumber: 37
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/macro/page.js",
-                                                        lineNumber: 212,
+                                                        lineNumber: 249,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/macro/page.js",
-                                                lineNumber: 207,
+                                                lineNumber: 244,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 202,
+                                        lineNumber: 239,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MacroChart$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -676,25 +710,25 @@ async function MacroPage() {
                                         ]
                                     }, void 0, false, {
                                         fileName: "[project]/app/macro/page.js",
-                                        lineNumber: 218,
+                                        lineNumber: 255,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/macro/page.js",
-                                lineNumber: 201,
+                                lineNumber: 238,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/macro/page.js",
-                        lineNumber: 157,
+                        lineNumber: 194,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/macro/page.js",
-                lineNumber: 126,
+                lineNumber: 163,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -704,18 +738,18 @@ async function MacroPage() {
                 className: "w-full"
             }, void 0, false, {
                 fileName: "[project]/app/macro/page.js",
-                lineNumber: 230,
+                lineNumber: 267,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$FloatingCTA$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/macro/page.js",
-                lineNumber: 232,
+                lineNumber: 269,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/macro/page.js",
-        lineNumber: 123,
+        lineNumber: 160,
         columnNumber: 9
     }, this);
 }

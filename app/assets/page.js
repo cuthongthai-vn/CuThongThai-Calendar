@@ -173,13 +173,18 @@ export default async function AssetsPage() {
 
     // 2. Interpolate Phở Data & Fun Metrics (Smooth Curve)
     // We only interpolate 'pho' key within the full chartData
+    // 2. Interpolate Data for Smooth Charts
     chartData = interpolateData(chartData, 'pho');
     chartData = interpolateData(chartData, 'condo');
     chartData = interpolateData(chartData, 'income');
-    chartData = interpolateData(chartData, 'iphone'); // Maybe unnecessary if infrequent? 
-    // iPhone is once a year, let's keep it discrete or interpolate?
-    // User requested "Visualization", interpolation helps trend view.
+    chartData = interpolateData(chartData, 'iphone');
     chartData = interpolateData(chartData, 'sh');
+
+    // Real Estate Interpolation (Fix missing data gaps)
+    chartData = interpolateData(chartData, 'hn_vnd');
+    chartData = interpolateData(chartData, 'hcm_vnd');
+    chartData = interpolateData(chartData, 'hn_gold');
+    chartData = interpolateData(chartData, 'hcm_gold');
 
     // Filter subsets
     const goldData = chartData.filter(d => d.sjc || d.world_converted || d.world_usd);

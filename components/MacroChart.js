@@ -66,16 +66,32 @@ export default function MacroChart({
     };
 
     const filteredData = useMemo(() => {
-        if (timeRange === 'ALL') return data;
-        const now = new Date();
-        const cutoff = new Date();
-        if (timeRange === '1Y') cutoff.setFullYear(now.getFullYear() - 1);
-        if (timeRange === '3Y') cutoff.setFullYear(now.getFullYear() - 3);
-        if (timeRange === '5Y') cutoff.setFullYear(now.getFullYear() - 5);
-        if (timeRange === '10Y') cutoff.setFullYear(now.getFullYear() - 10);
-        if (timeRange === '25Y') cutoff.setFullYear(now.getFullYear() - 25);
-        return data.filter(d => new Date(d.date) >= cutoff);
-    }, [data, timeRange]);
+        let cutoff = new Date('1900-01-01'); // Default for ALL (very old)
+        if (timeRange !== 'ALL') {
+            const now = new Date();
+            cutoff = new Date();
+            if (timeRange === '1Y') cutoff.setFullYear(now.getFullYear() - 1);
+            if (timeRange === '3Y') cutoff.setFullYear(now.getFullYear() - 3);
+            if (timeRange === '5Y') cutoff.setFullYear(now.getFullYear() - 5);
+            if (timeRange === '10Y') cutoff.setFullYear(now.getFullYear() - 10);
+            if (timeRange === '25Y') cutoff.setFullYear(now.getFullYear() - 25);
+        }
+
+        return data.filter(d => {
+            const passesDate = new Date(d.date) >= cutoff;
+            if (!passesDate) return false;
+
+            // Check if ANY of the dataKeys has a value in this row
+            // We shouldn't filter by 'hiddenKeys' here because logic implies "data availability"
+            // But if the user hides a key, maybe they want to see the other key's full range?
+            // Usually, "max available" means available for the keys *passed* to the chart.
+            const hasData = dataKeys.some(k => {
+                const val = d[k.key];
+                return val !== undefined && val !== null && val !== '';
+            });
+            return hasData;
+        });
+    }, [data, timeRange, dataKeys]);
 
     const handleLegendClick = (e) => {
         const { dataKey } = e;
@@ -119,7 +135,7 @@ export default function MacroChart({
                     ))}
                 </div>
             </div>
-            EMPTY_STRING
+
 
             {/* Latest Values Overlay (Top Right) */}
             <div className="flex flex-wrap justify-end gap-3 mb-2 px-2">

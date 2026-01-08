@@ -76,13 +76,50 @@ export default async function MacroPage() {
     const rawData = allRows;
     console.log(`[MacroPage] Total Raw Rows Fetched: ${rawData.length}`);
 
-    const chartData = pivotData(rawData);
+    // Helper to interpolate data (Linear fill + Forward fill)
+    const interpolateData = (data, key) => {
+        let lastIndex = -1;
+        // Find first valid
+        for (let i = 0; i < data.length; i++) {
+            if (data[i][key] !== undefined && data[i][key] !== null) {
+                lastIndex = i;
+                break;
+            }
+        }
+        if (lastIndex === -1) return data;
+
+        for (let i = lastIndex + 1; i < data.length; i++) {
+            if (data[i][key] !== undefined && data[i][key] !== null) {
+                const startVal = data[lastIndex][key];
+                const endVal = data[i][key];
+                const steps = i - lastIndex;
+                const stepValue = (endVal - startVal) / steps;
+                for (let j = 1; j < steps; j++) {
+                    data[lastIndex + j][key] = startVal + (stepValue * j);
+                }
+                lastIndex = i;
+            }
+        }
+        // Forward fill
+        if (lastIndex < data.length - 1) {
+            const lastVal = data[lastIndex][key];
+            for (let i = lastIndex + 1; i < data.length; i++) {
+                data[i][key] = lastVal;
+            }
+        }
+        return data;
+    };
+
+    let chartData = pivotData(rawData);
     console.log(`[MacroPage] Loaded ${chartData.length} rows`);
-    if (chartData.length > 0) {
-        console.log(`[MacroPage] First Date: ${chartData[0].date}`);
-        console.log(`[MacroPage] Last Date: ${chartData[chartData.length - 1].date}`);
-        console.log(`[MacroPage] Last Item:`, JSON.stringify(chartData[chartData.length - 1]));
-    }
+
+    // Interpolate to fill gaps (Quarterly GDP vs Monthly CPI, erratic Forex)
+    chartData = interpolateData(chartData, 'official');
+    chartData = interpolateData(chartData, 'black_market');
+    chartData = interpolateData(chartData, 'gdp');
+    chartData = interpolateData(chartData, 'cpi');
+    chartData = interpolateData(chartData, 'ref_rate');
+    chartData = interpolateData(chartData, 'savings_rate');
 
     // Filter subsets for specific charts
 

@@ -19,7 +19,7 @@ export default function MacroHeader({ activeTab = 'macro' }) {
                 </div>
             </header>
 
-            EMPTY_STRING
+
         </div>
     );
 }

@@ -93,7 +93,7 @@ export default function AssetsDashboard({ data }) {
 
     return (
         <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-[500px]">
-            EMPTY_STRING
+
 
             <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto">
 
@@ -136,7 +136,7 @@ export default function AssetsDashboard({ data }) {
                         dataKeys={[
                             { key: 'sjc', color: '#fbbf24', name: 'Vàng SJC (Tr)', unit: ' Tr' },
                             { key: 'world_converted', color: '#94a3b8', name: 'TG Quy đổi (Tr)', unit: ' Tr' },
-                            { key: 'world_usd', color: '#22d3ee', name: 'TG (USD/oz)', axis: 'right', unit: ' $' }
+                            { key: 'world_usd', color: '#22d3ee', name: 'TG (USD/oz)', yAxisId: 'right', unit: ' $' }
                         ]}
                         height={400}
                     />
@@ -218,37 +218,7 @@ export default function AssetsDashboard({ data }) {
                     </div>
                 </section>
 
-                {/* SECTION 3: PHO INDEX */}
-                <section>
-                    <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-white flex items-center">
-                            <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
-                            Phở Index & Lạm Phát
-                        </h2>
-                        <div className="text-right">
-                            <p className="text-xs text-slate-400">Giá Phở ({latestPho.date})</p>
-                            <div className="flex items-center justify-end">
-                                <p className="text-lg font-bold text-red-500">{latestPho.value?.toLocaleString()} đ</p>
-                                <GrowthBadge value={phoGrowth} />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-                        <MacroChart
-                            data={phoData}
-                            selectedRange={phoRange}
-                            onRangeChange={setPhoRange}
-                            dataKeys={[
-                                { key: 'pho', color: '#ef4444', name: 'Giá Phở (VNĐ)', type: 'monotone' },
-                                { key: 'cpi', color: '#10b981', name: 'Lạm phát (%)', axis: 'right', type: 'monotone' }
-                            ]}
-                            height={400}
-                        />
-                        <p className="text-center text-slate-500 text-sm mt-4 italic">
-                            * Chỉ số "Phở Index" phản ánh lạm phát thực tế qua giá trị của một bát phở bò tiêu chuẩn so với CPI công bố.
-                        </p>
-                    </div>
-                </section>
+
 
             </div>
 

@@ -159,7 +159,7 @@ export default async function LifestylePage() {
 
     return (
         <div className="min-h-screen bg-slate-950">
-            EMPTY_STRING
+
 
             <main className="py-8 px-4 md:px-8">
                 <LifestyleDashboard data={interpolated} />
