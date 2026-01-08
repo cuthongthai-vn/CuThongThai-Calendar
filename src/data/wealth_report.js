@@ -1,8 +1,44 @@
 export const WEALTH_PYRAMID_DATA = [
-    { tier: "Low", range: "< 250M", population_pct: 62, wealth_share: 5, population: "43.2M", color: "#94a3b8" },
-    { tier: "Middle", range: "250M - 2.5 Tỷ", population_pct: 35, wealth_share: 35, population: "24.5M", color: "#3b82f6" },
-    { tier: "HNW", range: "2.5 Tỷ - 25 Tỷ", population_pct: 3, wealth_share: 43, population: "2.1M", color: "#eab308" },
-    { tier: "UHNW", range: "> 25 Tỷ", population_pct: 0.3, wealth_share: 17, population: "200K", color: "#ef4444" }
+    {
+        tier: "Low",
+        range: "< 250M",
+        population_pct: 62,
+        wealth_share: 5,
+        population: "43.2M",
+        color: "#94a3b8",
+        definition: "Nhóm dân số đông nhất nhưng nắm ít tài sản nhất.",
+        owl_says: "🦉 'Hạt Gạo Làng Ta': Lực lượng lao động chính, nhưng ví tiền mỏng manh. Chỉ cần một cơn bão bệnh tật hay thất nghiệp là lung lay."
+    },
+    {
+        tier: "Middle",
+        range: "250M - 2.5 Tỷ",
+        population_pct: 35,
+        wealth_share: 35,
+        population: "24.5M",
+        color: "#3b82f6",
+        definition: "Tầng lớp trung lưu, xương sống của nền kinh tế.",
+        owl_says: "🦉 'Ong Thợ Chăm Chỉ': Có nhà (trả góp), có xe, có sổ tiết kiệm. Là mục tiêu săn đón của các ngân hàng và shop hàng hiệu."
+    },
+    {
+        tier: "HNW",
+        range: "2.5 Tỷ - 25 Tỷ",
+        population_pct: 3,
+        wealth_share: 43,
+        population: "2.1M",
+        color: "#eab308",
+        definition: "Triệu phú USD (High Net Worth). Giới giàu mới nổi.",
+        owl_says: "🦉 'Đại Bàng Non': Tự do tài chính bước đầu. Tiền đẻ ra tiền. Sở hữu nhiều BĐS và bắt đầu quan tâm đến Art, Rượu vang."
+    },
+    {
+        tier: "UHNW",
+        range: "> 25 Tỷ",
+        population_pct: 0.3,
+        wealth_share: 17,
+        population: "200K",
+        color: "#ef4444",
+        definition: "Giới siêu giàu (Ultra High Net Worth). Top 1%.",
+        owl_says: "🦉 'Cá Mập Chúa': Tiền chỉ là con số. Lãi suất ngân hàng 1 tháng đủ nuôi cả dòng họ. Lái cuộc chơi đầu tư."
+    }
 ];
 
 export const LORENZ_CURVE_DATA = [
@@ -35,11 +71,51 @@ export const ASSET_COMPOSITION_DATA = [
 ];
 
 export const ECONOMIC_CLASS_DATA = [
-    { class: "E (Low)", income: "< 5M", pct_2024: 44, pct_2030: 30, color: "#64748b" },
-    { class: "D (Lower-Mid)", income: "5-15M", pct_2024: 28, pct_2030: 25, color: "#3b82f6" },
-    { class: "C (Middle)", income: "15-25M", pct_2024: 18, pct_2030: 25, color: "#22c55e" },
-    { class: "B (Upper-Mid)", income: "25-50M", pct_2024: 8, pct_2030: 15, color: "#eab308" },
-    { class: "A (Elite)", income: "> 50M", pct_2024: 2, pct_2030: 5, color: "#ef4444" }
+    {
+        class: "E",
+        label: "Low Income",
+        income: "< 5M",
+        pct_2024: 44,
+        pct_2030: 30,
+        color: "#64748b",
+        owl_says: "Thu nhập dưới 5 triệu. Chi tiêu chủ yếu cho ăn uống, sinh hoạt phí cơ bản. Dễ bị tổn thương nhất khi giá cả leo thang."
+    },
+    {
+        class: "D",
+        label: "Lower-Middle",
+        income: "5-15M",
+        pct_2024: 28,
+        pct_2030: 25,
+        color: "#3b82f6",
+        owl_says: "Thu nhập 5-15 triệu. Đủ sống nhưng khó tích lũy. Bắt đầu quan tâm đến mua sắm online, săn sale."
+    },
+    {
+        class: "C",
+        label: "Middle Class",
+        income: "15-25M",
+        pct_2024: 18,
+        pct_2030: 25,
+        color: "#22c55e",
+        owl_says: "Thu nhập 15-25 triệu. Tầng lớp trung lưu mới. Sẵn sàng vay mua nhà, mua xe trả góp. Động lực chính của nền kinh tế."
+    },
+    {
+        class: "B",
+        label: "Upper-Middle",
+        income: "25-50M",
+        pct_2024: 8,
+        pct_2030: 15,
+        color: "#eab308",
+        owl_says: "Thu nhập 25-50 triệu. Sống thoải mái, du lịch nước ngoài, cho con học trường tư. Bắt đầu đầu tư cổ phiếu, đất nền."
+    },
+    {
+        class: "A",
+        label: "Elite",
+        income: "> 50M",
+        pct_2024: 2,
+        pct_2030: 5,
+        color: "#ef4444",
+        owl_says: "Thu nhập trên 50 triệu. Giới tinh hoa. Tiêu dùng hàng hiệu, xe sang. Mối quan tâm là giữ tiền và chuyển giao tài sản."
+    }
 ];
 
 export const INCOME_PERCENTILES = [

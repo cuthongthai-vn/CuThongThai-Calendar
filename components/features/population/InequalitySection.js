@@ -1,25 +1,36 @@
 'use client';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine, Legend } from 'recharts';
 import { LORENZ_CURVE_DATA, GINI_TREND_DATA } from '../../../src/data/wealth_report';
+import TooltipWrapper from '../../ui/TooltipWrapper';
 
 export default function InequalitySection() {
     return (
         <section className="mb-12">
-            <h2 className="text-xl font-bold text-white flex items-center mb-4">
+            <h2 className="text-xl font-bold text-white flex items-center mb-0">
                 <span className="bg-orange-500 w-1 h-6 mr-3 rounded-full"></span>
                 2. Bất Bình Đẳng (Inequality) ⚖️
             </h2>
+            <p className="text-xs text-slate-500 italic mb-4 ml-4">
+                Nguồn: World Inequality Database (2021) & World Bank (2024)
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Lorenz Curve */}
                 <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-                    <h3 className="text-sm font-bold text-slate-300 mb-2 uppercase tracking-wider">Đường cong Lorenz</h3>
+                    <h3 className="text-sm font-bold text-slate-300 mb-2 uppercase tracking-wider flex items-center gap-2">
+                        <TooltipWrapper
+                            id="lorenz-tooltip"
+                            content="🦉 Cú nói: 'Hãy tưởng tượng chiếc bánh Pizza. Nếu chia đều 45 độ là công bằng. Càng lõm sâu xuống dưới nghĩa là người giàu đang ăn hết phần của người nghèo.'"
+                        >
+                            Đường cong Lorenz
+                        </TooltipWrapper>
+                    </h3>
                     <p className="text-xs text-slate-400 mb-4 h-8">
                         Đường thực tế càng cong xa đường chéo (bình đẳng), bất công càng lớn.
                     </p>
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={LORENZ_CURVE_DATA} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+                            <LineChart data={LORENZ_CURVE_DATA} margin={{ top: 5, right: 10, left: -20, bottom: 25 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} />
                                 <XAxis
                                     dataKey="pop_cumulative"
@@ -58,13 +69,20 @@ export default function InequalitySection() {
 
                 {/* Gini Trend */}
                 <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-                    <h3 className="text-sm font-bold text-slate-300 mb-2 uppercase tracking-wider">Hệ Số Gini (2012 - 2024)</h3>
+                    <h3 className="text-sm font-bold text-slate-300 mb-2 uppercase tracking-wider flex items-center gap-2">
+                        <TooltipWrapper
+                            id="gini-tooltip"
+                            content="🦉 Cú nói: 'Điểm 0 là lớp học chia kẹo đều nhau. Điểm 1 là lớp trưởng ăn hết. Việt Nam 0.37 là mức chấp nhận được, nhưng Tài Sản (0.6) thì hơi căng.'"
+                        >
+                            Hệ Số Gini (2012 - 2024)
+                        </TooltipWrapper>
+                    </h3>
                     <p className="text-xs text-slate-400 mb-4 h-8">
                         Thang đo 0 (Bình đẳng) - 1 (Bất công). <span className="text-green-500">Xu hướng đang giảm (Tốt).</span>
                     </p>
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={GINI_TREND_DATA} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+                            <LineChart data={GINI_TREND_DATA} margin={{ top: 5, right: 10, left: -20, bottom: 25 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} />
                                 <XAxis dataKey="year" tick={{ fontSize: 10, fill: '#94a3b8' }} />
                                 <YAxis domain={[0.3, 0.7]} tick={{ fontSize: 10, fill: '#94a3b8' }} />

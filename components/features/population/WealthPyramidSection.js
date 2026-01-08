@@ -1,14 +1,18 @@
 'use client';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
 import { WEALTH_PYRAMID_DATA } from '../../../src/data/wealth_report';
+import TooltipWrapper from '../../ui/TooltipWrapper';
 
 export default function WealthPyramidSection() {
     return (
         <section className="mb-12">
-            <h2 className="text-xl font-bold text-white flex items-center mb-4">
+            <h2 className="text-xl font-bold text-white flex items-center mb-0">
                 <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
                 1. Tháp Tài Sản (Wealth Pyramid) 🔺
             </h2>
+            <p className="text-xs text-slate-500 italic mb-4 ml-4">
+                Nguồn: Credit Suisse Global Wealth Report (2024)
+            </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Visual Chart */}
@@ -48,7 +52,11 @@ export default function WealthPyramidSection() {
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-12 rounded-full" style={{ backgroundColor: item.color }}></div>
                                 <div>
-                                    <p className="font-bold text-slate-200 text-lg">{item.tier}</p>
+                                    <div className="font-bold text-slate-200 text-lg">
+                                        <TooltipWrapper id={`tier-${item.tier}`} content={item.owl_says}>
+                                            {item.tier}
+                                        </TooltipWrapper>
+                                    </div>
                                     <p className="text-xs text-slate-500">{item.range}</p>
                                 </div>
                             </div>

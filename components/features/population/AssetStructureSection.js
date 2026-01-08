@@ -5,10 +5,13 @@ import { ASSET_COMPOSITION_DATA } from '../../../src/data/wealth_report';
 export default function AssetStructureSection() {
     return (
         <section className="mb-12">
-            <h2 className="text-xl font-bold text-white flex items-center mb-4">
+            <h2 className="text-xl font-bold text-white flex items-center mb-0">
                 <span className="bg-blue-500 w-1 h-6 mr-3 rounded-full"></span>
                 3. Cấu Trúc Tài Sản (Asset Allocation) 🏠
             </h2>
+            <p className="text-xs text-slate-500 italic mb-4 ml-4">
+                Nguồn: Knight Frank Wealth Report (2024)
+            </p>
 
             <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
                 <p className="text-slate-400 text-sm mb-6">

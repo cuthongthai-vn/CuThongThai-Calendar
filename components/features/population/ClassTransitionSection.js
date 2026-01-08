@@ -1,14 +1,35 @@
 'use client';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, LabelList } from 'recharts';
 import { ECONOMIC_CLASS_DATA, INCOME_PERCENTILES } from '../../../src/data/wealth_report';
+import TooltipWrapper from '../../ui/TooltipWrapper';
+
+const CustomYAxisTick = ({ x, y, payload }) => {
+    // Find the data item to get the tooltip content (owl_says)
+    const dataItem = ECONOMIC_CLASS_DATA.find(item => item.class === payload.value);
+
+    return (
+        <g transform={`translate(${x},${y})`}>
+            <foreignObject x={-80} y={-10} width={80} height={24}>
+                <div className="text-xs text-right text-slate-400 pr-2 overflow-hidden whitespace-nowrap text-ellipsis h-full flex items-center justify-end">
+                    <TooltipWrapper id={`class-${payload.value}`} content={dataItem?.owl_says}>
+                        {payload.value}
+                    </TooltipWrapper>
+                </div>
+            </foreignObject>
+        </g>
+    );
+};
 
 export default function ClassTransitionSection() {
     return (
         <section className="mb-12">
-            <h2 className="text-xl font-bold text-white flex items-center mb-4">
+            <h2 className="text-xl font-bold text-white flex items-center mb-0">
                 <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
                 4. Tầng Lớp Kinh Tế (Economic Class) 🚀
             </h2>
+            <p className="text-xs text-slate-500 italic mb-4 ml-4">
+                Nguồn: Cimigo Vietnam Consumer Trends (2024)
+            </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* 2030 Projection Chart */}
@@ -19,10 +40,16 @@ export default function ClassTransitionSection() {
                             <BarChart
                                 data={ECONOMIC_CLASS_DATA}
                                 layout="vertical"
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                                margin={{ top: 5, right: 30, left: 10, bottom: 5 }}
                             >
                                 <XAxis type="number" hide />
-                                <YAxis dataKey="class" type="category" width={80} tick={{ fill: '#94a3b8', fontSize: 11 }} />
+                                <YAxis
+                                    dataKey="class"
+                                    type="category"
+                                    width={90}
+                                    tick={<CustomYAxisTick />}
+                                    interval={0}
+                                />
                                 <Tooltip contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155' }} />
                                 <Legend />
                                 <Bar dataKey="pct_2024" name="2024 (%)" fill="#64748b" barSize={12} radius={[0, 4, 4, 0]} />
