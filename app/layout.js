@@ -42,10 +42,22 @@ export default function RootLayout({ children }) {
                             </Link>
                             <Link
                                 href="/macro"
+                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors"
+                            >
+                                📊 Vĩ Mô
+                            </Link>
+                            <Link
+                                href="/assets"
+                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors"
+                            >
+                                💰 Tài Sản
+                            </Link>
+                            <Link
+                                href="/lifestyle"
                                 className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1"
                             >
-                                📊 Vĩ Mô Việt Nam
-                                <span className="text-[10px] bg-red-600 text-white px-1 rounded">Mới</span>
+                                ☕ Vỉa Hè
+                                <span className="text-[10px] bg-red-600 text-white px-1 rounded animate-pulse">Mới</span>
                             </Link>
                         </nav>
                     </div>

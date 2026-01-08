@@ -89,21 +89,39 @@ function RootLayout({ children }) {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/macro",
+                                        className: "text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors",
+                                        children: "📊 Vĩ Mô"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/layout.js",
+                                        lineNumber: 43,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/assets",
+                                        className: "text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors",
+                                        children: "💰 Tài Sản"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/layout.js",
+                                        lineNumber: 49,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/lifestyle",
                                         className: "text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1",
                                         children: [
-                                            "📊 Vĩ Mô Việt Nam",
+                                            "☕ Vỉa Hè",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-[10px] bg-red-600 text-white px-1 rounded",
+                                                className: "text-[10px] bg-red-600 text-white px-1 rounded animate-pulse",
                                                 children: "Mới"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/layout.js",
-                                                lineNumber: 48,
+                                                lineNumber: 60,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/layout.js",
-                                        lineNumber: 43,
+                                        lineNumber: 55,
                                         columnNumber: 29
                                     }, this)
                                 ]

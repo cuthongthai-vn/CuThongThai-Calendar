@@ -19,36 +19,7 @@ export default function MacroHeader({ activeTab = 'macro' }) {
                 </div>
             </header>
 
-            {/* Navigation Tabs */}
-            <div className="flex border-b border-gray-800 space-x-8">
-                <Link
-                    href="/macro"
-                    className={`pb-3 font-bold text-lg border-b-2 transition-all ${activeTab === 'macro'
-                        ? 'border-theme-yellow text-theme-yellow'
-                        : 'border-transparent text-slate-500 hover:text-slate-300'
-                        }`}
-                >
-                    📊 Vĩ Mô
-                </Link>
-                <Link
-                    href="/assets"
-                    className={`pb-3 font-bold text-lg border-b-2 transition-all ${activeTab === 'assets'
-                        ? 'border-blue-500 text-blue-400'
-                        : 'border-transparent text-slate-500 hover:text-slate-300'
-                        }`}
-                >
-                    💰 Tài Sản & Giá Cả
-                </Link>
-                <Link
-                    href="/lifestyle"
-                    className={`pb-3 font-bold text-lg border-b-2 transition-all ${activeTab === 'lifestyle'
-                        ? 'border-purple-500 text-purple-400'
-                        : 'border-transparent text-slate-500 hover:text-slate-300'
-                        }`}
-                >
-                    ☕️ Vỉa Hè
-                </Link>
-            </div>
+            EMPTY_STRING
         </div>
     );
 }

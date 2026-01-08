@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import MacroHeader from '../../components/MacroHeader';
+
 import MacroChart from '../../components/MacroChart';
 import FloatingCTA from '../../components/FloatingCTA';
 
@@ -93,7 +93,7 @@ export default function AssetsDashboard({ data }) {
 
     return (
         <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-[500px]">
-            <MacroHeader activeTab="assets" />
+            EMPTY_STRING
 
             <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto">
 

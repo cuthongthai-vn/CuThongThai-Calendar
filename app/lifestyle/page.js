@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import MacroHeader from '../../components/MacroHeader';
+
 import LifestyleDashboard from '../../components/LifestyleDashboard';
 
 export const dynamic = 'force-dynamic';
@@ -159,7 +159,7 @@ export default async function LifestylePage() {
 
     return (
         <div className="min-h-screen bg-slate-950">
-            <MacroHeader activeTab="lifestyle" />
+            EMPTY_STRING
 
             <main className="py-8 px-4 md:px-8">
                 <LifestyleDashboard data={interpolated} />
