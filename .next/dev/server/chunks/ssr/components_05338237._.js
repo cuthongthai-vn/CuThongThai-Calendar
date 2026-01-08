@@ -398,7 +398,7 @@ function MacroHeader({ activeTab = 'macro' }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-xs text-slate-500 absolute top-0 right-0 text-right",
-                        children: "** Nguồn: WB, IMF và Tổng hợp"
+                        children: "** Nguồn: WB, IMF, GSO và Tổng hợp"
                     }, void 0, false, {
                         fileName: "[project]/components/MacroHeader.js",
                         lineNumber: 17,
@@ -429,6 +429,15 @@ function MacroHeader({ activeTab = 'macro' }) {
                     }, void 0, false, {
                         fileName: "[project]/components/MacroHeader.js",
                         lineNumber: 33,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        href: "/lifestyle",
+                        className: `pb-3 font-bold text-lg border-b-2 transition-all ${activeTab === 'lifestyle' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`,
+                        children: "☕️ Vỉa Hè"
+                    }, void 0, false, {
+                        fileName: "[project]/components/MacroHeader.js",
+                        lineNumber: 42,
                         columnNumber: 17
                     }, this)
                 ]

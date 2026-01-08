@@ -44,7 +44,7 @@ function MacroHeader({ activeTab = 'macro' }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-xs text-slate-500 absolute top-0 right-0 text-right",
-                        children: "** Nguồn: WB, IMF và Tổng hợp"
+                        children: "** Nguồn: WB, IMF, GSO và Tổng hợp"
                     }, void 0, false, {
                         fileName: "[project]/components/MacroHeader.js",
                         lineNumber: 17,
@@ -76,6 +76,15 @@ function MacroHeader({ activeTab = 'macro' }) {
                         fileName: "[project]/components/MacroHeader.js",
                         lineNumber: 33,
                         columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        href: "/lifestyle",
+                        className: `pb-3 font-bold text-lg border-b-2 transition-all ${activeTab === 'lifestyle' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`,
+                        children: "☕️ Vỉa Hè"
+                    }, void 0, false, {
+                        fileName: "[project]/components/MacroHeader.js",
+                        lineNumber: 42,
+                        columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
@@ -99,8 +108,10 @@ __turbopack_context__.s([
     ()=>MacroChart
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$AreaChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/chart/AreaChart.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$ComposedChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/chart/ComposedChart.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Area$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/Area.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/Bar.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/Line.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/XAxis.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/YAxis.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/recharts/es6/cartesian/CartesianGrid.js [app-ssr] (ecmascript)");
@@ -112,7 +123,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 ;
-const CustomTooltip = ({ active, payload, label })=>{
+const CustomTooltip = ({ active, payload, label, dataKeysConfig })=>{
     if (active && payload && payload.length) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "bg-slate-800 border border-slate-700 p-3 rounded shadow-xl text-xs",
@@ -122,10 +133,16 @@ const CustomTooltip = ({ active, payload, label })=>{
                     children: label
                 }, void 0, false, {
                     fileName: "[project]/components/MacroChart.js",
-                    lineNumber: 20,
+                    lineNumber: 22,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
-                payload.map((entry, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                payload.map((entry, index)=>{
+                    const config = dataKeysConfig?.find((k)=>k.key === entry.dataKey);
+                    // Logic: If originalValueKey exists, show THAT value (e.g. Rate), otherwise show plotted value
+                    const rawVal = config?.originalValueKey ? payload[0].payload[config.originalValueKey] : entry.value;
+                    const displayVal = typeof rawVal === 'number' ? rawVal.toLocaleString() : rawVal;
+                    const displayUnit = config?.originalValueKey ? config.originalUnit || '' : entry.unit;
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         style: {
                             color: entry.color
                         },
@@ -135,30 +152,31 @@ const CustomTooltip = ({ active, payload, label })=>{
                             ": ",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "font-mono",
-                                children: entry.value.toLocaleString()
+                                children: displayVal
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 23,
-                                columnNumber: 39
+                                lineNumber: 38,
+                                columnNumber: 43
                             }, ("TURBOPACK compile-time value", void 0)),
-                            entry.unit && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            displayUnit && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "text-slate-500 ml-1",
-                                children: entry.unit
+                                children: displayUnit
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 24,
-                                columnNumber: 40
+                                lineNumber: 39,
+                                columnNumber: 45
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, index, true, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 22,
-                        columnNumber: 21
-                    }, ("TURBOPACK compile-time value", void 0)))
+                        lineNumber: 37,
+                        columnNumber: 25
+                    }, ("TURBOPACK compile-time value", void 0));
+                })
             ]
         }, void 0, true, {
             fileName: "[project]/components/MacroChart.js",
-            lineNumber: 19,
+            lineNumber: 21,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -168,19 +186,19 @@ function MacroChart({ data, title, dataKeys = [
     {
         key: 'value',
         color: '#10b981',
-        name: 'Giá trị'
+        name: 'Giá trị',
+        type: 'area'
     }
 ], height = 350, syncId = null, selectedRange, onRangeChange// Callback
  }) {
+    // ... State Logic remains same ...
     const [internalRange, setInternalRange] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('5Y');
     const [hiddenKeys, setHiddenKeys] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    // Use controlled state if available, else internal
     const timeRange = selectedRange || internalRange;
     const handleRangeChange = (r)=>{
         if (onRangeChange) onRangeChange(r);
         else setInternalRange(r);
     };
-    // Filter Data by Time Range
     const filteredData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         if (timeRange === 'ALL') return data;
         const now = new Date();
@@ -195,7 +213,6 @@ function MacroChart({ data, title, dataKeys = [
         data,
         timeRange
     ]);
-    // Handle Legend Click to Toggle Series
     const handleLegendClick = (e)=>{
         const { dataKey } = e;
         setHiddenKeys((prev)=>prev.includes(dataKey) ? prev.filter((k)=>k !== dataKey) : [
@@ -203,23 +220,19 @@ function MacroChart({ data, title, dataKeys = [
                 dataKey
             ]);
     };
-    // Determine min/max for better Y-axis scaling based on VISIBLE data (LEFT AXIS ONLY)
-    // We only want to scale the Left Axis based on Left Axis data. The Right Axis is 'auto' or separate.
-    const activeLeftKeys = dataKeys.filter((k)=>!hiddenKeys.includes(k.key) && k.axis !== 'right');
-    const leftValues = filteredData.flatMap((d)=>activeLeftKeys.map((k)=>d[k.key])).filter((v)=>typeof v === 'number' && !isNaN(v)); // Strict number check
-    // Auto-scale or default
+    const activeLeftKeys = dataKeys.filter((k)=>!hiddenKeys.includes(k.key) && k.yAxisId !== 'right');
+    const leftValues = filteredData.flatMap((d)=>activeLeftKeys.map((k)=>d[k.key])).filter((v)=>typeof v === 'number' && !isNaN(v));
     let minVal = 0;
-    let maxVal = 100;
+    let maxVal = 'auto'; // Recharts auto
     if (leftValues.length > 0) {
-        minVal = Math.min(...leftValues);
-        maxVal = Math.max(...leftValues);
-        // Add padding
-        const padding = (maxVal - minVal) * 0.05;
-        minVal = minVal - padding;
-        maxVal = maxVal + padding;
-        // If values are close to 0, don't go negative unnecessarily unless data is negative
-        if (Math.min(...leftValues) >= 0 && minVal < 0) minVal = 0;
+        let min = Math.min(...leftValues);
+        let max = Math.max(...leftValues);
+        const padding = (max - min) * 0.05;
+        minVal = min - padding;
+        maxVal = max + padding;
+        if (min >= 0 && minVal < 0) minVal = 0;
     }
+    const hasRightAxis = dataKeys.some((k)=>k.yAxisId === 'right');
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "w-full bg-slate-900/50 p-4 rounded-xl border border-slate-800",
         children: [
@@ -231,7 +244,7 @@ function MacroChart({ data, title, dataKeys = [
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 104,
+                        lineNumber: 109,
                         columnNumber: 27
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -249,18 +262,81 @@ function MacroChart({ data, title, dataKeys = [
                                 children: range
                             }, range, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 109,
+                                lineNumber: 112,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 107,
+                        lineNumber: 110,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/MacroChart.js",
-                lineNumber: 103,
+                lineNumber: 108,
+                columnNumber: 13
+            }, this),
+            "EMPTY_STRING",
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex flex-wrap justify-end gap-3 mb-2 px-2",
+                children: filteredData.length > 0 && dataKeys.map((k)=>{
+                    if (hiddenKeys.includes(k.key)) return null;
+                    const latestItem = filteredData[filteredData.length - 1];
+                    const val = k.originalValueKey ? latestItem[k.originalValueKey] : latestItem[k.key];
+                    const unit = k.originalValueKey ? k.originalUnit || '' : k.unit || '';
+                    if (val === undefined || val === null) return null;
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center text-xs font-mono bg-slate-900/80 px-2 py-1 rounded border border-slate-800",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2 h-2 rounded-full mr-2",
+                                style: {
+                                    backgroundColor: k.color
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/components/MacroChart.js",
+                                lineNumber: 142,
+                                columnNumber: 29
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-slate-400 mr-1",
+                                children: [
+                                    k.name,
+                                    ":"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/MacroChart.js",
+                                lineNumber: 143,
+                                columnNumber: 29
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-slate-200 font-bold",
+                                children: [
+                                    typeof val === 'number' ? val.toLocaleString() : val,
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-slate-500 ml-1",
+                                        children: unit
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/MacroChart.js",
+                                        lineNumber: 146,
+                                        columnNumber: 33
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/MacroChart.js",
+                                lineNumber: 144,
+                                columnNumber: 29
+                            }, this)
+                        ]
+                    }, k.key, true, {
+                        fileName: "[project]/components/MacroChart.js",
+                        lineNumber: 141,
+                        columnNumber: 25
+                    }, this);
+                })
+            }, void 0, false, {
+                fileName: "[project]/components/MacroChart.js",
+                lineNumber: 125,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -272,18 +348,18 @@ function MacroChart({ data, title, dataKeys = [
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResponsiveContainer"], {
                     width: "100%",
                     height: "100%",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$AreaChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AreaChart"], {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$ComposedChart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ComposedChart"], {
                         data: filteredData,
                         syncId: syncId,
                         margin: {
                             top: 10,
-                            right: 30,
+                            right: hasRightAxis ? 10 : 30,
                             left: 0,
                             bottom: 0
                         },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
-                                children: dataKeys.map((k, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                children: dataKeys.filter((k)=>!k.type || k.type === 'area').map((k, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
                                         id: `color${k.key}`,
                                         x1: "0",
                                         y1: "0",
@@ -296,7 +372,7 @@ function MacroChart({ data, title, dataKeys = [
                                                 stopOpacity: 0.3
                                             }, void 0, false, {
                                                 fileName: "[project]/components/MacroChart.js",
-                                                lineNumber: 134,
+                                                lineNumber: 163,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
@@ -305,18 +381,18 @@ function MacroChart({ data, title, dataKeys = [
                                                 stopOpacity: 0
                                             }, void 0, false, {
                                                 fileName: "[project]/components/MacroChart.js",
-                                                lineNumber: 135,
+                                                lineNumber: 164,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/MacroChart.js",
-                                        lineNumber: 133,
+                                        lineNumber: 162,
                                         columnNumber: 33
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 131,
+                                lineNumber: 160,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CartesianGrid"], {
@@ -326,7 +402,7 @@ function MacroChart({ data, title, dataKeys = [
                                 vertical: false
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 139,
+                                lineNumber: 168,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["XAxis"], {
@@ -339,7 +415,7 @@ function MacroChart({ data, title, dataKeys = [
                                 minTickGap: 30
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 140,
+                                lineNumber: 169,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
@@ -355,92 +431,125 @@ function MacroChart({ data, title, dataKeys = [
                                 tickFormatter: (val)=>val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 147,
+                                lineNumber: 176,
                                 columnNumber: 25
                             }, this),
-                            dataKeys.some((k)=>k.axis === 'right') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
+                            hasRightAxis && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
                                 yAxisId: "right",
                                 orientation: "right",
                                 stroke: "#94a3b8",
                                 tick: {
                                     fontSize: 11
-                                },
-                                domain: [
-                                    'auto',
-                                    'auto'
-                                ],
-                                tickFormatter: (val)=>{
-                                    // Check if there's a specific formatter for the right axis key
-                                    const rightKey = dataKeys.find((k)=>k.axis === 'right');
-                                    if (rightKey && rightKey.tickFormatter) {
-                                        return rightKey.tickFormatter(val);
-                                    }
-                                    return val.toLocaleString();
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 156,
+                                lineNumber: 184,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Tooltip"], {
-                                content: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomTooltip, {}, void 0, false, {
+                                content: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomTooltip, {
+                                    dataKeysConfig: dataKeys
+                                }, void 0, false, {
                                     fileName: "[project]/components/MacroChart.js",
-                                    lineNumber: 172,
+                                    lineNumber: 191,
                                     columnNumber: 43
                                 }, void 0)
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 172,
+                                lineNumber: 191,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {
-                                wrapperStyle: {
-                                    paddingTop: '20px'
-                                },
-                                onClick: handleLegendClick,
-                                cursor: "pointer"
+                                onClick: handleLegendClick
                             }, void 0, false, {
                                 fileName: "[project]/components/MacroChart.js",
-                                lineNumber: 173,
+                                lineNumber: 192,
                                 columnNumber: 25
                             }, this),
-                            dataKeys.map((k, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Area$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Area"], {
-                                    yAxisId: k.axis === 'right' ? 'right' : 'left',
+                            dataKeys.map((k)=>{
+                                const axisId = k.yAxisId || 'left';
+                                const isHidden = hiddenKeys.includes(k.key);
+                                if (k.type === 'bar') {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Bar"], {
+                                        dataKey: k.key,
+                                        fill: k.color,
+                                        yAxisId: axisId,
+                                        barSize: 20,
+                                        radius: [
+                                            4,
+                                            4,
+                                            0,
+                                            0
+                                        ],
+                                        name: k.name,
+                                        unit: k.unit,
+                                        hide: isHidden
+                                    }, k.key, false, {
+                                        fileName: "[project]/components/MacroChart.js",
+                                        lineNumber: 200,
+                                        columnNumber: 37
+                                    }, this);
+                                } else if (k.type === 'line') {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Line"], {
+                                        type: "monotone",
+                                        dataKey: k.key,
+                                        stroke: k.color,
+                                        yAxisId: axisId,
+                                        strokeWidth: 2,
+                                        dot: false,
+                                        activeDot: {
+                                            r: 4
+                                        },
+                                        name: k.name,
+                                        unit: k.unit,
+                                        hide: isHidden
+                                    }, k.key, false, {
+                                        fileName: "[project]/components/MacroChart.js",
+                                        lineNumber: 214,
+                                        columnNumber: 37
+                                    }, this);
+                                }
+                                // Default to Area
+                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Area$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Area"], {
                                     type: "monotone",
                                     dataKey: k.key,
                                     stroke: k.color,
-                                    name: k.name,
                                     fill: `url(#color${k.key})`,
+                                    yAxisId: axisId,
                                     strokeWidth: 2,
-                                    unit: k.unit || '',
-                                    hide: hiddenKeys.includes(k.key),
-                                    animationDuration: 500,
-                                    connectNulls: true
-                                }, i, false, {
+                                    activeDot: {
+                                        r: 4,
+                                        strokeWidth: 0
+                                    },
+                                    name: k.name,
+                                    unit: k.unit,
+                                    hide: isHidden
+                                }, k.key, false, {
                                     fileName: "[project]/components/MacroChart.js",
-                                    lineNumber: 180,
-                                    columnNumber: 29
-                                }, this))
+                                    lineNumber: 231,
+                                    columnNumber: 33
+                                }, this);
+                            })
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/MacroChart.js",
-                        lineNumber: 126,
+                        lineNumber: 155,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/MacroChart.js",
-                    lineNumber: 125,
+                    lineNumber: 154,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/MacroChart.js",
-                lineNumber: 124,
+                lineNumber: 153,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/MacroChart.js",
-        lineNumber: 102,
+        lineNumber: 106,
         columnNumber: 9
     }, this);
 }

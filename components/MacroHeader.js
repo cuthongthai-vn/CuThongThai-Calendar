@@ -15,7 +15,7 @@ export default function MacroHeader({ activeTab = 'macro' }) {
                     </p>
                 </div>
                 <div className="text-xs text-slate-500 absolute top-0 right-0 text-right">
-                    ** Nguồn: WB, IMF và Tổng hợp
+                    ** Nguồn: WB, IMF, GSO và Tổng hợp
                 </div>
             </header>
 
@@ -38,6 +38,15 @@ export default function MacroHeader({ activeTab = 'macro' }) {
                         }`}
                 >
                     💰 Tài Sản & Giá Cả
+                </Link>
+                <Link
+                    href="/lifestyle"
+                    className={`pb-3 font-bold text-lg border-b-2 transition-all ${activeTab === 'lifestyle'
+                        ? 'border-purple-500 text-purple-400'
+                        : 'border-transparent text-slate-500 hover:text-slate-300'
+                        }`}
+                >
+                    ☕️ Vỉa Hè
                 </Link>
             </div>
         </div>

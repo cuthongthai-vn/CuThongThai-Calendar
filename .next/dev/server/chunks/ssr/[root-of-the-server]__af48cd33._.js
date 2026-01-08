@@ -52,7 +52,9 @@ __turbopack_context__.s([
     "default",
     ()=>AssetsPage,
     "dynamic",
-    ()=>dynamic
+    ()=>dynamic,
+    "metadata",
+    ()=>metadata
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/supabase-js/dist/index.mjs [app-rsc] (ecmascript) <locals>");
@@ -61,6 +63,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$assets$2f$AssetsDashb
 ;
 ;
 const dynamic = 'force-dynamic';
+const metadata = {
+    title: 'Tài Sản & Giá Cả | Cú Thông Thái',
+    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt (Phở Index) tại Việt Nam.',
+    openGraph: {
+        title: 'Tài Sản & Giá Cả - Theo dõi Vàng & BĐS',
+        description: 'So sánh hiệu suất đầu tư giữa Vàng, Đất và Tiền gửi qua các thời kỳ.',
+        images: [
+            '/og-assets.png'
+        ]
+    }
+};
 const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 // Helper to pivot data.
 const pivotData = (rows)=>{
@@ -80,7 +93,14 @@ const pivotData = (rows)=>{
         // Add Forex & CPI for local usage
         // Mapped from USDVND_OFFICIAL (imported in import_history.js)
         if (r.indicator_key === 'USDVND_OFFICIAL') map[dateStr].usd_vnd = Number(r.value);
-        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value); // Use correct CPI key too? Check import_history.js: VN_CPI_YOY
+        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value);
+        // Lifestyle / Fun Keys
+        if (r.indicator_key === 'PRICE_IPHONE_VN') map[dateStr].iphone = Number(r.value);
+        if (r.indicator_key === 'PRICE_SH_VN') map[dateStr].sh = Number(r.value);
+        if (r.indicator_key === 'PRICE_HAO_HAO_VN') map[dateStr].haohao = Number(r.value);
+        if (r.indicator_key === 'PRICE_BIA_HOI_VN') map[dateStr].beer = Number(r.value);
+        if (r.indicator_key === 'INCOME_AVG_VN') map[dateStr].income = Number(r.value);
+        if (r.indicator_key === 'RE_CONDO_VN') map[dateStr].condo = Number(r.value);
     });
     return Object.values(map).sort((a, b)=>new Date(a.date) - new Date(b.date));
 };
@@ -97,7 +117,7 @@ const getLatest = (data, key)=>{
         date: last.date
     };
 };
-// Helper to linearly interpolate missing values
+// ... (interpolateData helper remains same) ...
 const interpolateData = (data, key)=>{
     let lastIndex = -1;
     // Find first valid index
@@ -136,8 +156,12 @@ async function AssetsPage() {
     let from = 0;
     const CHUNK_SIZE = 1000;
     let more = true;
+    // Filter string constructing
+    const filterStr = 'indicator_key.like.GOLD%,' + 'indicator_key.like.RE%,' + 'indicator_key.like.PHO%,' + 'indicator_key.like.PRICE%,' + // New: Fetch all PRICE_... keys
+    'indicator_key.like.INCOME%,' + // New: Fetch INCOME...
+    'indicator_key.eq.USDVND_OFFICIAL,' + 'indicator_key.eq.VN_CPI_YOY';
     while(more){
-        const { data: chunk, error } = await supabase.from('macro_indicators').select('*').or('indicator_key.like.GOLD%,indicator_key.like.RE%,indicator_key.like.PHO%,indicator_key.eq.USDVND_OFFICIAL,indicator_key.eq.VN_CPI_YOY').order('date', {
+        const { data: chunk, error } = await supabase.from('macro_indicators').select('*').or(filterStr).order('date', {
             ascending: true
         }).range(from, from + CHUNK_SIZE - 1);
         if (error) {
@@ -147,7 +171,7 @@ async function AssetsPage() {
                 children: "Error loading data"
             }, void 0, false, {
                 fileName: "[project]/app/assets/page.js",
-                lineNumber: 102,
+                lineNumber: 129,
                 columnNumber: 36
             }, this);
             break;
@@ -189,9 +213,15 @@ async function AssetsPage() {
             d.sjc = d.sjc / 1000000;
         }
     });
-    // 2. Interpolate Phở Data (Smooth Curve)
+    // 2. Interpolate Phở Data & Fun Metrics (Smooth Curve)
     // We only interpolate 'pho' key within the full chartData
     chartData = interpolateData(chartData, 'pho');
+    chartData = interpolateData(chartData, 'condo');
+    chartData = interpolateData(chartData, 'income');
+    chartData = interpolateData(chartData, 'iphone'); // Maybe unnecessary if infrequent? 
+    // iPhone is once a year, let's keep it discrete or interpolate?
+    // User requested "Visualization", interpolation helps trend view.
+    chartData = interpolateData(chartData, 'sh');
     // Filter subsets
     const goldData = chartData.filter((d)=>d.sjc || d.world_converted || d.world_usd);
     const reData = chartData.filter((d)=>d.hn_vnd || d.hcm_vnd || d.hn_gold || d.hcm_gold);
@@ -203,7 +233,7 @@ async function AssetsPage() {
         data: chartData
     }, void 0, false, {
         fileName: "[project]/app/assets/page.js",
-        lineNumber: 161,
+        lineNumber: 194,
         columnNumber: 9
     }, this);
 }

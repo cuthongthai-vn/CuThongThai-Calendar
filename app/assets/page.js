@@ -3,6 +3,16 @@ import AssetsDashboard from './AssetsDashboard';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+    title: 'Tài Sản & Giá Cả | Cú Thông Thái',
+    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt (Phở Index) tại Việt Nam.',
+    openGraph: {
+        title: 'Tài Sản & Giá Cả - Theo dõi Vàng & BĐS',
+        description: 'So sánh hiệu suất đầu tư giữa Vàng, Đất và Tiền gửi qua các thời kỳ.',
+        images: ['/og-assets.png'],
+    },
+};
+
 const supabase = createClient(
     process.env.SUPABASE_URL,
     process.env.SUPABASE_KEY
@@ -28,7 +38,15 @@ const pivotData = (rows) => {
         // Add Forex & CPI for local usage
         // Mapped from USDVND_OFFICIAL (imported in import_history.js)
         if (r.indicator_key === 'USDVND_OFFICIAL') map[dateStr].usd_vnd = Number(r.value);
-        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value); // Use correct CPI key too? Check import_history.js: VN_CPI_YOY
+        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value);
+
+        // Lifestyle / Fun Keys
+        if (r.indicator_key === 'PRICE_IPHONE_VN') map[dateStr].iphone = Number(r.value);
+        if (r.indicator_key === 'PRICE_SH_VN') map[dateStr].sh = Number(r.value);
+        if (r.indicator_key === 'PRICE_HAO_HAO_VN') map[dateStr].haohao = Number(r.value);
+        if (r.indicator_key === 'PRICE_BIA_HOI_VN') map[dateStr].beer = Number(r.value);
+        if (r.indicator_key === 'INCOME_AVG_VN') map[dateStr].income = Number(r.value);
+        if (r.indicator_key === 'RE_CONDO_VN') map[dateStr].condo = Number(r.value);
     });
     return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
 };
@@ -42,7 +60,7 @@ const getLatest = (data, key) => {
     return { value: last[key], date: last.date };
 };
 
-// Helper to linearly interpolate missing values
+// ... (interpolateData helper remains same) ...
 const interpolateData = (data, key) => {
     let lastIndex = -1;
 
@@ -89,11 +107,20 @@ export default async function AssetsPage() {
     const CHUNK_SIZE = 1000;
     let more = true;
 
+    // Filter string constructing
+    const filterStr = 'indicator_key.like.GOLD%,' +
+        'indicator_key.like.RE%,' +
+        'indicator_key.like.PHO%,' +
+        'indicator_key.like.PRICE%,' + // New: Fetch all PRICE_... keys
+        'indicator_key.like.INCOME%,' + // New: Fetch INCOME...
+        'indicator_key.eq.USDVND_OFFICIAL,' +
+        'indicator_key.eq.VN_CPI_YOY';
+
     while (more) {
         const { data: chunk, error } = await supabase
             .from('macro_indicators')
             .select('*')
-            .or('indicator_key.like.GOLD%,indicator_key.like.RE%,indicator_key.like.PHO%,indicator_key.eq.USDVND_OFFICIAL,indicator_key.eq.VN_CPI_YOY')
+            .or(filterStr)
             .order('date', { ascending: true })
             .range(from, from + CHUNK_SIZE - 1);
 
@@ -144,9 +171,15 @@ export default async function AssetsPage() {
         }
     });
 
-    // 2. Interpolate Phở Data (Smooth Curve)
+    // 2. Interpolate Phở Data & Fun Metrics (Smooth Curve)
     // We only interpolate 'pho' key within the full chartData
     chartData = interpolateData(chartData, 'pho');
+    chartData = interpolateData(chartData, 'condo');
+    chartData = interpolateData(chartData, 'income');
+    chartData = interpolateData(chartData, 'iphone'); // Maybe unnecessary if infrequent? 
+    // iPhone is once a year, let's keep it discrete or interpolate?
+    // User requested "Visualization", interpolation helps trend view.
+    chartData = interpolateData(chartData, 'sh');
 
     // Filter subsets
     const goldData = chartData.filter(d => d.sjc || d.world_converted || d.world_usd);

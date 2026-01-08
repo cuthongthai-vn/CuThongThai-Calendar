@@ -5,6 +5,16 @@ import FloatingCTA from '../../components/FloatingCTA';
 
 export const dynamic = 'force-dynamic'; // Disable caching to fetch fresh data on every request
 
+export const metadata = {
+    title: 'Vĩ Mô Việt Nam | Cú Thông Thái',
+    description: 'Bức tranh toàn cảnh kinh tế Việt Nam: GDP, Lạm Phát (CPI), Tỷ Giá và Lãi Suất cập nhật liên tục.',
+    openGraph: {
+        title: 'Vĩ Mô Việt Nam - Các chỉ số biết nói',
+        description: 'Theo dõi nhịp đập nền kinh tế qua các biểu đồ trực quan nhất.',
+        images: ['/og-macro.png'],
+    },
+};
+
 const supabase = createClient(
     process.env.SUPABASE_URL,
     process.env.SUPABASE_KEY
