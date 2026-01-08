@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import MacroChart from '../../components/MacroChart';
-import FloatingCTA from '../../components/FloatingCTA';
+import MacroChart from '../../components/ui/MacroChart';
+import FloatingCTA from '../../components/ui/FloatingCTA';
 
 export default function AssetsDashboard({ data }) {
     // State for Time Ranges

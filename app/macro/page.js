@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
-import MacroChart from '../../components/MacroChart';
-import MacroHeader from '../../components/MacroHeader';
-import FloatingCTA from '../../components/FloatingCTA';
+import MacroChart from '../../components/ui/MacroChart';
+import MacroHeader from '../../components/features/macro/MacroHeader';
+import FloatingCTA from '../../components/ui/FloatingCTA';
 
 export const dynamic = 'force-dynamic'; // Disable caching to fetch fresh data on every request
 

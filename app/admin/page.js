@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Added for refresh if needed
-import MacroUpdateModal from '../../components/MacroUpdateModal';
+import MacroUpdateModal from '../../components/features/macro/MacroUpdateModal';
 
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-import LifestyleDashboard from '../../components/LifestyleDashboard';
+import LifestyleDashboard from '../../components/features/lifestyle/LifestyleDashboard';
 
 export const dynamic = 'force-dynamic';
 

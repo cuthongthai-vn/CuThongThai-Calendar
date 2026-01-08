@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import FloatCTA from '../components/FloatingCTA';
-import EventCard from '../components/EventCard';
-import FilterSidebar from '../components/FilterSidebar';
+import FloatCTA from '../components/ui/FloatingCTA';
+import EventCard from '../components/features/calendar/EventCard';
+import FilterSidebar from '../components/features/calendar/FilterSidebar';
 import { getRanges } from '../src/utils/dateHelpers';
 
 export default function Home() {
