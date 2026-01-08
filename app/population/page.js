@@ -6,6 +6,16 @@ import AgingUrbanSection from '../../components/features/population/AgingUrbanSe
 
 export const dynamic = 'force-dynamic'; // Always fetch fresh data
 
+export const metadata = {
+    title: 'Dân Số Việt Nam (1950-2100) | Cú Thông Thái',
+    description: 'Tra cứu dữ liệu Dân số Việt Nam qua các thời kỳ: Giai đoạn dân số vàng, tỷ lệ sinh/tử, già hóa dân số và dự báo đến năm 2100.',
+    openGraph: {
+        title: 'Dân Số Việt Nam - Cơ hội & Thách thức',
+        description: 'Bức tranh toàn cảnh 150 năm vận mệnh dân tộc. Chúng ta đang ở đâu trong "Giai đoạn vàng"?',
+        images: ['/og-population.png'],
+    },
+};
+
 export default async function PopulationPage() {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_KEY;

@@ -15538,3 +15538,47 @@ It can also happen if the client has a browser extension installed which messes 
 
 [08:12:08.649] Server  LOG     ✓ Compiled in 171ms
 [08:12:10.480] Server  LOG     ✓ Compiled in 93ms
+[08:16:00.666] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[08:16:00.671] Server  LOG     ✓ Compiled in 379ms
+[08:16:02.883] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[08:16:05.703] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[08:16:18.054] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:16:18.054] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
