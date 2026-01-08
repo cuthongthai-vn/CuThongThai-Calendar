@@ -6,7 +6,8 @@ export default function MacroUpdateModal({ isOpen, onClose, onSuccess }) {
     const [formData, setFormData] = useState({
         indicator_key: 'USDVND_BLACK_MARKET',
         date: new Date().toISOString().split('T')[0],
-        value: ''
+        value: '',
+        text_content: '' // New field for Owl Commentary
     });
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState('');
@@ -55,7 +56,7 @@ export default function MacroUpdateModal({ isOpen, onClose, onSuccess }) {
 
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                     <span className="bg-amber-500 w-2 h-6 rounded-full"></span>
-                    Cập Nhật Số Liệu
+                    Cập Nhật Số Liệu (Hybrid)
                 </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -66,12 +67,25 @@ export default function MacroUpdateModal({ isOpen, onClose, onSuccess }) {
                             value={formData.indicator_key}
                             onChange={e => setFormData({ ...formData, indicator_key: e.target.value })}
                         >
-                            <option value="USDVND_BLACK_MARKET">USD Chợ Đen (Bán)</option>
-                            <option value="USDVND_OFFICIAL">USD Ngân Hàng</option>
-                            <option value="VN_GDP_YOY">GDP Growth (YoY)</option>
-                            <option value="VN_CPI_YOY">CPI Inflation (YoY)</option>
-                            <option value="VN_INTEREST_RATE">Lãi Suất Điều Hành</option>
-                            <option value="VN_SAVINGS_RATE_12M">Lãi Suất Tiết Kiệm (12T)</option>
+                            <optgroup label="Tài Chính (Finance)">
+                                <option value="USDVND_BLACK_MARKET">USD Chợ Đen (Bán)</option>
+                                <option value="USDVND_OFFICIAL">USD Ngân Hàng</option>
+                                <option value="VN_INTEREST_RATE">Lãi Suất Điều Hành</option>
+                                <option value="VN_SAVINGS_RATE_12M">Lãi Suất Tiết Kiệm (12T)</option>
+                            </optgroup>
+                            <optgroup label="Vĩ Mô & Sức Bền (Macro Health)">
+                                <option value="VN_GDP_YOY">GDP Growth (YoY)</option>
+                                <option value="VN_CPI_YOY">CPI Inflation (YoY)</option>
+                                <option value="VN_PUBLIC_DEBT_GDP">Nợ Công (% GDP)</option>
+                                <option value="VN_PRIVATE_DEBT_GDP">Nợ Tư Nhân (% GDP)</option>
+                                <option value="POLICY_STANCE_FISCAL">Chính Sách Tài Khóa (Điểm 0-100)</option>
+                                <option value="POLICY_STANCE_MONETARY">Chính Sách Tiền Tệ (Điểm 0-100)</option>
+                            </optgroup>
+                            <optgroup label="Lời Bình Của Cú (Owl Text)">
+                                <option value="OWL_COMMENT_POLICY">🦉 Owl: Chính Sách (Policy)</option>
+                                <option value="OWL_COMMENT_DEBT">🦉 Owl: Nợ (Debt)</option>
+                                <option value="OWL_COMMENT_OVERHEATING">🦉 Owl: Nhiệt Kế (Heat)</option>
+                            </optgroup>
                         </select>
                     </div>
 
@@ -86,18 +100,31 @@ export default function MacroUpdateModal({ isOpen, onClose, onSuccess }) {
                         />
                     </div>
 
-                    <div>
-                        <label className="block text-xs font-semibold text-slate-400 mb-1 uppercase">Giá Trị</label>
-                        <input
-                            type="number"
-                            step="any"
-                            required
-                            placeholder="VD: 25400 hoặc 6.5"
-                            className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-white font-mono text-lg focus:border-amber-500 outline-none"
-                            value={formData.value}
-                            onChange={e => setFormData({ ...formData, value: e.target.value })}
-                        />
-                    </div>
+                    {/* Show Value Input for Metric keys, Text Input for Comment keys */}
+                    {!formData.indicator_key.includes('OWL_COMMENT') ? (
+                        <div>
+                            <label className="block text-xs font-semibold text-slate-400 mb-1 uppercase">Giá Trị (Số)</label>
+                            <input
+                                type="number"
+                                step="any"
+                                placeholder="VD: 6.5 hoặc 25400"
+                                className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-white font-mono text-lg focus:border-amber-500 outline-none"
+                                value={formData.value}
+                                onChange={e => setFormData({ ...formData, value: e.target.value })}
+                            />
+                        </div>
+                    ) : (
+                        <div>
+                            <label className="block text-xs font-semibold text-slate-400 mb-1 uppercase">Lời Bình (Text)</label>
+                            <textarea
+                                rows={4}
+                                placeholder="Nhập lời bình của Cú..."
+                                className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-white font-sans text-sm focus:border-amber-500 outline-none"
+                                value={formData.text_content}
+                                onChange={e => setFormData({ ...formData, text_content: e.target.value })}
+                            />
+                        </div>
+                    )}
 
                     {msg && <div className={`text-sm text-center font-bold ${msg.includes('✅') ? 'text-green-500' : 'text-red-500'}`}>{msg}</div>}
 

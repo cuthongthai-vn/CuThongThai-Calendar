@@ -33,35 +33,43 @@ export default function RootLayout({ children }) {
                         </Link>
 
                         {/* Navigation */}
-                        <nav className="flex gap-6">
-                            <Link
-                                href="/"
-                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors"
-                            >
+                        {/* Desktop Navigation */}
+                        <nav className="hidden md:flex gap-6">
+                            <Link href="/" className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors">
                                 📅 Lịch Kinh Tế
                             </Link>
-                            <Link
-                                href="/macro"
-                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors"
-                            >
+                            <Link href="/macro" className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors">
                                 📊 Vĩ Mô
                             </Link>
-                            <Link
-                                href="/assets"
-                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors"
-                            >
+                            <Link href="/assets" className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors">
                                 💰 Tài Sản
                             </Link>
-                            <Link
-                                href="/lifestyle"
-                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1"
-                            >
+                            <Link href="/lifestyle" className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1">
                                 ☕ Vỉa Hè
                             </Link>
-                            <Link
-                                href="/population"
-                                className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1"
-                            >
+                            <Link href="/population" className="text-sm font-semibold text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1">
+                                👥 Dân Số
+                                <span className="text-[10px] bg-blue-600 text-white px-1 rounded animate-pulse">Hot</span>
+                            </Link>
+                        </nav>
+                    </div>
+
+                    {/* Mobile Navigation (Horizontal Scroll) */}
+                    <div className="md:hidden border-t border-slate-800 bg-slate-900/80 backdrop-blur">
+                        <nav className="flex items-center gap-6 overflow-x-auto px-4 py-3 whitespace-nowrap scrollbar-hide">
+                            <Link href="/" className="text-sm font-medium text-slate-300 hover:text-[#fbbf24] transition-colors">
+                                📅 Lịch Kinh Tế
+                            </Link>
+                            <Link href="/macro" className="text-sm font-medium text-slate-300 hover:text-[#fbbf24] transition-colors">
+                                📊 Vĩ Mô
+                            </Link>
+                            <Link href="/assets" className="text-sm font-medium text-slate-300 hover:text-[#fbbf24] transition-colors">
+                                💰 Tài Sản
+                            </Link>
+                            <Link href="/lifestyle" className="text-sm font-medium text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1">
+                                ☕ Vỉa Hè
+                            </Link>
+                            <Link href="/population" className="text-sm font-medium text-slate-300 hover:text-[#fbbf24] transition-colors flex items-center gap-1">
                                 👥 Dân Số
                                 <span className="text-[10px] bg-blue-600 text-white px-1 rounded animate-pulse">Hot</span>
                             </Link>

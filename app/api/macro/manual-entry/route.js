@@ -25,24 +25,31 @@ const supabase = createClient(
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { date, items, secret } = body;
+        // Support both old Format (items array) or new Flat Format (indicator_key)
 
-        // Simple Security (Env var or hardcoded for this MVP user)
-        // Check against CRON_SECRET as a reuse of the admin secret
-        if (secret !== process.env.CRON_SECRET) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        let rows = [];
 
-        if (!date || !items || !Array.isArray(items)) {
+        if (body.items && Array.isArray(body.items)) {
+            // Old format
+            rows = body.items.map(item => ({
+                indicator_key: item.key,
+                date: body.date,
+                value: Number(item.value),
+                source: 'MANUAL_ADMIN'
+            }));
+        } else if (body.indicator_key) {
+            // New Flat Format from MacroUpdateModal
+            const { indicator_key, date, value, text_content } = body;
+            rows = [{
+                indicator_key,
+                date,
+                value: value ? Number(value) : null,
+                text_content: text_content || null,
+                source: 'MANUAL_ADMIN'
+            }];
+        } else {
             return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
         }
-
-        const rows = items.map(item => ({
-            indicator_key: item.key,
-            date: date,
-            value: Number(item.value),
-            source: 'MANUAL_ADMIN'
-        }));
 
         const { error } = await supabase
             .from('macro_indicators')

@@ -16940,3 +16940,21 @@ All exports of the module are statically known (It doesn't have dynamic exports)
        height and width.
 [10:56:28.117] Server  LOG     ✓ Compiled in 68ms
 [10:56:34.400] Server  LOG     ✓ Compiled in 22ms
+[12:08:03.617] Server  LOG     ✓ Compiled in 98ms
+[12:08:34.537] Server  LOG     ✓ Compiled in 191ms
+[12:08:35.002] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[12:08:35.132] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[12:08:35.137] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.138] Server  LOG     [MacroPage] Loaded 803 rows
+[12:08:35.188] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.189] Server  LOG     [MacroPage] Loaded 803 rows
+[12:08:35.233] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.234] Server  LOG     [MacroPage] Loaded 803 rows
+[12:08:35.296] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.297] Server  LOG     [MacroPage] Loaded 803 rows
+[12:08:35.331] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.332] Server  LOG     [MacroPage] Loaded 803 rows
+[12:08:35.374] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.375] Server  LOG     [MacroPage] Loaded 803 rows
+[12:08:35.412] Server  LOG     [MacroPage] Total Raw Rows Fetched: 2856
+[12:08:35.413] Server  LOG     [MacroPage] Loaded 803 rows

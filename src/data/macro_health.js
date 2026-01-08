@@ -1,6 +1,6 @@
 export const POLICY_STANCE_DATA = [
     { category: "Tiền Tệ (Monetary)", value: 75, label: "Giãn (Loosening)", color: "#10b981", metric: "M2 +11.7%", note: "Lãi suất thấp 3.0%" },
-    { category: "Tài Khóa (Fiscal)", value: 85, label: "Bung Mạnh (Expansive)", color: "#ef4444", metric: "Chi tiêu +19%", note: "Thâm hụt -1.33% GDP" }
+    { category: "Tài Khóa (Fiscal)", value: 85, label: "Bung Mạnh (Expansive)", color: "#ef4444", metric: "Chi tiêu +19%", note: "Thâm hụt -2.3% GDP" }
 ];
 
 export const DEBT_SUSTAINABILITY_DATA = [
@@ -12,7 +12,7 @@ export const DEBT_SUSTAINABILITY_DATA = [
 export const OVERHEATING_INDICATORS = [
     { name: "M2 Growth", value: 11.7, threshold: 12, status: "Cao" },
     { name: "Lạm Phát (CPI)", value: 3.3, threshold: 4.5, status: "Ổn định" },
-    { name: "Tăng Trưởng Tín Dụng", value: 6.9, threshold: 14, status: "Vừa phải" }
+    { name: "Tăng Trưởng Tín Dụng", value: 15.0, threshold: 14, status: "Nóng!" }
 ];
 
 export const HEALTH_BOWL_COMMENTS = {
