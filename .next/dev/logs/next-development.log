@@ -15582,3 +15582,409 @@ Import traces:
   Client Component SSR:
     ./app/page.js [Client Component SSR]
     ./app/page.js [Server Component]
+[08:26:27.064] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:26:27.064] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:26:27.069] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:26:27.070] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:44:48.771] Server  LOG     ✓ Compiled in 110ms
+[08:44:49.585] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:44:49.585] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:06.582] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:06.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:28.432] Server  LOG     ✓ Compiled in 40ms
+[08:50:28.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:28.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:28.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:28.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:30.476] Server  LOG     ✓ Compiled in 71ms
+[08:50:30.582] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:30.582] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:46.444] Server  LOG     ✓ Compiled in 43ms
+[08:50:46.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:46.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:48.597] Server  LOG     ✓ Compiled in 96ms
+[08:50:49.583] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:50:49.584] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:51:08.785] Server  LOG     ✓ Compiled in 201ms
+[08:51:09.585] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]
+[08:51:09.586] Browser ERROR   ./app/page.js:9:14
+Ecmascript file had an error
+   7 | import { getRanges } from '../src/utils/dateHelpers';
+   8 |
+>  9 | export const metadata = {
+     |              ^^^^^^^^
+  10 |     title: 'Lịch Kinh Tế & Tin Nóng 24/7 | Cú Thông Thái',
+  11 |     description: 'Cập nhật tin tức kinh tế nóng hổi, lịch sự kiện tài chính và phân tích tác động thị trường (Vàng, Chứng Khoán, Forex) theo thời gian thực.',
+  12 |     openGraph: {
+
+You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+Import traces:
+  Client Component Browser:
+    ./app/page.js [Client Component Browser]
+    ./app/page.js [Server Component]
+
+  Client Component SSR:
+    ./app/page.js [Client Component SSR]
+    ./app/page.js [Server Component]

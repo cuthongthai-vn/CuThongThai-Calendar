@@ -4,6 +4,11 @@ import GoldenWindowSection from '../../components/features/population/GoldenWind
 import BirthDeathSection from '../../components/features/population/BirthDeathSection';
 import AgingUrbanSection from '../../components/features/population/AgingUrbanSection';
 
+import WealthPyramidSection from '../../components/features/population/WealthPyramidSection';
+import InequalitySection from '../../components/features/population/InequalitySection';
+import AssetStructureSection from '../../components/features/population/AssetStructureSection';
+import ClassTransitionSection from '../../components/features/population/ClassTransitionSection';
+
 export const dynamic = 'force-dynamic'; // Always fetch fresh data
 
 export const metadata = {
@@ -70,10 +75,27 @@ export default async function PopulationPage() {
                     </div>
                 </div>
 
-                {/* Sections */}
-                <GoldenWindowSection data={data} />
-                <BirthDeathSection data={data} />
-                <AgingUrbanSection data={data} />
+                {/* PART I: POPULATION */}
+                <div className="mb-16">
+                    <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-theme-yellow pl-4 uppercase">
+                        I. Bức Tranh Dân Số
+                    </h3>
+                    <GoldenWindowSection data={data} />
+                    <BirthDeathSection data={data} />
+                    <AgingUrbanSection data={data} />
+                </div>
+
+                {/* PART II: SOCIETY & WEALTH */}
+                <div>
+                    <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-green-500 pl-4 uppercase">
+                        II. Phân Tầng Xã Hội & Tài Sản
+                    </h3>
+                    <WealthPyramidSection />
+                    <InequalitySection />
+                    <AssetStructureSection />
+                    <ClassTransitionSection />
+                </div>
+
 
                 {/* Footer Note */}
                 <div className="text-center text-xs text-slate-600 mt-12 pb-12 italic">
