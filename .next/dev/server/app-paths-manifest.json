@@ -1,0 +1,6 @@
+{
+  "/api/events/route": "app/api/events/route.js",
+  "/assets/page": "app/assets/page.js",
+  "/macro/page": "app/macro/page.js",
+  "/page": "app/page.js"
+}

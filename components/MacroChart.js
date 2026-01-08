@@ -35,10 +35,19 @@ export default function MacroChart({
     title,
     dataKeys = [{ key: 'value', color: '#10b981', name: 'Giá trị' }],
     height = 350,
-    syncId = null
+    syncId = null,
+    selectedRange,      // Controlled State
+    onRangeChange       // Callback
 }) {
-    const [timeRange, setTimeRange] = useState('5Y');
+    const [internalRange, setInternalRange] = useState('5Y');
     const [hiddenKeys, setHiddenKeys] = useState([]);
+
+    // Use controlled state if available, else internal
+    const timeRange = selectedRange || internalRange;
+    const handleRangeChange = (r) => {
+        if (onRangeChange) onRangeChange(r);
+        else setInternalRange(r);
+    };
 
     // Filter Data by Time Range
     const filteredData = useMemo(() => {
@@ -66,26 +75,27 @@ export default function MacroChart({
         );
     };
 
-    // Determine min/max for better Y-axis scaling based on VISIBLE data
-    const activeKeys = dataKeys.filter(k => !hiddenKeys.includes(k.key));
-    const allValues = filteredData
-        .flatMap(d => activeKeys.map(k => d[k.key]))
+    // Determine min/max for better Y-axis scaling based on VISIBLE data (LEFT AXIS ONLY)
+    // We only want to scale the Left Axis based on Left Axis data. The Right Axis is 'auto' or separate.
+    const activeLeftKeys = dataKeys.filter(k => !hiddenKeys.includes(k.key) && k.axis !== 'right');
+    const leftValues = filteredData
+        .flatMap(d => activeLeftKeys.map(k => d[k.key]))
         .filter(v => typeof v === 'number' && !isNaN(v)); // Strict number check
 
     // Auto-scale or default
     let minVal = 0;
     let maxVal = 100;
 
-    if (allValues.length > 0) {
-        minVal = Math.min(...allValues);
-        maxVal = Math.max(...allValues);
+    if (leftValues.length > 0) {
+        minVal = Math.min(...leftValues);
+        maxVal = Math.max(...leftValues);
         // Add padding
         const padding = (maxVal - minVal) * 0.05;
         minVal = minVal - padding;
         maxVal = maxVal + padding;
 
         // If values are close to 0, don't go negative unnecessarily unless data is negative
-        if (Math.min(...allValues) >= 0 && minVal < 0) minVal = 0;
+        if (Math.min(...leftValues) >= 0 && minVal < 0) minVal = 0;
     }
 
     return (
@@ -98,7 +108,7 @@ export default function MacroChart({
                     {['1Y', '3Y', '5Y', '10Y', '25Y', 'ALL'].map(range => (
                         <button
                             key={range}
-                            onClick={() => setTimeRange(range)}
+                            onClick={() => handleRangeChange(range)}
                             className={`px-3 py-1 text-xs font-medium rounded transition-colors ${timeRange === range
                                 ? 'bg-slate-700 text-white'
                                 : 'text-slate-500 hover:text-slate-300'
@@ -135,11 +145,30 @@ export default function MacroChart({
                             minTickGap={30}
                         />
                         <YAxis
+                            yAxisId="left"
                             stroke="#64748b"
                             tick={{ fontSize: 11 }}
                             domain={[minVal, maxVal]}
                             tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}
                         />
+                        {/* Second Y-Axis if needed */}
+                        {dataKeys.some(k => k.axis === 'right') && (
+                            <YAxis
+                                yAxisId="right"
+                                orientation="right"
+                                stroke="#94a3b8"
+                                tick={{ fontSize: 11 }}
+                                domain={['auto', 'auto']}
+                                tickFormatter={(val) => {
+                                    // Check if there's a specific formatter for the right axis key
+                                    const rightKey = dataKeys.find(k => k.axis === 'right');
+                                    if (rightKey && rightKey.tickFormatter) {
+                                        return rightKey.tickFormatter(val);
+                                    }
+                                    return val.toLocaleString();
+                                }}
+                            />
+                        )}
                         <Tooltip content={<CustomTooltip />} />
                         <Legend
                             wrapperStyle={{ paddingTop: '20px' }}
@@ -150,6 +179,7 @@ export default function MacroChart({
                         {dataKeys.map((k, i) => (
                             <Area
                                 key={i}
+                                yAxisId={k.axis === 'right' ? 'right' : 'left'}
                                 type="monotone"
                                 dataKey={k.key}
                                 stroke={k.color}

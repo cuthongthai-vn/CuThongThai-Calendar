@@ -1,0 +1,49 @@
+Date,Pho_Price_VND,Location,Notes
+1975-12-31,50,Hanoi,Post-war - subsidy economy
+1980-12-31,200,Hanoi,Inflation 128-313% period
+1985-12-31,500,Hanoi,Economic crisis - severe shortages
+1986-12-31,1500,Hanoi,Hyperinflation 774% - Doi Moi begins
+1987-12-31,3000,Hanoi,Currency devaluation continues
+1988-12-31,5000,Hanoi,VND collapse to 400/USD
+1990-12-31,2000,Hanoi,Stabilization after crisis
+1992-12-31,3000,Hanoi,11000 Policy - market transition
+1995-12-31,5000,Hanoi,ASEAN membership - price normalization
+1998-12-31,8000,Hanoi,Asian Financial Crisis impact
+2000-12-31,10000,Hanoi,New millennium - street vendors
+2003-12-31,12000,Hanoi,Land Law era
+2005-12-31,15000,Hanoi,Property boom period
+2007-12-31,18000,Hanoi,WTO membership - peak prices
+2008-12-31,20000,Hanoi,Financial crisis
+2010-12-31,25000,Hanoi,Post-crisis recovery
+2012-12-31,28000,Hanoi,Market stabilization
+2013-12-31,30000,Hanoi,Typical street price
+2015-12-31,30000,Hanoi,Stable period
+2017-12-31,35000,Hanoi,Recovery phase
+2018-12-31,35000,Hanoi,Standard street bowl
+2019-12-31,35000,Hanoi,Pre-COVID price
+2020-12-31,35000,Hanoi,COVID lockdown - prices held
+2021-12-31,35000,Hanoi,Post-lockdown
+2022-12-31,40000,Hanoi,Inflation return
+2023-12-31,45000,Hanoi,Ingredient costs surge
+2024-01-31,45000,Hanoi,Standard local shop
+2024-06-01,50000,Hanoi Old Quarter,Tourist area premium
+2024-12-31,50000,Hanoi Average,Year-end pricing
+2025-05-09,50000,Hanoi,Price hike announced
+2025-06-08,55000,Hanoi,Tax compliance impact
+2025-12-31,55000,Hanoi,Latest average price
+1975-12-31,60,Saigon,Southern pricing slightly higher
+1980-12-31,250,HCMC,Post-reunification adjustment
+1985-12-31,600,HCMC,Crisis period
+1988-12-31,6000,HCMC,Hyperinflation peak
+1990-12-31,2500,HCMC,Stabilization
+1995-12-31,6000,HCMC,Foreign investment era
+2000-12-31,12000,HCMC,District 1 average
+2005-12-31,18000,HCMC,Boom period
+2010-12-31,30000,HCMC,Higher than Hanoi
+2015-12-31,35000,HCMC,Standard price
+2019-12-31,40000,HCMC,Pre-COVID
+2020-12-31,40000,HCMC,COVID period
+2023-12-31,50000,HCMC,Post-COVID inflation
+2024-12-31,60000,HCMC District 1,Premium locations
+2025-06-01,65000,HCMC,Tourist areas
+2025-12-31,65000,HCMC Average,Current pricing

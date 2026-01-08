@@ -11,25 +11,37 @@ export async function GET(request) {
     try {
         const result = await checkSchedule();
 
-        // Auto-run Macro Sync (GDP/CPI) & Black Market Scraper
-        // We run these "fire and forget" or await them depending on timeout limits.
-        // For Vercel Hobby (10s limit), best to await but catch errors so main cron doesn't fail.
+        // Auto-run Macro Sync (GDP/CPI/Gold/Forex) & Black Market Scraper
         try {
+            console.log("🔄 [Cron] Starting Auto-sync...");
+            // Use dynamic import or require
             const { runMacroSync } = require('../../../src/macro_fetcher');
             const { scrapeBlackMarket } = require('../../../src/scraper_black_market');
 
-            console.log("🔄 Auto-syncing Macro Data...");
-            await Promise.allSettled([
+            const results = await Promise.allSettled([
                 runMacroSync(),
                 scrapeBlackMarket()
             ]);
+
+            results.forEach((res, index) => {
+                const jobName = index === 0 ? 'Macro Sync' : 'Black Market Scraper';
+                if (res.status === 'fulfilled') {
+                    console.log(`   ✅ ${jobName} Success`);
+                } else {
+                    console.error(`   ❌ ${jobName} Failed:`, res.reason);
+                }
+            });
+
         } catch (err) {
-            console.error("❌ Macro Auto-Sync Failed:", err);
+            console.error("❌ Cron Auto-Sync System Error:", err);
         }
 
-        return NextResponse.json(result, { status: 200 });
+        return NextResponse.json({
+            message: 'Cron executed',
+            scheduler: result
+        }, { status: 200 });
     } catch (error) {
-        console.error("Cron Error:", error);
+        console.error("Cron Fatal Error:", error);
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }

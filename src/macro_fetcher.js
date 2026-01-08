@@ -97,10 +97,58 @@ async function syncEconomicIndicators() {
     }
 }
 
+/**
+ * 2. Sync Daily Asset Prices (Gold World, USDVND)
+ * We fetch the last few days of history to keep the chart up to date.
+ */
+async function syncDailyAssets() {
+    console.log("💰 Syncing Daily Assets (Gold World, USDVND)...");
+
+    // Symbols to sync
+    // XAUUSD = Gold World ($/oz) - Key: GOLD_WORLD
+    // USDVND = Forex - Key: USDVND_OFFICIAL
+
+    const assets = [
+        { symbol: 'XAUUSD', key: 'GOLD_WORLD' },
+        { symbol: 'USDVND', key: 'USDVND_OFFICIAL' }
+    ];
+
+    for (const asset of assets) {
+        try {
+            // Fetch last 5 days history
+            const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${asset.symbol}?timeseries=5&apikey=${FMP_API_KEY}`;
+            const res = await fetch(url);
+            const data = await res.json();
+
+            if (data.historical && Array.isArray(data.historical)) {
+                const rows = data.historical.map(h => ({
+                    indicator_key: asset.key,
+                    date: h.date,
+                    value: h.close,
+                    source: 'FMP_AUTO'
+                }));
+
+                // Upsert
+                const { error } = await supabase
+                    .from('macro_indicators')
+                    .upsert(rows, { onConflict: 'indicator_key, date' });
+
+                if (error) console.error(`   ❌ ${asset.symbol} Error:`, error.message);
+                else console.log(`   ✅ Synced ${rows.length} days for ${asset.symbol}`);
+            } else {
+                console.log(`   ⚠️ No history returned for ${asset.symbol}`);
+            }
+        } catch (err) {
+            console.error(`   ❌ Failed to sync ${asset.symbol}:`, err.message);
+        }
+    }
+}
+
 // Main execution
 async function runMacroSync() {
     // await syncExchangeRate(); // DISABLED: API Restricted
     await syncEconomicIndicators(); // Working
+    await syncDailyAssets(); // New: Gold & Forex
     console.log("🏁 Macro Sync Complete.");
 }
 

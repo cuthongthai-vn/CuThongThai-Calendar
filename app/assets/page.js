@@ -1,0 +1,163 @@
+import { createClient } from '@supabase/supabase-js';
+import AssetsDashboard from './AssetsDashboard';
+
+export const dynamic = 'force-dynamic';
+
+const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_KEY
+);
+
+// Helper to pivot data.
+const pivotData = (rows) => {
+    const map = {};
+    rows.forEach(r => {
+        const dateStr = r.date.split('T')[0];
+        if (!map[dateStr]) map[dateStr] = { date: dateStr };
+
+        if (r.indicator_key === 'GOLD_SJC') map[dateStr].sjc = Number(r.value);
+        if (r.indicator_key === 'GOLD_WORLD') map[dateStr].world = Number(r.value);
+
+        if (r.indicator_key === 'RE_HANOI_GOLD') map[dateStr].hn_gold = Number(r.value);
+        if (r.indicator_key === 'RE_HANOI_VND') map[dateStr].hn_vnd = Number(r.value);
+        if (r.indicator_key === 'RE_HCMC_GOLD') map[dateStr].hcm_gold = Number(r.value);
+        if (r.indicator_key === 'RE_HCMC_VND') map[dateStr].hcm_vnd = Number(r.value);
+
+        if (r.indicator_key === 'PHO_PRICE_VND') map[dateStr].pho = Number(r.value);
+
+        // Add Forex & CPI for local usage
+        // Mapped from USDVND_OFFICIAL (imported in import_history.js)
+        if (r.indicator_key === 'USDVND_OFFICIAL') map[dateStr].usd_vnd = Number(r.value);
+        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value); // Use correct CPI key too? Check import_history.js: VN_CPI_YOY
+    });
+    return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
+};
+
+
+// Helper to extract latest value
+const getLatest = (data, key) => {
+    const valid = data.filter(d => d[key] !== undefined && d[key] !== null);
+    if (valid.length === 0) return { value: 'N/A', date: '' };
+    const last = valid[valid.length - 1];
+    return { value: last[key], date: last.date };
+};
+
+// Helper to linearly interpolate missing values
+const interpolateData = (data, key) => {
+    let lastIndex = -1;
+
+    // Find first valid index
+    for (let i = 0; i < data.length; i++) {
+        if (data[i][key] !== undefined && data[i][key] !== null) {
+            lastIndex = i;
+            break;
+        }
+    }
+
+    if (lastIndex === -1) return data; // No data at all
+
+    for (let i = lastIndex + 1; i < data.length; i++) {
+        if (data[i][key] !== undefined && data[i][key] !== null) {
+            const startVal = data[lastIndex][key];
+            const endVal = data[i][key];
+            const steps = i - lastIndex;
+            const stepValue = (endVal - startVal) / steps;
+
+            for (let j = 1; j < steps; j++) {
+                data[lastIndex + j][key] = startVal + (stepValue * j);
+            }
+            lastIndex = i;
+        }
+    }
+
+    // Forward fill the rest (flat line for latest)
+    if (lastIndex < data.length - 1) {
+        const lastVal = data[lastIndex][key];
+        for (let i = lastIndex + 1; i < data.length; i++) {
+            data[i][key] = lastVal;
+        }
+    }
+
+    return data;
+};
+
+export default async function AssetsPage() {
+    // ... (fetch logic remains same) ...
+    // Chunked fetching to bypass Supabase 1000-row limit
+    let allData = [];
+    let from = 0;
+    const CHUNK_SIZE = 1000;
+    let more = true;
+
+    while (more) {
+        const { data: chunk, error } = await supabase
+            .from('macro_indicators')
+            .select('*')
+            .or('indicator_key.like.GOLD%,indicator_key.like.RE%,indicator_key.like.PHO%,indicator_key.eq.USDVND_OFFICIAL,indicator_key.eq.VN_CPI_YOY')
+            .order('date', { ascending: true })
+            .range(from, from + CHUNK_SIZE - 1);
+
+        if (error) {
+            console.error('Error loading assets:', error);
+            if (from === 0) return <div className="p-10 text-red-500">Error loading data</div>;
+            break;
+        }
+
+        if (chunk) {
+            allData = [...allData, ...chunk];
+            if (chunk.length < CHUNK_SIZE) {
+                more = false;
+            } else {
+                from += CHUNK_SIZE;
+            }
+        } else {
+            more = false;
+        }
+    }
+
+    const rawData = allData;
+    let chartData = pivotData(rawData || []);
+
+    // 1. Calculate Converted World Gold & Prepare USD/oz
+    const usdMap = {};
+    chartData.forEach(d => {
+        if (d.usd_vnd) usdMap[d.date] = d.usd_vnd;
+    });
+
+    let lastUsd = 0;
+    chartData.forEach(d => {
+        if (d.usd_vnd) lastUsd = d.usd_vnd;
+
+        // USD/oz Raw
+        if (d.world) {
+            d.world_usd = d.world;
+        }
+
+        // Converted
+        if (d.world && (d.usd_vnd || lastUsd)) {
+            const rate = d.usd_vnd || lastUsd;
+            d.world_converted = (d.world * rate * 1.20565) / 1000000;
+        }
+
+        if (d.sjc && d.sjc > 500) {
+            d.sjc = d.sjc / 1000000;
+        }
+    });
+
+    // 2. Interpolate Phở Data (Smooth Curve)
+    // We only interpolate 'pho' key within the full chartData
+    chartData = interpolateData(chartData, 'pho');
+
+    // Filter subsets
+    const goldData = chartData.filter(d => d.sjc || d.world_converted || d.world_usd);
+    const reData = chartData.filter(d => d.hn_vnd || d.hcm_vnd || d.hn_gold || d.hcm_gold);
+    const phoData = chartData.filter(d => d.pho || d.cpi);
+
+    // Latest Metrics calculation (removed as logic is moved to Dashboard, but fetcher still needs basic filtering?)
+    // Actually, AssetsDashboard receives the FULL 'chartData' and does its own filtering/latest logic inside.
+    // So we can clean up this file significantly.
+
+    return (
+        <AssetsDashboard data={chartData} />
+    );
+}

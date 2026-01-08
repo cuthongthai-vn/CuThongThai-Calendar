@@ -1,0 +1,30 @@
+Date,Location,Price_Gold_Tael,Price_VND_Million,Price_USD_SqM,Notes
+1975-12-31,Hoan Kiem Central,20,0.06,N/A,War end - prices in gold taels
+1980-12-31,Hoan Kiem Central,30,0.39,N/A,Gold peak era
+1985-12-31,Hoan Kiem Central,25,0.13,N/A,Economic crisis
+1988-12-31,Hoan Kiem Central,40,2.32,N/A,SJC established - hyperinflation
+1990-12-31,Hoan Kiem Central,50,12.00,N/A,VND 6500/USD - still gold pricing
+1992-12-31,Ancient Quarter,45,19.80,N/A,11000 Policy - transition to VND
+1995-12-31,Hoan Kiem,40,22.00,N/A,ASEAN membership
+1998-12-31,Hoan Kiem,35,31.50,225,Asian Financial Crisis
+2000-12-31,Hoan Kiem,38,110.20,788,Dot-com era
+2003-12-31,Ancient Quarter,42,159.60,1029,Land Law 2003 enacted
+2005-12-31,Hoan Kiem,48,249.60,1710,Property boom begins
+2007-12-31,Ancient Quarter,55,475.75,2952,WTO membership - peak
+2008-12-31,Hoan Kiem,52,686.40,3927,Financial crisis impact
+2010-03-31,Ancient Quarter,65,1839.50,8358,Post-crisis recovery
+2010-12-31,French Quarter,60,1698.00,8692,Strong growth
+2012-12-31,Hoan Kiem,58,2378.00,11421,Market correction
+2013-12-31,Ancient Quarter,62,2151.40,10660,Decree 24 - gold restrictions
+2014-12-31,French Quarter,55,1892.00,8127,Market stabilization
+2015-12-31,Hoan Kiem,52,1726.40,7288,Slowdown period
+2017-12-31,Ancient Quarter,68,2516.00,9074,Recovery phase
+2018-12-31,Hoan Kiem District,75,2775.00,11928,Strong demand
+2019-12-31,Ba Dinh District,82,3505.50,14923,Pre-COVID peak
+2020-12-31,Hoan Kiem,88,4840.00,20879,COVID impact - low supply
+2021-12-31,Dong Da District,95,5358.00,22840,Price surge begins
+2022-12-31,Ba Dinh,105,6352.50,24194,Interest rate hikes
+2023-12-31,Hoan Kiem Center,118,8496.00,35700,Supply shortage
+2024-12-31,Ancient Quarter,142,11956.40,48500,Record highs
+2025-03-31,Hoan Kiem Prime,165,15274.00,70950,Q1 2025 - spectacular growth
+2025-12-31,Ancient Quarter,175,27230.00,78000,Year-end estimate
