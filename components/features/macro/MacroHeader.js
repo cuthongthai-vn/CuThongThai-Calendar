@@ -14,9 +14,6 @@ export default function MacroHeader({ activeTab = 'macro' }) {
                         Bức tranh sức khỏe nền kinh tế qua các con số biết nói.
                     </p>
                 </div>
-                <div className="text-xs text-slate-500 absolute top-0 right-0 text-right">
-                    ** Nguồn: WB, IMF, GSO và Tổng hợp
-                </div>
             </header>
 
 

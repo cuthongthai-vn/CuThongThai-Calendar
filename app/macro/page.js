@@ -301,6 +301,12 @@ export default async function MacroPage() {
                 </div>
             </div>
 
+
+            {/* --- SOURCE FOOTER --- */}
+            <div className="text-center text-slate-600 text-xs md:text-sm mt-12 mb-4 italic">
+                ** Nguồn dữ liệu: World Bank (WB), IMF, Tổng cục Thống kê (GSO), Ngân hàng Nhà nước (SBV) và Tổng hợp.
+            </div>
+
             {/* SPACER DIV TO PREVENT OVERLAP */}
             <div style={{ height: '300px' }} className="w-full"></div>
 
