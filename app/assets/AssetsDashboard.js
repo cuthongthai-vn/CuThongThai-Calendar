@@ -170,23 +170,24 @@ export default function AssetsDashboard({ data }) {
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <CandleChart
-                            chartId="vnindex"
-                            data={vnindexData.map(d => ({
-                                date: d.date,
-                                open: d.vnindex_open || d.vnindex, // Fallback
-                                high: d.vnindex_high || d.vnindex,
-                                low: d.vnindex_low || d.vnindex,
-                                close: d.vnindex,
-                                volume: d.vnindex_vol
-                            }))}
-                            height={400}
-                        />
-                </section >
+                    <CandleChart
+                        chartId="vnindex"
+                        data={vnindexData.map(d => ({
+                            date: d.date,
+                            open: d.vnindex_open || d.vnindex, // Fallback
+                            high: d.vnindex_high || d.vnindex,
+                            low: d.vnindex_low || d.vnindex,
+                            close: d.vnindex,
+                            volume: d.vnindex_vol
+                        }))}
+                        height={400}
+                    />
+                </section>
 
                 {/* SECTION 1: GOLD */}
-                < section >
+                <section>
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-yellow-500 w-1 h-6 mr-3 rounded-full"></span>
@@ -384,14 +385,13 @@ export default function AssetsDashboard({ data }) {
                         ]}
                         height={300}
                     />
-                </section >
-            </div >
+                </section>
+            </div>
 
             {/* SPACER DIV TO PREVENT OVERLAP */}
-            < div style={{ height: '300px' }
-            } className="w-full" ></div >
+            <div style={{ height: '300px' }} className="w-full"></div>
 
             <FloatingCTA />
-        </div >
+        </div>
     );
 }
