@@ -91,6 +91,11 @@ export default function AssetsDashboard({ data }) {
     const latestPho = getLatest(phoData, 'pho');
     const phoGrowth = calculateGrowth(phoData, 'pho', phoRange);
 
+    // VNINDEX
+    const vnindexData = data.filter(d => d.vnindex);
+    const latestVNINDEX = getLatest(vnindexData, 'vnindex');
+    const vnindexGrowth = calculateGrowth(vnindexData, 'vnindex', goldRange);
+
     // --- NEW METRICS PROCESSING ---
 
     // 1. Gold Spread
@@ -145,8 +150,36 @@ export default function AssetsDashboard({ data }) {
 
                 <div className="text-center py-5">
                     <h1 className="text-3xl font-bold text-theme-yellow mb-2">Tài Sản & Giá Cả</h1>
-                    <p className="text-slate-400">Theo dõi biến động Vàng và Bất Động Sản qua các thời kỳ</p>
+                    <p className="text-slate-400">Theo dõi biến động Vàng, Chứng Khoán và Bất Động Sản qua các thời kỳ</p>
                 </div>
+
+                {/* SECTION 0: VNINDEX (NEW) */}
+                <section>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <h2 className="text-xl font-bold text-white flex items-center">
+                            <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
+                            Chứng Khoán (VNINDEX)
+                        </h2>
+                        <div className="flex gap-4 mt-2 md:mt-0 text-right">
+                            <div>
+                                <p className="text-xs text-slate-400">Điểm số ({latestVNINDEX.date})</p>
+                                <div className="flex items-center justify-end">
+                                    <p className="text-lg font-bold text-green-400">{latestVNINDEX.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}</p>
+                                    <GrowthBadge value={vnindexGrowth} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <MacroChart
+                        data={vnindexData}
+                        selectedRange={goldRange}
+                        onRangeChange={setGoldRange} // Re-using gold range state for simplicity
+                        dataKeys={[
+                            { key: 'vnindex', color: '#4ade80', name: 'VNINDEX', unit: ' Điểm' }
+                        ]}
+                        height={400}
+                    />
+                </section>
 
                 {/* SECTION 1: GOLD */}
                 <section>

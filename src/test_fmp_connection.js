@@ -30,24 +30,14 @@ async function testEndpoint(name, url) {
 }
 
 async function runTests() {
-    // 1. Forex Realtime
-    await testEndpoint("Forex Quote (V3)", `${BASE_V3}/quote/USDVND?apikey=${FMP_API_KEY}`);
+    // 1. Control Test: AAPL (Standard Stock)
+    await testEndpoint("AAPL History (V3 Full)", `${BASE_V3}/historical-price-full/AAPL?apikey=${FMP_API_KEY}`);
 
-    // 2. Forex History V3
-    await testEndpoint("Forex History (V3 Chart)", `${BASE_V3}/historical-chart/1day/USDVND?apikey=${FMP_API_KEY}`);
+    // 2. Re-test VNINDEX Quote (Realtime might work, History might fail)
+    await testEndpoint("VNINDEX Quote", `${BASE_V3}/quote/^VNINDEX?apikey=${FMP_API_KEY}`);
 
-    // 3. Forex History V4 (Often for premium)
-    await testEndpoint("Forex History (V4 Standard)", `${BASE_V3}/historical-price-full/USDVND?apikey=${FMP_API_KEY}`);
-
-    // 4. Calendar Short Range (Stable)
-    const today = new Date().toISOString().split('T')[0];
-    await testEndpoint("Calendar Short (Stable)", `${BASE_STABLE}/economic-calendar?from=${today}&to=${today}&apikey=${FMP_API_KEY}`);
-
-    // 5. Calendar Long Range (Stable)
-    await testEndpoint("Calendar Long (Stable)", `${BASE_STABLE}/economic-calendar?from=2024-01-01&to=2024-02-01&apikey=${FMP_API_KEY}`);
-
-    // 6. Calendar V3
-    await testEndpoint("Calendar Short (V3)", `${BASE_V3}/economic-calendar?from=${today}&to=${today}&apikey=${FMP_API_KEY}`);
+    // 3. Search to see if symbols exist
+    await testEndpoint("Search ^VNINDEX", `${BASE_V3}/search?query=^VNINDEX&limit=1&apikey=${FMP_API_KEY}`);
 }
 
 runTests();

@@ -228,6 +228,19 @@ async function run() {
         ]
     );
 
+    // 8. VNINDEX History (Generated Daily)
+    await importCsv(
+        path.join(__dirname, '../data_upload/vietnam-vnindex-history-daily-interpolated.csv'),
+        (row) => [
+            {
+                indicator_key: 'VNINDEX',
+                date: row.Date,
+                value: parseFloat(row.Close),
+                source: 'MANUAL_GENERATED'
+            }
+        ]
+    );
+
     console.log("Assets Import Completed!");
 }
 
