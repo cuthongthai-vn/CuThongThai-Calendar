@@ -1,6 +1,6 @@
 'use client';
 
-import { createChart, ColorType } from 'lightweight-charts';
+import { createChart, ColorType, CandlestickSeries, HistogramSeries } from 'lightweight-charts';
 import { useState, useMemo, useEffect, useRef } from 'react';
 
 // Color Palette (TradingView Standard)
@@ -143,8 +143,8 @@ export default function CandleChart({
             }
         });
 
-        // 3. CANDLE SERIES
-        const mainSeries = chart.addCandlestickSeries({
+        // 3. CANDLE SERIES (v5 API)
+        const mainSeries = chart.addSeries(CandlestickSeries, {
             upColor: COLORS.up,
             downColor: COLORS.down,
             borderUpColor: COLORS.up,
@@ -155,8 +155,8 @@ export default function CandleChart({
 
         mainSeries.setData(chartData);
 
-        // 4. VOLUME SERIES (Overlay)
-        const volumeSeries = chart.addHistogramSeries({
+        // 4. VOLUME SERIES (Overlay) (v5 API)
+        const volumeSeries = chart.addSeries(HistogramSeries, {
             priceFormat: {
                 type: 'volume',
             },
