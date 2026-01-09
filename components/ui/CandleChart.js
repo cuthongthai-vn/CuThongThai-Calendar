@@ -1,12 +1,15 @@
 'use client';
 
-import { createChart, ColorType, CandlestickSeries, HistogramSeries } from 'lightweight-charts';
+import { createChart, ColorType, AreaSeries, HistogramSeries } from 'lightweight-charts';
 import { useState, useMemo, useEffect, useRef } from 'react';
 
-// Color Palette (TradingView Standard)
+// Color Palette
 const COLORS = {
-    up: '#089981',
-    down: '#F23645',
+    line: '#22c55e', // Green-500
+    topColor: 'rgba(34, 197, 94, 0.4)', // Green gradient
+    bottomColor: 'rgba(34, 197, 94, 0.0)',
+    up: '#22c55e',
+    down: '#ef4444',
     bg: 'transparent',
     grid: '#334155',
     text: '#94a3b8',
@@ -97,12 +100,11 @@ export default function CandleChart({
         const processed = resampleData(rawFiltered, interval);
 
         // Map to Lightweight Charts format
-        // { time: '2018-12-22', open: ..., high: ..., low: ..., close: ... }
+        // { time: 'YYYY-MM-DD', value: ... } for AreaSeries
         return processed.map(d => ({
             time: d.date.split('T')[0], // Ensure YYYY-MM-DD
-            open: d.open,
-            high: d.high,
-            low: d.low,
+            value: d.close, // For AreaSeries
+            open: d.open, // For Volume Color logic
             close: d.close,
             volume: d.volume,
             isUp: d.close >= d.open
@@ -137,25 +139,35 @@ export default function CandleChart({
             rightPriceScale: {
                 scaleMargins: {
                     top: 0.1,
-                    bottom: 0.2,
+                    bottom: 0.2, // Space for volume
                 },
                 borderVisible: false,
-            }
+            },
+            crosshair: {
+                vertLine: {
+                    width: 1,
+                    color: '#94a3b8',
+                    labelBackgroundColor: '#94a3b8',
+                },
+                horzLine: {
+                    width: 1,
+                    color: '#94a3b8',
+                    labelBackgroundColor: '#94a3b8',
+                },
+            },
         });
 
-        // 3. CANDLE SERIES (v5 API)
-        const mainSeries = chart.addSeries(CandlestickSeries, {
-            upColor: COLORS.up,
-            downColor: COLORS.down,
-            borderUpColor: COLORS.up,
-            borderDownColor: COLORS.down,
-            wickUpColor: COLORS.up,
-            wickDownColor: COLORS.down,
+        // 3. AREA SERIES (Line with Fill)
+        const mainSeries = chart.addSeries(AreaSeries, {
+            lineColor: COLORS.line,
+            topColor: COLORS.topColor,
+            bottomColor: COLORS.bottomColor,
+            lineWidth: 2,
         });
 
         mainSeries.setData(chartData);
 
-        // 4. VOLUME SERIES (Overlay) (v5 API)
+        // 4. VOLUME SERIES (Overlay)
         const volumeSeries = chart.addSeries(HistogramSeries, {
             priceFormat: {
                 type: 'volume',
@@ -205,7 +217,7 @@ export default function CandleChart({
             {/* Header */}
             <div className="flex flex-wrap items-center justify-between mb-4 gap-4">
                 <div className="flex items-center gap-3">
-                    <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Biểu Đồ Nến (PRO)</h3>
+                    <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Biểu Đồ Xu Hướng (VNINDEX)</h3>
                 </div>
 
                 <div className="flex space-x-1 bg-slate-900 p-1 rounded-lg">
@@ -225,7 +237,7 @@ export default function CandleChart({
             <div ref={chartContainerRef} className="w-full relative" style={{ height: height }} />
 
             <div className="text-center text-xs text-slate-600 mt-2">
-                * Dữ liệu từ VNDirect. TradingView Engine.
+                * Dữ liệu từ VNDirect. TradingView Engine (Area Mode).
             </div>
         </div>
     );
