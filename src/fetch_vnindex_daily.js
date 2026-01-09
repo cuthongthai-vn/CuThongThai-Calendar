@@ -41,6 +41,38 @@ async function fetchVNINDEX() {
                     source: 'VNDIRECT_API'
                 }, { onConflict: 'indicator_key, date' });
 
+
+
+            // Upsert Open
+            const { error: err3 } = await supabase
+                .from('macro_indicators')
+                .upsert({
+                    indicator_key: 'VNINDEX_OPEN',
+                    date: dateStr,
+                    value: json.o[lastIdx],
+                    source: 'VNDIRECT_API'
+                }, { onConflict: 'indicator_key, date' });
+
+            // Upsert High
+            const { error: err4 } = await supabase
+                .from('macro_indicators')
+                .upsert({
+                    indicator_key: 'VNINDEX_HIGH',
+                    date: dateStr,
+                    value: json.h[lastIdx],
+                    source: 'VNDIRECT_API'
+                }, { onConflict: 'indicator_key, date' });
+
+            // Upsert Low
+            const { error: err5 } = await supabase
+                .from('macro_indicators')
+                .upsert({
+                    indicator_key: 'VNINDEX_LOW',
+                    date: dateStr,
+                    value: json.l[lastIdx],
+                    source: 'VNDIRECT_API'
+                }, { onConflict: 'indicator_key, date' });
+
             // Upsert Volume
             const { error: err2 } = await supabase
                 .from('macro_indicators')
@@ -51,10 +83,10 @@ async function fetchVNINDEX() {
                     source: 'VNDIRECT_API'
                 }, { onConflict: 'indicator_key, date' });
 
-            if (err1 || err2) {
-                console.error(`   ❌ Database Error: ${err1?.message} | ${err2?.message}`);
+            if (err1 || err2 || err3 || err4 || err5) {
+                console.error(`   ❌ Database Error: ${err1?.message} | ${err2?.message} | ${err3?.message}`);
             } else {
-                console.log(`   ✅ Successfully updated VNINDEX & VOLUME for ${dateStr}`);
+                console.log(`   ✅ Successfully updated VNINDEX OHLCV for ${dateStr}`);
             }
 
         } else {

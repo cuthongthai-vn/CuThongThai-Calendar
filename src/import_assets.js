@@ -246,9 +246,30 @@ async function run() {
                 source: 'MANUAL_GENERATED'
             },
             {
+                source: 'MANUAL_GENERATED'
+            },
+            {
                 indicator_key: 'VNINDEX_VOLUME',
                 date: row.Date,
                 value: parseFloat(row.Volume),
+                source: 'MANUAL_GENERATED'
+            },
+            {
+                indicator_key: 'VNINDEX_OPEN',
+                date: row.Date,
+                value: parseFloat(row.Open),
+                source: 'MANUAL_GENERATED'
+            },
+            {
+                indicator_key: 'VNINDEX_HIGH',
+                date: row.Date,
+                value: parseFloat(row.High),
+                source: 'MANUAL_GENERATED'
+            },
+            {
+                indicator_key: 'VNINDEX_LOW',
+                date: row.Date,
+                value: parseFloat(row.Low),
                 source: 'MANUAL_GENERATED'
             }
         ]

@@ -11,15 +11,29 @@ import OverheatingMonitorSection from '../../components/features/macro/Overheati
 
 export const dynamic = 'force-dynamic'; // Disable caching to fetch fresh data on every request
 
-export const metadata = {
-    title: 'Vĩ Mô Việt Nam | Cú Thông Thái',
-    description: 'Bức tranh toàn cảnh kinh tế Việt Nam: GDP, Lạm Phát (CPI), Tỷ Giá và Lãi Suất cập nhật liên tục.',
-    openGraph: {
-        title: 'Vĩ Mô Việt Nam - Các chỉ số biết nói',
-        description: 'Theo dõi nhịp đập nền kinh tế qua các biểu đồ trực quan nhất.',
-        images: ['/og-macro.png'],
-    },
-};
+export async function generateMetadata({ searchParams }) {
+    const charId = searchParams?.chart;
+
+    const TITLES = {
+        'exchange-rate': 'Tỷ Giá USD/VND',
+        'rates': 'Lãi Suất & Tiết Kiệm',
+        'gdp-abs': 'Quy Mô GDP Việt Nam',
+        'gdp-cpi': 'Tăng Trưởng GDP & Lạm Phát',
+    };
+
+    const title = charId && TITLES[charId]
+        ? `${TITLES[charId]} | Cú Thông Thái`
+        : 'Vĩ Mô Việt Nam | Cú Thông Thái';
+
+    return {
+        title: title,
+        description: 'Dữ liệu kinh tế vĩ mô Việt Nam cập nhật liên tục: GDP, CPI, Tỷ giá, Lãi suất.',
+        openGraph: {
+            title: title,
+            images: [`/api/og?chart=${charId || 'macro'}`],
+        },
+    };
+}
 
 const supabase = createClient(
     process.env.SUPABASE_URL,
@@ -192,6 +206,7 @@ export default async function MacroPage() {
                         </div>
                     </div>
                     <MacroChart
+                        chartId="exchange-rate"
                         data={forexData}
                         dataKeys={[
                             { key: 'black_market', color: '#fbbf24', name: 'Chợ Đen' },
@@ -217,6 +232,7 @@ export default async function MacroPage() {
                             </div>
                         </div>
                         <MacroChart
+                            chartId="rates"
                             data={ratesData}
                             dataKeys={[
                                 { key: 'ref_rate', color: '#a855f7', name: 'Điều hành (SBV)' },
@@ -238,6 +254,7 @@ export default async function MacroPage() {
                             </div>
                         </div>
                         <MacroChart
+                            chartId="gdp-abs"
                             data={gdpAbsData}
                             dataKeys={[
                                 { key: 'gdp_abs', color: '#10b981', name: 'GDP (Tỷ $)', unit: 'B$' }
@@ -264,6 +281,7 @@ export default async function MacroPage() {
                             </div>
                         </div>
                         <MacroChart
+                            chartId="gdp-cpi"
                             data={econData}
                             dataKeys={[
                                 { key: 'gdp', color: '#06b6d4', name: 'GDP (YoY)' },

@@ -3,15 +3,30 @@ import AssetsDashboard from './AssetsDashboard';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata = {
-    title: 'Tài Sản & Giá Cả | Cú Thông Thái',
-    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt tại Việt Nam.',
-    openGraph: {
-        title: 'Tài Sản & Giá Cả - Theo dõi Vàng & BĐS',
-        description: 'So sánh hiệu suất đầu tư giữa Vàng, Đất và Tiền gửi qua các thời kỳ.',
-        images: ['/og-assets.png'],
-    },
-};
+export async function generateMetadata({ searchParams }) {
+    const charId = searchParams?.chart;
+
+    const TITLES = {
+        'vnindex': 'Biểu Đồ VNINDEX',
+        'gold': 'Giá Vàng SJC & Thế Giới',
+        're-vnd': 'Giá Bất Động Sản (VND)',
+        'housing': 'Khả Năng Mua Nhà',
+        'rent-burden': 'Áp Lực Thuê Nhà',
+    };
+
+    const title = charId && TITLES[charId]
+        ? `${TITLES[charId]} | Cú Thông Thái`
+        : 'Tài Sản & Giá Cả | Cú Thông Thái';
+
+    return {
+        title: title,
+        description: 'Theo dõi biến động tài sản: Vàng, Chứng Khoán, Bất Động Sản và chi phí sinh hoạt.',
+        openGraph: {
+            title: title,
+            images: [`/api/og?chart=${charId || 'assets'}`],
+        },
+    };
+}
 
 const supabase = createClient(
     process.env.SUPABASE_URL,
@@ -57,6 +72,9 @@ const pivotData = (rows) => {
 
         if (r.indicator_key === 'VNINDEX') map[dateStr].vnindex = Number(r.value);
         if (r.indicator_key === 'VNINDEX_VOLUME') map[dateStr].vnindex_vol = Number(r.value);
+        if (r.indicator_key === 'VNINDEX_OPEN') map[dateStr].vnindex_open = Number(r.value);
+        if (r.indicator_key === 'VNINDEX_HIGH') map[dateStr].vnindex_high = Number(r.value);
+        if (r.indicator_key === 'VNINDEX_LOW') map[dateStr].vnindex_low = Number(r.value);
     });
     return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
 };
@@ -127,6 +145,9 @@ export default async function AssetsPage() {
         'indicator_key.like.METRIC%,' + // New: Fetch METRIC...
         'indicator_key.eq.VNINDEX,' + // New: Fetch VNINDEX
         'indicator_key.eq.VNINDEX_VOLUME,' + // FETCH VOLUME
+        'indicator_key.eq.VNINDEX_OPEN,' +
+        'indicator_key.eq.VNINDEX_HIGH,' +
+        'indicator_key.eq.VNINDEX_LOW,' +
         'indicator_key.eq.USDVND_OFFICIAL,' +
         'indicator_key.eq.VN_CPI_YOY';
 

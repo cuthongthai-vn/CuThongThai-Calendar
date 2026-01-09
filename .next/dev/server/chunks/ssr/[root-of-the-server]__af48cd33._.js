@@ -65,7 +65,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$assets$2f$AssetsDashb
 const dynamic = 'force-dynamic';
 const metadata = {
     title: 'Tài Sản & Giá Cả | Cú Thông Thái',
-    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt (Phở Index) tại Việt Nam.',
+    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt tại Việt Nam.',
     openGraph: {
         title: 'Tài Sản & Giá Cả - Theo dõi Vàng & BĐS',
         description: 'So sánh hiệu suất đầu tư giữa Vàng, Đất và Tiền gửi qua các thời kỳ.',
@@ -101,6 +101,13 @@ const pivotData = (rows)=>{
         if (r.indicator_key === 'PRICE_BIA_HOI_VN') map[dateStr].beer = Number(r.value);
         if (r.indicator_key === 'INCOME_AVG_VN') map[dateStr].income = Number(r.value);
         if (r.indicator_key === 'RE_CONDO_VN') map[dateStr].condo = Number(r.value);
+        if (r.indicator_key === 'METRIC_SALARY_PER_SQM') map[dateStr].salary_per_sqm = Number(r.value);
+        // Rental / Survival Keys
+        if (r.indicator_key === 'SURVIVAL_HAN_SINGLE_RENT') map[dateStr].rent_han_single = Number(r.value);
+        if (r.indicator_key === 'SURVIVAL_SGN_SINGLE_RENT') map[dateStr].rent_sgn_single = Number(r.value);
+        if (r.indicator_key === 'SURVIVAL_HAN_SINGLE_INCOME') map[dateStr].income_han_single = Number(r.value);
+        if (r.indicator_key === 'SURVIVAL_SGN_SINGLE_INCOME') map[dateStr].income_sgn_single = Number(r.value);
+        if (r.indicator_key === 'VNINDEX') map[dateStr].vnindex = Number(r.value);
     });
     return Object.values(map).sort((a, b)=>new Date(a.date) - new Date(b.date));
 };
@@ -159,6 +166,9 @@ async function AssetsPage() {
     // Filter string constructing
     const filterStr = 'indicator_key.like.GOLD%,' + 'indicator_key.like.RE%,' + 'indicator_key.like.PHO%,' + 'indicator_key.like.PRICE%,' + // New: Fetch all PRICE_... keys
     'indicator_key.like.INCOME%,' + // New: Fetch INCOME...
+    'indicator_key.like.SURVIVAL%,' + // New: Fetch SURVIVAL...
+    'indicator_key.like.METRIC%,' + // New: Fetch METRIC...
+    'indicator_key.eq.VNINDEX,' + // New: Fetch VNINDEX
     'indicator_key.eq.USDVND_OFFICIAL,' + 'indicator_key.eq.VN_CPI_YOY';
     while(more){
         const { data: chunk, error } = await supabase.from('macro_indicators').select('*').or(filterStr).order('date', {
@@ -171,7 +181,7 @@ async function AssetsPage() {
                 children: "Error loading data"
             }, void 0, false, {
                 fileName: "[project]/app/assets/page.js",
-                lineNumber: 129,
+                lineNumber: 141,
                 columnNumber: 36
             }, this);
             break;
@@ -221,6 +231,11 @@ async function AssetsPage() {
     chartData = interpolateData(chartData, 'income');
     chartData = interpolateData(chartData, 'iphone');
     chartData = interpolateData(chartData, 'sh');
+    chartData = interpolateData(chartData, 'salary_per_sqm'); // New
+    chartData = interpolateData(chartData, 'rent_han_single'); // New
+    chartData = interpolateData(chartData, 'rent_sgn_single'); // New
+    chartData = interpolateData(chartData, 'income_han_single'); // New
+    chartData = interpolateData(chartData, 'income_sgn_single'); // New
     // Real Estate Interpolation (Fix missing data gaps)
     chartData = interpolateData(chartData, 'hn_vnd');
     chartData = interpolateData(chartData, 'hcm_vnd');
@@ -237,7 +252,7 @@ async function AssetsPage() {
         data: chartData
     }, void 0, false, {
         fileName: "[project]/app/assets/page.js",
-        lineNumber: 199,
+        lineNumber: 216,
         columnNumber: 9
     }, this);
 }

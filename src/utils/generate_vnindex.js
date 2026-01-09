@@ -58,7 +58,7 @@ function getInterpolatedVolume(date) {
 
 
 function generateDaily() {
-    let rows = ['Date,Close,Volume'];
+    let rows = ['Date,Close,Open,High,Low,Volume'];
 
     for (let i = 0; i < MILESTONES.length - 1; i++) {
         const start = MILESTONES[i];
@@ -74,11 +74,21 @@ function generateDaily() {
             // Linear Progress
             const progress = d / days;
 
-            // SMOOTHER LINE (Reduced Noise from 0.02 to 0.001)
+            // SMOOTHER LINE
             const baseVal = start.val + (valDiff * progress);
-            const noise = (Math.random() - 0.5) * (baseVal * 0.001);
+            const close = baseVal + (Math.random() - 0.5) * (baseVal * 0.005);
 
-            let val = baseVal + noise;
+            // Mock OHLC around Close
+            // Open is usually previous Close (simplified: close +/- random)
+            const open = close + (Math.random() - 0.5) * (close * 0.015);
+
+            // High is max of open/close + margin
+            const maxBody = Math.max(open, close);
+            const high = maxBody + Math.random() * (close * 0.01);
+
+            // Low is min of open/close - margin
+            const minBody = Math.min(open, close);
+            const low = minBody - Math.random() * (close * 0.01);
 
             // Format Date
             const curDate = new Date(startDate);
@@ -87,14 +97,20 @@ function generateDaily() {
 
             const vol = getInterpolatedVolume(dateStr);
 
-            rows.push(`${dateStr},${val.toFixed(2)},${vol}`);
+            rows.push(`${dateStr},${close.toFixed(2)},${open.toFixed(2)},${high.toFixed(2)},${low.toFixed(2)},${vol}`);
         }
     }
 
     // Add last point
     const last = MILESTONES[MILESTONES.length - 1];
     const lastVol = getInterpolatedVolume(last.date);
-    rows.push(`${last.date},${last.val},${lastVol}`);
+    // Fake OHLC for last point too
+    const lastClose = last.val;
+    const lastOpen = lastClose * 0.99;
+    const lastHigh = lastClose * 1.01;
+    const lastLow = lastClose * 0.98;
+
+    rows.push(`${last.date},${lastClose},${lastOpen},${lastHigh},${lastLow},${lastVol}`);
 
     return rows.join('\n');
 }
