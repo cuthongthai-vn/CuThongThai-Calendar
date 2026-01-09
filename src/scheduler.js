@@ -42,6 +42,19 @@ async function checkSchedule() {
         results.push({ id: event.id, name: event.event_name, result: res.status });
     }
 
+    const { fetchVNINDEX } = require('./fetch_vnindex_daily');
+
+    // DAILY MAINTENANCE (15:00 - 15:10)
+    // Run VNINDEX update if we are in this window. 
+    // The fetcher is idempotent (upserts same date/value) so calling multiple times is fine.
+    const now = new Date();
+    // Assuming server time matches local desire, or convert to VN time (UTC+7)
+    // Here we use system time as requested by user context (2026-01-09T11:32... is local)
+    if (now.getHours() === 15 && now.getMinutes() < 15) {
+        console.log("🕒 15:00 - Triggering Daily VNINDEX Update...");
+        await fetchVNINDEX();
+    }
+
     return { status: "WAR_MODE_ACTIVE", processed: results };
 }
 
