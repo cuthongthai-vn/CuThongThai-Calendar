@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import MacroChart from '../../components/ui/MacroChart';
 import MacroHeader from '../../components/features/macro/MacroHeader';
 import FloatingCTA from '../../components/ui/FloatingCTA';
+import LazyLoad from '../../components/ui/LazyLoad';
 import TradeBalanceSection from '../../components/features/macro/TradeBalanceSection';
 import ReservesHealthSection from '../../components/features/macro/ReservesHealthSection';
 import FDIStructureSection from '../../components/features/macro/FDIStructureSection';
@@ -281,31 +282,35 @@ export default async function MacroPage() {
                 </div>
 
                 {/* --- PART II: MACRO BALANCE NEW SECTION --- */}
-                <div className="mt-16 mb-8 border-t border-slate-800 pt-8">
-                    <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-yellow-500 pl-4 uppercase">
-                        II. Sức Khỏe & Cân Đối Vĩ Mô (Stability)
-                    </h3>
+                <LazyLoad height="600px">
+                    <div className="mt-16 mb-8 border-t border-slate-800 pt-8">
+                        <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-yellow-500 pl-4 uppercase">
+                            II. Sức Khỏe & Cân Đối Vĩ Mô (Stability)
+                        </h3>
 
-                    <TradeBalanceSection />
+                        <TradeBalanceSection />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <ReservesHealthSection />
-                        <FDIStructureSection />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <ReservesHealthSection />
+                            <FDIStructureSection />
+                        </div>
                     </div>
-                </div>
+                </LazyLoad>
 
                 {/* --- PART III: POLICY & HEALTH NEW SECTION --- */}
-                <div className="mt-16 mb-8 border-t border-slate-800 pt-8">
-                    <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-pink-500 pl-4 uppercase">
-                        III. Chính Sách & Sức Bền (Policy & Health)
-                    </h3>
+                <LazyLoad height="800px">
+                    <div className="mt-16 mb-8 border-t border-slate-800 pt-8">
+                        <h3 className="text-2xl font-bold text-slate-200 mb-8 border-l-4 border-pink-500 pl-4 uppercase">
+                            III. Chính Sách & Sức Bền (Policy & Health)
+                        </h3>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <PolicyStanceSection />
-                        <OverheatingMonitorSection />
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <PolicyStanceSection />
+                            <OverheatingMonitorSection />
+                        </div>
+                        <DebtSustainabilitySection />
                     </div>
-                    <DebtSustainabilitySection />
-                </div>
+                </LazyLoad>
             </div>
 
 

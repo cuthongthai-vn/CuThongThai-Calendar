@@ -4,6 +4,7 @@ import { useState } from 'react';
 import MacroChart from '../../components/ui/MacroChart';
 import CandleChart from '../../components/ui/CandleChart';
 import FloatingCTA from '../../components/ui/FloatingCTA';
+import LazyLoad from '../../components/ui/LazyLoad';
 
 export default function AssetsDashboard({ data }) {
     // 1. State for Time Ranges
@@ -176,199 +177,209 @@ export default function AssetsDashboard({ data }) {
                 </section>
 
                 {/* SECTION 1: GOLD */}
-                <section>
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-white flex items-center">
-                            <span className="bg-yellow-500 w-1 h-6 mr-3 rounded-full"></span>
-                            Thị Trường Vàng
-                        </h2>
-                        <div className="flex gap-4 mt-2 md:mt-0 text-right">
-                            <div>
-                                <p className="text-xs text-slate-400">SJC ({latestSJC.date})</p>
-                                <div className="flex items-center justify-end">
-                                    <p className="text-lg font-bold text-amber-400">{latestSJC.value?.toLocaleString()} Tr</p>
-                                    <GrowthBadge value={sjcGrowth} />
-                                </div>
-                            </div>
-                            <div>
-                                <p className="text-xs text-slate-400">Thế Giới ({latestWorld.date})</p>
-                                <div className="flex flex-col items-end">
-                                    <div className="flex items-center">
-                                        <span className="text-sm font-bold text-slate-300">{latestWorld.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Tr</span>
-                                        <GrowthBadge value={worldGrowth} />
+                <LazyLoad height="400px">
+                    <section>
+                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <span className="bg-yellow-500 w-1 h-6 mr-3 rounded-full"></span>
+                                Thị Trường Vàng
+                            </h2>
+                            <div className="flex gap-4 mt-2 md:mt-0 text-right">
+                                <div>
+                                    <p className="text-xs text-slate-400">SJC ({latestSJC.date})</p>
+                                    <div className="flex items-center justify-end">
+                                        <p className="text-lg font-bold text-amber-400">{latestSJC.value?.toLocaleString()} Tr</p>
+                                        <GrowthBadge value={sjcGrowth} />
                                     </div>
-                                    <span className="text-xs text-cyan-400">${latestWorldUSD.value?.toLocaleString()} / oz</span>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-slate-400">Thế Giới ({latestWorld.date})</p>
+                                    <div className="flex flex-col items-end">
+                                        <div className="flex items-center">
+                                            <span className="text-sm font-bold text-slate-300">{latestWorld.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Tr</span>
+                                            <GrowthBadge value={worldGrowth} />
+                                        </div>
+                                        <span className="text-xs text-cyan-400">${latestWorldUSD.value?.toLocaleString()} / oz</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <MacroChart
-                        data={goldData}
-                        selectedRange={goldRange}
-                        onRangeChange={setGoldRange}
-                        dataKeys={[
-                            { key: 'sjc', color: '#fbbf24', name: 'Vàng SJC (Tr)', unit: ' Tr' },
-                            { key: 'world_converted', color: '#94a3b8', name: 'TG Quy đổi (Tr)', unit: ' Tr' },
-                            { key: 'world_usd', color: '#22d3ee', name: 'TG (USD/oz)', yAxisId: 'right', unit: ' $' }
-                        ]}
-                        height={400}
-                    />
-                </section >
+                        <MacroChart
+                            data={goldData}
+                            selectedRange={goldRange}
+                            onRangeChange={setGoldRange}
+                            dataKeys={[
+                                { key: 'sjc', color: '#fbbf24', name: 'Vàng SJC (Tr)', unit: ' Tr' },
+                                { key: 'world_converted', color: '#94a3b8', name: 'TG Quy đổi (Tr)', unit: ' Tr' },
+                                { key: 'world_usd', color: '#22d3ee', name: 'TG (USD/oz)', yAxisId: 'right', unit: ' $' }
+                            ]}
+                            height={400}
+                        />
+                    </section >
+                </LazyLoad>
 
                 {/* SECTION 2: REAL ESTATE */}
-                <section>
-                    <div className="flex flex-col md:flex-row gap-8">
-                        {/* VND */}
-                        <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between mb-4">
-                                <h2 className="text-xl font-bold text-white flex items-center">
-                                    <span className="bg-blue-500 w-1 h-6 mr-3 rounded-full"></span>
-                                    Giá Đất (Triệu/m2)
-                                </h2>
-                            </div>
-                            <div className="flex justify-end gap-4 mb-2">
-                                <div className="text-right">
-                                    <p className="text-xs text-slate-400">Hà Nội</p>
-                                    <div className="flex items-center justify-end">
-                                        <p className="text-base font-bold text-blue-400">{latestHNVND.value?.toLocaleString()}</p>
-                                        <GrowthBadge value={hnVndGrowth} />
+                <LazyLoad height="350px">
+                    <section>
+                        <div className="flex flex-col md:flex-row gap-8">
+                            {/* VND */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h2 className="text-xl font-bold text-white flex items-center">
+                                        <span className="bg-blue-500 w-1 h-6 mr-3 rounded-full"></span>
+                                        Giá Đất (Triệu/m2)
+                                    </h2>
+                                </div>
+                                <div className="flex justify-end gap-4 mb-2">
+                                    <div className="text-right">
+                                        <p className="text-xs text-slate-400">Hà Nội</p>
+                                        <div className="flex items-center justify-end">
+                                            <p className="text-base font-bold text-blue-400">{latestHNVND.value?.toLocaleString()}</p>
+                                            <GrowthBadge value={hnVndGrowth} />
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-xs text-slate-400">TP.HCM</p>
+                                        <div className="flex items-center justify-end">
+                                            <p className="text-base font-bold text-pink-400">{latestHCMVND.value?.toLocaleString()}</p>
+                                            <GrowthBadge value={hcmVndGrowth} />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="text-right">
-                                    <p className="text-xs text-slate-400">TP.HCM</p>
-                                    <div className="flex items-center justify-end">
-                                        <p className="text-base font-bold text-pink-400">{latestHCMVND.value?.toLocaleString()}</p>
-                                        <GrowthBadge value={hcmVndGrowth} />
+                                <MacroChart
+                                    data={reData}
+                                    selectedRange={reRange}
+                                    onRangeChange={setReRange}
+                                    dataKeys={[
+                                        { key: 'hn_vnd', color: '#60a5fa', name: 'Hà Nội' },
+                                        { key: 'hcm_vnd', color: '#f472b6', name: 'TP.HCM' }
+                                    ]}
+                                    height={350}
+                                />
+                            </div>
+                            {/* GOLD */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h2 className="text-xl font-bold text-white flex items-center">
+                                        <span className="bg-amber-600 w-1 h-6 mr-3 rounded-full"></span>
+                                        Giá Đất (Cây Vàng/m2)
+                                    </h2>
+                                </div>
+                                <div className="flex justify-end gap-4 mb-2">
+                                    <div className="text-right">
+                                        <p className="text-xs text-slate-400">Hà Nội</p>
+                                        <div className="flex items-center justify-end">
+                                            <p className="text-base font-bold text-amber-500">{latestHNGold.value?.toLocaleString()}</p>
+                                            <GrowthBadge value={hnGoldGrowth} />
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-xs text-slate-400">TP.HCM</p>
+                                        <div className="flex items-center justify-end">
+                                            <p className="text-base font-bold text-orange-600">{latestHCMGold.value?.toLocaleString()}</p>
+                                            <GrowthBadge value={hcmGoldGrowth} />
+                                        </div>
                                     </div>
                                 </div>
+                                <MacroChart
+                                    data={reData}
+                                    selectedRange={reRange}
+                                    onRangeChange={setReRange}
+                                    dataKeys={[
+                                        { key: 'hn_gold', color: '#d97706', name: 'Hà Nội' },
+                                        { key: 'hcm_gold', color: '#b45309', name: 'TP.HCM' }
+                                    ]}
+                                    height={350}
+                                />
                             </div>
-                            <MacroChart
-                                data={reData}
-                                selectedRange={reRange}
-                                onRangeChange={setReRange}
-                                dataKeys={[
-                                    { key: 'hn_vnd', color: '#60a5fa', name: 'Hà Nội' },
-                                    { key: 'hcm_vnd', color: '#f472b6', name: 'TP.HCM' }
-                                ]}
-                                height={350}
-                            />
                         </div>
-                        {/* GOLD */}
-                        <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between mb-4">
-                                <h2 className="text-xl font-bold text-white flex items-center">
-                                    <span className="bg-amber-600 w-1 h-6 mr-3 rounded-full"></span>
-                                    Giá Đất (Cây Vàng/m2)
-                                </h2>
-                            </div>
-                            <div className="flex justify-end gap-4 mb-2">
-                                <div className="text-right">
-                                    <p className="text-xs text-slate-400">Hà Nội</p>
-                                    <div className="flex items-center justify-end">
-                                        <p className="text-base font-bold text-amber-500">{latestHNGold.value?.toLocaleString()}</p>
-                                        <GrowthBadge value={hnGoldGrowth} />
-                                    </div>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-xs text-slate-400">TP.HCM</p>
-                                    <div className="flex items-center justify-end">
-                                        <p className="text-base font-bold text-orange-600">{latestHCMGold.value?.toLocaleString()}</p>
-                                        <GrowthBadge value={hcmGoldGrowth} />
-                                    </div>
-                                </div>
-                            </div>
-                            <MacroChart
-                                data={reData}
-                                selectedRange={reRange}
-                                onRangeChange={setReRange}
-                                dataKeys={[
-                                    { key: 'hn_gold', color: '#d97706', name: 'Hà Nội' },
-                                    { key: 'hcm_gold', color: '#b45309', name: 'TP.HCM' }
-                                ]}
-                                height={350}
-                            />
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                </LazyLoad>
 
                 {/* SECTION 3: GOLD SPREAD */}
-                <section>
-                    <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-white flex items-center">
-                            <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
-                            Chênh Lệch Giá Vàng (Spread)
-                        </h2>
-                        <div className="text-right">
-                            <p className="text-xs text-slate-400">Chênh SJC - TG ({latestSpread.date})</p>
-                            <p className="text-lg font-bold text-red-500">{latestSpread.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Tr/Lượng</p>
+                <LazyLoad height="300px">
+                    <section>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
+                                Chênh Lệch Giá Vàng (Spread)
+                            </h2>
+                            <div className="text-right">
+                                <p className="text-xs text-slate-400">Chênh SJC - TG ({latestSpread.date})</p>
+                                <p className="text-lg font-bold text-red-500">{latestSpread.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Tr/Lượng</p>
+                            </div>
                         </div>
-                    </div>
-                    <p className="text-sm text-slate-500 mb-4 italic">
-                        * Số tiền "chênh" bạn phải trả thêm cho mỗi lượng vàng SJC so với giá thế giới quy đổi.
-                    </p>
-                    <MacroChart
-                        data={goldSpreadData}
-                        dataKeys={[
-                            { key: 'spread', color: '#ef4444', name: 'Chênh Lệch (Tr)', type: 'area' }
-                        ]}
-                        height={300}
-                    />
-                </section>
+                        <p className="text-sm text-slate-500 mb-4 italic">
+                            * Số tiền "chênh" bạn phải trả thêm cho mỗi lượng vàng SJC so với giá thế giới quy đổi.
+                        </p>
+                        <MacroChart
+                            data={goldSpreadData}
+                            dataKeys={[
+                                { key: 'spread', color: '#ef4444', name: 'Chênh Lệch (Tr)', type: 'area' }
+                            ]}
+                            height={300}
+                        />
+                    </section>
+                </LazyLoad>
 
                 {/* SECTION 4: HOUSING AFFORDABILITY */}
-                <section>
-                    <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-white flex items-center">
-                            <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
-                            Khả Năng Mua Nhà (50m2)
-                        </h2>
-                        <div className="text-right">
-                            <p className="text-xs text-slate-400">Số năm thu nhập ({latestHousingYears.date})</p>
-                            <p className="text-lg font-bold text-emerald-400">{latestHousingYears.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Năm</p>
+                <LazyLoad height="300px">
+                    <section>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
+                                Khả Năng Mua Nhà (50m2)
+                            </h2>
+                            <div className="text-right">
+                                <p className="text-xs text-slate-400">Số năm thu nhập ({latestHousingYears.date})</p>
+                                <p className="text-lg font-bold text-emerald-400">{latestHousingYears.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Năm</p>
+                            </div>
                         </div>
-                    </div>
-                    <p className="text-sm text-slate-500 mb-4 italic">
-                        * Số năm cần tích lũy 100% thu nhập trung bình để mua được căn hộ 50m2.
-                    </p>
-                    <MacroChart
-                        data={housingData}
-                        dataKeys={[
-                            { key: 'years_buy_50m2', color: '#10b981', name: 'Số Năm Cần Thiết' }
-                        ]}
-                        height={300}
-                    />
-                </section>
+                        <p className="text-sm text-slate-500 mb-4 italic">
+                            * Số năm cần tích lũy 100% thu nhập trung bình để mua được căn hộ 50m2.
+                        </p>
+                        <MacroChart
+                            data={housingData}
+                            dataKeys={[
+                                { key: 'years_buy_50m2', color: '#10b981', name: 'Số Năm Cần Thiết' }
+                            ]}
+                            height={300}
+                        />
+                    </section>
+                </LazyLoad>
 
                 {/* SECTION 5: RENTAL BURDEN */}
-                <section>
-                    <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-white flex items-center">
-                            <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
-                            Áp Lực Tiền Thuê (% Thu Nhập)
-                        </h2>
-                        <div className="flex gap-4">
-                            <div className="text-right">
-                                <p className="text-xs text-slate-400">Hà Nội</p>
-                                <p className="text-base font-bold text-purple-400">{latestBurdenHan.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-xs text-slate-400">TP.HCM</p>
-                                <p className="text-base font-bold text-pink-400">{latestBurdenSgn.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</p>
+                <LazyLoad height="300px">
+                    <section>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
+                                Áp Lực Tiền Thuê (% Thu Nhập)
+                            </h2>
+                            <div className="flex gap-4">
+                                <div className="text-right">
+                                    <p className="text-xs text-slate-400">Hà Nội</p>
+                                    <p className="text-base font-bold text-purple-400">{latestBurdenHan.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-xs text-slate-400">TP.HCM</p>
+                                    <p className="text-base font-bold text-pink-400">{latestBurdenSgn.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <p className="text-sm text-slate-500 mb-4 italic">
-                        * Tỷ lệ chi phí thuê nhà trên thu nhập hàng tháng (Người độc thân).
-                    </p>
-                    <MacroChart
-                        data={rentData}
-                        dataKeys={[
-                            { key: 'burden_han', color: '#a855f7', name: 'Hà Nội (%)' },
-                            { key: 'burden_sgn', color: '#ec4899', name: 'TP.HCM (%)' }
-                        ]}
-                        height={300}
-                    />
-                </section>
+                        <p className="text-sm text-slate-500 mb-4 italic">
+                            * Tỷ lệ chi phí thuê nhà trên thu nhập hàng tháng (Người độc thân).
+                        </p>
+                        <MacroChart
+                            data={rentData}
+                            dataKeys={[
+                                { key: 'burden_han', color: '#a855f7', name: 'Hà Nội (%)' },
+                                { key: 'burden_sgn', color: '#ec4899', name: 'TP.HCM (%)' }
+                            ]}
+                            height={300}
+                        />
+                    </section>
+                </LazyLoad>
 
             </div>
 
