@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import MacroChart from '../../components/ui/MacroChart';
 import MacroHeader from '../../components/features/macro/MacroHeader';
 import FloatingCTA from '../../components/ui/FloatingCTA';
+import ShareButton from '../../components/ui/ShareButton';
 import TradeBalanceSection from '../../components/features/macro/TradeBalanceSection';
 import ReservesHealthSection from '../../components/features/macro/ReservesHealthSection';
 import FDIStructureSection from '../../components/features/macro/FDIStructureSection';
@@ -71,7 +72,7 @@ export default async function MacroPage() {
     while (keepFetching) {
         const { data, error } = await supabase
             .from('macro_indicators')
-            .select('*')
+            .select('date, indicator_key, value')
             .order('date', { ascending: true })
             .range(from, from + step - 1);
 
@@ -193,6 +194,7 @@ export default async function MacroPage() {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
                             Tỷ Giá USD/VND
+                            <ShareButton chartId="exchange-rate" className="ml-3" />
                         </h2>
                         <div className="flex gap-4 mt-2 md:mt-0">
                             <div className="text-right">
@@ -206,7 +208,6 @@ export default async function MacroPage() {
                         </div>
                     </div>
                     <MacroChart
-                        chartId="exchange-rate"
                         data={forexData}
                         dataKeys={[
                             { key: 'black_market', color: '#fbbf24', name: 'Chợ Đen' },
@@ -225,6 +226,7 @@ export default async function MacroPage() {
                             <h2 className="text-xl font-bold text-white flex items-center">
                                 <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
                                 Lãi Suất (%)
+                                <ShareButton chartId="rates" className="ml-3" />
                             </h2>
                             <div className="text-right">
                                 <p className="text-xs text-slate-400">Tiết Kiệm 12T ({latestSavings.date})</p>
@@ -232,7 +234,6 @@ export default async function MacroPage() {
                             </div>
                         </div>
                         <MacroChart
-                            chartId="rates"
                             data={ratesData}
                             dataKeys={[
                                 { key: 'ref_rate', color: '#a855f7', name: 'Điều hành (SBV)' },
@@ -247,6 +248,7 @@ export default async function MacroPage() {
                             <h2 className="text-xl font-bold text-white flex items-center">
                                 <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
                                 Quy Mô GDP (Tỷ USD)
+                                <ShareButton chartId="gdp-abs" className="ml-3" />
                             </h2>
                             <div className="text-right">
                                 <p className="text-xs text-slate-400">Năm {latestGdpAbs.date?.substring(0, 4)}</p>
@@ -254,7 +256,6 @@ export default async function MacroPage() {
                             </div>
                         </div>
                         <MacroChart
-                            chartId="gdp-abs"
                             data={gdpAbsData}
                             dataKeys={[
                                 { key: 'gdp_abs', color: '#10b981', name: 'GDP (Tỷ $)', unit: 'B$' }
@@ -268,6 +269,7 @@ export default async function MacroPage() {
                             <h2 className="text-xl font-bold text-white flex items-center">
                                 <span className="bg-cyan-500 w-1 h-6 mr-3 rounded-full"></span>
                                 Tăng Trưởng & Lạm Phát (%)
+                                <ShareButton chartId="gdp-cpi" className="ml-3" />
                             </h2>
                             <div className="flex gap-4">
                                 <div className="text-right">
@@ -281,7 +283,6 @@ export default async function MacroPage() {
                             </div>
                         </div>
                         <MacroChart
-                            chartId="gdp-cpi"
                             data={econData}
                             dataKeys={[
                                 { key: 'gdp', color: '#06b6d4', name: 'GDP (YoY)' },
