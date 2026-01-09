@@ -1,128 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-
+import MacroChart from '../../components/ui/MacroChart';
+import CandleChart from '../../components/ui/CandleChart';
+import FloatingCTA from '../../components/ui/FloatingCTA';
 import ShareButton from '../../components/ui/ShareButton';
 
 export default function AssetsDashboard({ data }) {
-    // ... (keep logic) ...
-
-    {/* SECTION 0: VNINDEX (NEW) */ }
-    <section>
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center">
-                <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
-                Chứng Khoán (VNINDEX)
-                <ShareButton chartId="vnindex" className="ml-3" />
-            </h2>
-            {/* ... */}
-        </div>
-
-        <CandleChart
-            data={vnindexData.map(d => ({
-                date: d.date,
-                open: d.vnindex_open || d.vnindex, // Fallback
-                high: d.vnindex_high || d.vnindex,
-                low: d.vnindex_low || d.vnindex,
-                close: d.vnindex,
-                volume: d.vnindex_vol
-            }))}
-            height={400}
-        />
-    </section>
-
-    {/* SECTION 1: GOLD */ }
-    <section>
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center">
-                <span className="bg-yellow-500 w-1 h-6 mr-3 rounded-full"></span>
-                Thị Trường Vàng
-                <ShareButton chartId="gold" className="ml-3" />
-            </h2>
-            {/* ... */}
-        </div>
-        <MacroChart
-            data={goldData}
-            selectedRange={goldRange}
-            // removed chartId
-            onRangeChange={setGoldRange}
-            dataKeys={[
-                { key: 'sjc', color: '#fbbf24', name: 'Vàng SJC (Tr)', unit: ' Tr' },
-                { key: 'world_converted', color: '#94a3b8', name: 'TG Quy đổi (Tr)', unit: ' Tr' },
-                { key: 'world_usd', color: '#22d3ee', name: 'TG (USD/oz)', yAxisId: 'right', unit: ' $' }
-            ]}
-            height={400}
-        />
-    </section>
-
-    {/* ... skip similar simple edits ... */ }
-
-    {/* SECTION 3: GOLD SPREAD */ }
-    <section>
-        <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center">
-                <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
-                Chênh Lệch Giá Vàng (Spread)
-                <ShareButton chartId="gold-spread" className="ml-3" />
-            </h2>
-            {/* ... */}
-        </div>
-        {/* ... */}
-        <MacroChart
-            data={goldSpreadData}
-            dataKeys={[
-                { key: 'spread', color: '#ef4444', name: 'Chênh Lệch (Tr)', type: 'area' }
-            ]}
-            height={300}
-        />
-    </section>
-
-    {/* SECTION 4: HOUSING */ }
-    <section>
-        <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center">
-                <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
-                Khả Năng Mua Nhà (50m2)
-                <ShareButton chartId="housing" className="ml-3" />
-            </h2>
-            {/* ... */}
-        </div>
-        {/* ... */}
-        <MacroChart
-            data={housingData}
-            dataKeys={[
-                { key: 'years_buy_50m2', color: '#10b981', name: 'Số Năm Cần Thiết' }
-            ]}
-            height={300}
-        />
-    </section>
-
-    {/* SECTION 5: RENTAL */ }
-    <section>
-        <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-white flex items-center">
-                <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
-                Áp Lực Tiền Thuê (% Thu Nhập)
-                <ShareButton chartId="rent-burden" className="ml-3" />
-            </h2>
-            {/* ... */}
-        </div>
-        {/* ... */}
-        <MacroChart
-            data={rentData}
-            dataKeys={[
-                { key: 'burden_han', color: '#a855f7', name: 'Hà Nội (%)' },
-                { key: 'burden_sgn', color: '#ec4899', name: 'TP.HCM (%)' }
-            ]}
-            height={300}
-        />
-    </section>
-    // State for Time Ranges
+    // 1. State for Time Ranges
     const [goldRange, setGoldRange] = useState('5Y');
     const [reRange, setReRange] = useState('5Y');
     const [phoRange, setPhoRange] = useState('5Y');
 
-    // Helper to extract latest value
+    // 2. Helpers
     const getLatest = (d, key) => {
         const valid = d.filter(x => x[key] !== undefined && x[key] !== null);
         if (valid.length === 0) return { value: 0, date: '' };
@@ -130,7 +20,6 @@ export default function AssetsDashboard({ data }) {
         return { value: Number(last[key]), date: last.date };
     };
 
-    // Helpert to Calculate Growth
     const calculateGrowth = (dataSet, key, range) => {
         const valid = dataSet.filter(x => x[key] !== undefined && x[key] !== null);
         if (valid.length < 2) return null;
@@ -146,14 +35,12 @@ export default function AssetsDashboard({ data }) {
         if (range === '5Y') targetDate.setFullYear(latestDate.getFullYear() - 5);
         if (range === '10Y') targetDate.setFullYear(latestDate.getFullYear() - 10);
         if (range === '25Y') targetDate.setFullYear(latestDate.getFullYear() - 25);
-        if (range === 'ALL') return null; // Or logic for ALL?
+        if (range === 'ALL') return null;
 
-        // Find closest data point to targetDate (but not after it ideally, or closest absolute?)
-        // Since array is sorted:
-        // Find first item where date >= targetDate
+        // Find closest data point to targetDate
         const startItem = valid.find(d => new Date(d.date) >= targetDate);
 
-        if (!startItem) return null; // No data far back enough
+        if (!startItem) return null;
 
         const startVal = Number(startItem[key]);
         if (startVal === 0) return null;
@@ -173,12 +60,11 @@ export default function AssetsDashboard({ data }) {
         );
     };
 
-    // Filter subsets
+    // 3. Data Processing & Filtering
     const goldData = data.filter(d => d.sjc || d.world_converted || d.world_usd);
     const reData = data.filter(d => d.hn_vnd || d.hcm_vnd || d.hn_gold || d.hcm_gold);
     const phoData = data.filter(d => d.pho || d.cpi);
 
-    // Latest Metrics & Growth
     const latestSJC = getLatest(goldData, 'sjc');
     const sjcGrowth = calculateGrowth(goldData, 'sjc', goldRange);
 
@@ -207,9 +93,7 @@ export default function AssetsDashboard({ data }) {
     const latestVNINDEX = getLatest(vnindexData, 'vnindex');
     const vnindexGrowth = calculateGrowth(vnindexData, 'vnindex', goldRange);
 
-    // --- NEW METRICS PROCESSING ---
-
-    // 1. Gold Spread
+    // Gold Spread
     const goldSpreadData = goldData.map(d => {
         if (d.sjc && d.world_converted) {
             return {
@@ -222,17 +106,14 @@ export default function AssetsDashboard({ data }) {
     const latestSpread = getLatest(goldSpreadData, 'spread');
 
 
-    // 2. Housing Affordability (Years to Buy 50m2)
-    // salary_per_sqm = Months of salary to buy 1m2
-    // 50m2 cost in months = salary_per_sqm * 50
-    // Years = (salary_per_sqm * 50) / 12
+    // Housing Affordability
     const housingData = data.filter(d => d.salary_per_sqm).map(d => ({
         ...d,
         years_buy_50m2: (d.salary_per_sqm * 50) / 12
     }));
     const latestHousingYears = getLatest(housingData, 'years_buy_50m2');
 
-    // 3. Rental Burden (% Income)
+    // Rental Burden
     const rentData = data.filter(d => d.rent_han_single || d.rent_sgn_single).map(d => {
         let loadHan = null;
         let loadSgn = null;
@@ -253,9 +134,9 @@ export default function AssetsDashboard({ data }) {
     const latestBurdenHan = getLatest(rentData, 'burden_han');
     const latestBurdenSgn = getLatest(rentData, 'burden_sgn');
 
+
     return (
         <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-[500px]">
-
 
             <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto">
 
@@ -264,12 +145,13 @@ export default function AssetsDashboard({ data }) {
                     <p className="text-slate-400">Theo dõi biến động Vàng, Chứng Khoán và Bất Động Sản qua các thời kỳ</p>
                 </div>
 
-                {/* SECTION 0: VNINDEX (NEW) */}
+                {/* SECTION 0: VNINDEX */}
                 <section>
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
                             Chứng Khoán (VNINDEX)
+                            <ShareButton chartId="vnindex" className="ml-3" />
                         </h2>
                         <div className="flex gap-4 mt-2 md:mt-0 text-right">
                             <div>
@@ -283,7 +165,6 @@ export default function AssetsDashboard({ data }) {
                     </div>
 
                     <CandleChart
-                        chartId="vnindex"
                         data={vnindexData.map(d => ({
                             date: d.date,
                             open: d.vnindex_open || d.vnindex, // Fallback
@@ -302,6 +183,7 @@ export default function AssetsDashboard({ data }) {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-yellow-500 w-1 h-6 mr-3 rounded-full"></span>
                             Thị Trường Vàng
+                            <ShareButton chartId="gold" className="ml-3" />
                         </h2>
                         <div className="flex gap-4 mt-2 md:mt-0 text-right">
                             <div>
@@ -324,7 +206,6 @@ export default function AssetsDashboard({ data }) {
                         </div>
                     </div>
                     <MacroChart
-                        chartId="gold"
                         data={goldData}
                         selectedRange={goldRange}
                         onRangeChange={setGoldRange}
@@ -382,7 +263,7 @@ export default function AssetsDashboard({ data }) {
                                 <h2 className="text-xl font-bold text-white flex items-center">
                                     <span className="bg-amber-600 w-1 h-6 mr-3 rounded-full"></span>
                                     Giá Đất (Cây Vàng/m2)
-                                    <ShareButton chartId="re-gold" className="ml-3" />
+                                    <ShareButton chartId="re-vnd" className="ml-3" />
                                 </h2>
                             </div>
                             <div className="flex justify-end gap-4 mb-2">
@@ -415,7 +296,7 @@ export default function AssetsDashboard({ data }) {
                     </div>
                 </section>
 
-                {/* SECTION 3: GOLD SPREAD (NEW) */}
+                {/* SECTION 3: GOLD SPREAD */}
                 <section>
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-bold text-white flex items-center">
@@ -440,7 +321,7 @@ export default function AssetsDashboard({ data }) {
                     />
                 </section>
 
-                {/* SECTION 4: HOUSING AFFORDABILITY (NEW) */}
+                {/* SECTION 4: HOUSING AFFORDABILITY */}
                 <section>
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-bold text-white flex items-center">
@@ -465,7 +346,7 @@ export default function AssetsDashboard({ data }) {
                     />
                 </section>
 
-                {/* SECTION 5: RENTAL BURDEN (NEW) */}
+                {/* SECTION 5: RENTAL BURDEN */}
                 <section>
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-bold text-white flex items-center">
@@ -496,6 +377,7 @@ export default function AssetsDashboard({ data }) {
                         height={300}
                     />
                 </section>
+
             </div>
 
             {/* SPACER DIV TO PREVENT OVERLAP */}
