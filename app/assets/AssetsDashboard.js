@@ -4,7 +4,6 @@ import { useState } from 'react';
 import MacroChart from '../../components/ui/MacroChart';
 import CandleChart from '../../components/ui/CandleChart';
 import FloatingCTA from '../../components/ui/FloatingCTA';
-import ShareButton from '../../components/ui/ShareButton';
 
 export default function AssetsDashboard({ data }) {
     // 1. State for Time Ranges
@@ -151,7 +150,6 @@ export default function AssetsDashboard({ data }) {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
                             Chứng Khoán (VNINDEX)
-                            <ShareButton chartId="vnindex" className="ml-3" />
                         </h2>
                         <div className="flex gap-4 mt-2 md:mt-0 text-right">
                             <div>
@@ -183,7 +181,6 @@ export default function AssetsDashboard({ data }) {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-yellow-500 w-1 h-6 mr-3 rounded-full"></span>
                             Thị Trường Vàng
-                            <ShareButton chartId="gold" className="ml-3" />
                         </h2>
                         <div className="flex gap-4 mt-2 md:mt-0 text-right">
                             <div>
@@ -227,7 +224,6 @@ export default function AssetsDashboard({ data }) {
                                 <h2 className="text-xl font-bold text-white flex items-center">
                                     <span className="bg-blue-500 w-1 h-6 mr-3 rounded-full"></span>
                                     Giá Đất (Triệu/m2)
-                                    <ShareButton chartId="re-vnd" className="ml-3" />
                                 </h2>
                             </div>
                             <div className="flex justify-end gap-4 mb-2">
@@ -263,7 +259,6 @@ export default function AssetsDashboard({ data }) {
                                 <h2 className="text-xl font-bold text-white flex items-center">
                                     <span className="bg-amber-600 w-1 h-6 mr-3 rounded-full"></span>
                                     Giá Đất (Cây Vàng/m2)
-                                    <ShareButton chartId="re-vnd" className="ml-3" />
                                 </h2>
                             </div>
                             <div className="flex justify-end gap-4 mb-2">
@@ -302,7 +297,6 @@ export default function AssetsDashboard({ data }) {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
                             Chênh Lệch Giá Vàng (Spread)
-                            <ShareButton chartId="gold-spread" className="ml-3" />
                         </h2>
                         <div className="text-right">
                             <p className="text-xs text-slate-400">Chênh SJC - TG ({latestSpread.date})</p>
@@ -327,7 +321,6 @@ export default function AssetsDashboard({ data }) {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
                             Khả Năng Mua Nhà (50m2)
-                            <ShareButton chartId="housing" className="ml-3" />
                         </h2>
                         <div className="text-right">
                             <p className="text-xs text-slate-400">Số năm thu nhập ({latestHousingYears.date})</p>
@@ -352,7 +345,6 @@ export default function AssetsDashboard({ data }) {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
                             Áp Lực Tiền Thuê (% Thu Nhập)
-                            <ShareButton chartId="rent-burden" className="ml-3" />
                         </h2>
                         <div className="flex gap-4">
                             <div className="text-right">

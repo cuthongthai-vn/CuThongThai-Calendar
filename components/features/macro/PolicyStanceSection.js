@@ -1,7 +1,6 @@
 'use client';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceLine } from 'recharts';
 import { POLICY_STANCE_DATA, HEALTH_BOWL_COMMENTS } from '../../../src/data/macro_health';
-import ShareButton from '../../ui/ShareButton';
 
 export default function PolicyStanceSection() {
     return (
@@ -9,7 +8,6 @@ export default function PolicyStanceSection() {
             <h2 className="text-xl font-bold text-white flex items-center mb-4">
                 <span className="bg-pink-500 w-1 h-6 mr-3 rounded-full"></span>
                 1. Chính Sách 2025: Bơm Hay Hút? 💉
-                <ShareButton chartId="policy-stance" className="ml-3" />
             </h2>
             <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">

@@ -2,7 +2,6 @@ import { createClient } from '@supabase/supabase-js';
 import MacroChart from '../../components/ui/MacroChart';
 import MacroHeader from '../../components/features/macro/MacroHeader';
 import FloatingCTA from '../../components/ui/FloatingCTA';
-import ShareButton from '../../components/ui/ShareButton';
 import TradeBalanceSection from '../../components/features/macro/TradeBalanceSection';
 import ReservesHealthSection from '../../components/features/macro/ReservesHealthSection';
 import FDIStructureSection from '../../components/features/macro/FDIStructureSection';
@@ -194,7 +193,6 @@ export default async function MacroPage() {
                         <h2 className="text-xl font-bold text-white flex items-center">
                             <span className="bg-green-500 w-1 h-6 mr-3 rounded-full"></span>
                             Tỷ Giá USD/VND
-                            <ShareButton chartId="exchange-rate" className="ml-3" />
                         </h2>
                         <div className="flex gap-4 mt-2 md:mt-0">
                             <div className="text-right">
