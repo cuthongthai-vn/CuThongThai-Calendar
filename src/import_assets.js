@@ -228,7 +228,13 @@ async function run() {
         ]
     );
 
+    // 7. CPI Inflation (Annual)
+    // ... (keep existing CPI import)
+
     // 8. VNINDEX History (Generated Daily)
+    console.log("Cleaning old VNINDEX data...");
+    await supabase.from('macro_indicators').delete().eq('indicator_key', 'VNINDEX');
+
     await importCsv(
         path.join(__dirname, '../data_upload/vietnam-vnindex-history-daily-interpolated.csv'),
         (row) => [

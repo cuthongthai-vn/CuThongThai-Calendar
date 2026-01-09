@@ -23,8 +23,8 @@ const MILESTONES = [
     { date: '2022-11-16', val: 911 }, // Crisis
     { date: '2023-12-31', val: 1129 },
     { date: '2024-12-31', val: 1350 }, // Strong 2024
-    { date: '2025-12-31', val: 1680 }, // Boom 2025
-    { date: '2026-01-10', val: 1720 }  // Now
+    { date: '2025-12-31', val: 1750 }, // Strong 2025 
+    { date: '2026-01-08', val: 1850 }  // User provided
 ];
 
 function generateDaily() {
@@ -44,10 +44,9 @@ function generateDaily() {
             // Linear Progress
             const progress = d / days;
 
-            // Random Walk Noise (Daily volatility ~ 0.5% - 1.5%)
-            // We want the overall trend to match, but look jagged
+            // SMOOTHER LINE (Reduced Noise from 0.02 to 0.001)
             const baseVal = start.val + (valDiff * progress);
-            const noise = (Math.random() - 0.5) * (baseVal * 0.02); // +/- 1% noise
+            const noise = (Math.random() - 0.5) * (baseVal * 0.001);
 
             let val = baseVal + noise;
 
