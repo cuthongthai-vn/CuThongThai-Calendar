@@ -12,6 +12,8 @@ const COLORS = {
     text: '#94a3b8',
 };
 
+const isValidDate = (d) => d instanceof Date && !isNaN(d);
+
 const resampleData = (data, interval) => {
     if (!data || data.length === 0) return [];
     if (interval === 'day') return data;
@@ -19,27 +21,38 @@ const resampleData = (data, interval) => {
     const grouped = {};
     data.forEach(d => {
         const date = new Date(d.date);
-        let key;
-        if (interval === 'week') {
-            const firstDay = new Date(date.setDate(date.getDate() - date.getDay() + 1));
-            // Ensure YYYY-MM-DD
-            key = firstDay.toISOString().split('T')[0];
-        } else if (interval === 'month') {
-            const y = date.getFullYear();
-            const m = String(date.getMonth() + 1).padStart(2, '0');
-            key = `${y}-${m}-01`;
-        } else {
-            key = d.date;
-        }
+        if (!isValidDate(date)) return; // Skip invalid dates
 
-        if (!grouped[key]) grouped[key] = [];
-        grouped[key].push(d);
+        let key;
+        try {
+            if (interval === 'week') {
+                const firstDay = new Date(date);
+                const day = firstDay.getDay();
+                const diff = firstDay.getDate() - day + (day === 0 ? -6 : 1); // Adjust when day is sunday
+                firstDay.setDate(diff);
+                key = firstDay.toISOString().split('T')[0];
+            } else if (interval === 'month') {
+                const y = date.getFullYear();
+                const m = String(date.getMonth() + 1).padStart(2, '0');
+                key = `${y}-${m}-01`;
+            } else {
+                key = d.date;
+            }
+
+            if (!grouped[key]) grouped[key] = [];
+            grouped[key].push(d);
+        } catch (e) {
+            console.warn('Date parsing error', e);
+        }
     });
 
     return Object.entries(grouped).map(([date, group]) => {
         group.sort((a, b) => new Date(a.date) - new Date(b.date));
-        const open = group[0].open;
-        const close = group[group.length - 1].close;
+        const first = group[0];
+        const last = group[group.length - 1];
+
+        const open = first.open;
+        const close = last.close;
         const high = Math.max(...group.map(g => g.high));
         const low = Math.min(...group.map(g => g.low));
         const volume = group.reduce((sum, g) => sum + (g.volume || 0), 0);

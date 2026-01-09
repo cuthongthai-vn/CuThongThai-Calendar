@@ -166,11 +166,11 @@ export default function AssetsDashboard({ data }) {
                     <CandleChart
                         data={vnindexData.map(d => ({
                             date: d.date,
-                            open: d.vnindex_open || d.vnindex, // Fallback
-                            high: d.vnindex_high || d.vnindex,
-                            low: d.vnindex_low || d.vnindex,
-                            close: d.vnindex,
-                            volume: d.vnindex_vol
+                            open: Number(d.vnindex_open || d.vnindex),
+                            high: Number(d.vnindex_high || d.vnindex),
+                            low: Number(d.vnindex_low || d.vnindex),
+                            close: Number(d.vnindex),
+                            volume: Number(d.vnindex_vol || 0)
                         }))}
                         height={400}
                     />
