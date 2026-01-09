@@ -8,103 +8,71 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-} from 'recharts'; // Removed unused imports
+} from 'recharts';
 import { useState, useMemo } from 'react';
 
 // Custom Shape for Candle
+// Props received from Recharts Bar (when using dataKey=[low, high])
+// x, y, width, height correspond to the [low, high] range on the Y-axis.
 const CandleStick = (props) => {
-    const { x, y, width, height, low, high, open, close } = props;
-    const isUp = close > open;
-    const color = isUp ? '#22c55e' : '#ef4444'; // Green : Red
+    const { fill, x, y, width, height, payload } = props;
+    const { open, close, high, low } = payload;
 
-    // Calculate Y positions
-    // Recharts validates coordinates, but we need to map values to pixels manually
-    // ACTUALLY: Custom shape receives normalized X, Y, Height, Width from specific data points
-    // BUT for Candle, we need access to the Axis scale to plot High/Low.
-    // Recharts "Bar" usually passes `y` as the top of the bar.
+    // Safety check
+    if (open === undefined || close === undefined || high === undefined || low === undefined) return null;
 
-    // Better approach: Use "ErrorBar" or just SVG lines if we have the scale.
-    // However, getting scale inside Shape is hard.
+    // Determine color: Green if Close >= Open, Red if Close < Open
+    const isUp = close >= open;
+    const color = isUp ? '#22c55e' : '#ef4444'; // Green-500 : Red-500
+    // Use darker stroke for better visibility? Standard is same color.
+    const stroke = color;
 
-    // ALTERNATIVE: Use 2 Bars? No.
-    // BEST PRACTICE with Recharts: Pass the coordinate converter or calculate locally?
-    // Simplified:
-    // props.y is the top of the bar (max value)
-    // props.height is the height of the bar.
+    // Calculation Logic:
+    // props.y is the pixel position of the TOP value (High).
+    // props.height is the pixel height of the range (High - Low).
+    // We strictly map values to pixels within this range.
 
-    // Let's use simpler logic:
-    // Pass high/low/open/close as data.
-    // We need the Y-Axis scale function, which Recharts passes to CustomShape if used in <Bar shape={...} />? Not directly.
+    const totalRange = high - low;
+    if (totalRange <= 0) return null; // Avoid division by zero
 
-    // WORKAROUND:
-    // Input data for Bar: [min(open, close), max(open, close)]
-    // This draws the "Body".
-    // Then we draw the "Wick" using High/Low.
-    // We need pixel coordinates for High and Low.
-
-    // Fortunately, Recharts passes `yAxis` to the shape if connected? No.
-
-    // Let's defer to a proven method:
-    // Use `Bar` for the body.
-    // BUT we need floating bars (open to close). Recharts Bar supports [min, max] data since v2!
-    // So `dataKey="bodyArray"` where bodyArray = [min(o,c), max(o,c)]
-
-    // What about Wicks?
-    // Use `ErrorBar`? Or another `Bar` with very thin width?
-    // Or just SVG lines inside the Custom Shape.
-
-    // Let's try the Custom Shape on a Bar that spans Low to High (invisible) or something?
-
-    // TRICK:
-    // 1. Data point has `high`, `low`, `open`, `close`.
-    // 2. We use a Bar to define the generic X/Y range or just use it as a container.
-    // 3. Current Recharts `CustomShape` receives `formattedGraphicalItem`?
-
-    // SIMPLIFIED IMPLEMENTATION:
-    // We will just calculate pixels manually relative to the Bar's layout if possible,
-    // OR, more reliably, use the `y` and `height` provided by Recharts which correspond to the `dataKey` value.
-
-    // Let's assume we map the "Body" to the Bar.
-    // But we need the wicks.
-
-    // Let's try straightforward SVG math.
-    const { yAxis } = props; // Recharts < 2.x doesn't reliably pass axis.
-
-    // If we assume props.y and props.height correspond to the value passed to dataKey.
-    // If we pass [low, high] to dataKey, then y is top (high), height is distance (high-low).
-    // Then we can interpolate open/close relative to that.
-
-    if (!props.payload) return null;
-    const { open: o, close: c, high: h, low: l } = props.payload;
-
-    // Calculate ratio
-    const totalRange = h - l;
-    if (totalRange === 0) return null;
-
-    const pixelHeight = height;
-    const pixelY = y; // Top (High)
-
-    const scaleY = (val) => {
-        // Linear map: h -> pixelY, l -> pixelY + pixelHeight
-        const ratio = (h - val) / totalRange;
-        return pixelY + (ratio * pixelHeight);
+    // Map a price value to pixel Y coordinate
+    // Formula: pixelY = y + height * (High - Value) / (High - Low)
+    const getPixelY = (val) => {
+        const ratio = (high - val) / totalRange;
+        return y + (ratio * height);
     };
 
-    const yOpen = scaleY(o);
-    const yClose = scaleY(c);
-    const yHigh = scaleY(h);
-    const yLow = scaleY(l);
+    const yHigh = getPixelY(high); // Should be roughly props.y
+    const yLow = getPixelY(low);   // Should be roughly props.y + props.height
+    const yOpen = getPixelY(open);
+    const yClose = getPixelY(close);
 
+    // Body dimensions
+    // Body top is the min pixel Y (higher value)
     const bodyTop = Math.min(yOpen, yClose);
-    const bodyBottom = Math.max(yOpen, yClose);
-    const bodyHeight = Math.max(1, bodyBottom - bodyTop); // Min 1px
+    const bodyHeight = Math.max(1, Math.abs(yOpen - yClose)); // Ensure at least 1px
+
+    // Wick X position (centered)
+    const wickX = x + width / 2;
 
     return (
-        <g>
-            {/* Wick */}
-            <line x1={x + width / 2} y1={yHigh} x2={x + width / 2} y2={yLow} stroke={color} strokeWidth={1} />
-            {/* Body */}
-            <rect x={x} y={bodyTop} width={width} height={bodyHeight} fill={color} />
+        <g stroke={stroke} fill={color} strokeWidth={1}>
+            {/* Wick: Line from High to Low */}
+            {/* Split into Top Wick and Bottom Wick to avoid drawing over body? 
+                Actually standard is a single line behind or properly layered. 
+                Recharts draws SVG order. Let's draw wick first, then body.
+            */}
+            <line x1={wickX} y1={yHigh} x2={wickX} y2={yLow} />
+
+            {/* Body: Rectangle between Open and Close */}
+            {/* Filled rectangle */}
+            <rect
+                x={x}
+                y={bodyTop}
+                width={width}
+                height={bodyHeight}
+                stroke="none"
+            />
         </g>
     );
 };
@@ -112,26 +80,27 @@ const CandleStick = (props) => {
 // Tooltip tailored for Candle
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-        // payload[0] is usually the candle data if we hover it
         const data = payload[0].payload;
-        const color = data.close >= data.open ? 'text-green-400' : 'text-red-400';
-        return (
-            <div className="bg-slate-900 border border-slate-700 p-3 rounded shadow-xl text-xs z-50">
-                <p className="font-bold text-slate-300 mb-2">{label}</p>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                    <span className="text-slate-500">Open:</span>
-                    <span className={`font-mono ${color}`}>{data.open?.toLocaleString()}</span>
+        const isUp = data.close >= data.open;
+        const colorClass = isUp ? 'text-green-400' : 'text-red-400';
 
-                    <span className="text-slate-500">High:</span>
+        return (
+            <div className="bg-slate-900/90 border border-slate-700 p-3 rounded shadow-xl text-xs z-50 backdrop-blur-sm">
+                <p className="font-bold text-slate-300 mb-2 border-b border-slate-700 pb-1">{label}</p>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                    <span className="text-slate-400">Open:</span>
+                    <span className={`font-mono font-medium ${colorClass}`}>{data.open?.toLocaleString()}</span>
+
+                    <span className="text-slate-400">High:</span>
                     <span className="font-mono text-slate-200">{data.high?.toLocaleString()}</span>
 
-                    <span className="text-slate-500">Low:</span>
+                    <span className="text-slate-400">Low:</span>
                     <span className="font-mono text-slate-200">{data.low?.toLocaleString()}</span>
 
-                    <span className="text-slate-500">Close:</span>
-                    <span className={`font-mono ${color}`}>{data.close?.toLocaleString()}</span>
+                    <span className="text-slate-400">Close:</span>
+                    <span className={`font-mono font-medium ${colorClass}`}>{data.close?.toLocaleString()}</span>
 
-                    <span className="text-slate-500 mt-2">Volume:</span>
+                    <span className="text-slate-400 mt-2">Volume:</span>
                     <span className="font-mono text-slate-200 mt-2">{data.volume?.toLocaleString()}</span>
                 </div>
             </div>
@@ -149,8 +118,6 @@ const resampleData = (data, interval) => {
         const date = new Date(d.date);
         let key;
         if (interval === 'week') {
-            // ISO Week would be better but simple Monday-start logic is fine
-            // Or just YYYY-WW
             const firstDay = new Date(date.setDate(date.getDate() - date.getDay() + 1));
             key = firstDay.toISOString().split('T')[0];
         } else if (interval === 'month') {
@@ -164,59 +131,42 @@ const resampleData = (data, interval) => {
     });
 
     return Object.entries(grouped).map(([date, group]) => {
-        // Sort group by date to ensure Open/Close are correct
         group.sort((a, b) => new Date(a.date) - new Date(b.date));
-
         const open = group[0].open;
         const close = group[group.length - 1].close;
         const high = Math.max(...group.map(g => g.high));
         const low = Math.min(...group.map(g => g.low));
         const volume = group.reduce((sum, g) => sum + (g.volume || 0), 0);
-
-        return {
-            date,
-            open,
-            high,
-            low,
-            close,
-            volume
-        };
+        return { date, open, high, low, close, volume };
     }).sort((a, b) => new Date(a.date) - new Date(b.date));
 };
 
 export default function CandleChart({
-    data, // Expected: { date, open, high, low, close, volume }[]
-    chartId,
-    height = 400
+    data,
+    chartId, // Still accepted but ShareButton is external now
+    height = 500 // Increased default height for better visibility
 }) {
     const [range, setRange] = useState('1Y');
 
-    // Filter Data Logic (Duplicate logic from MacroChart, simplified)
     const filteredData = useMemo(() => {
-        let cutoff = new Date('1900-01-01');
-        const now = new Date();
-        const cutoffDate = new Date();
+        let cutoffDate = new Date();
         let interval = 'day';
 
         if (range === '1Y') {
-            cutoffDate.setFullYear(now.getFullYear() - 1);
+            cutoffDate.setFullYear(cutoffDate.getFullYear() - 1);
             interval = 'day';
-        }
-        if (range === '3Y') {
-            cutoffDate.setFullYear(now.getFullYear() - 3);
+        } else if (range === '3Y') {
+            cutoffDate.setFullYear(cutoffDate.getFullYear() - 3);
             interval = 'week';
-        }
-        if (range === '5Y') {
-            cutoffDate.setFullYear(now.getFullYear() - 5);
+        } else if (range === '5Y') {
+            cutoffDate.setFullYear(cutoffDate.getFullYear() - 5);
             interval = 'week';
-        }
-        if (range === '10Y') {
-            cutoffDate.setFullYear(now.getFullYear() - 10);
+        } else if (range === '10Y') {
+            cutoffDate.setFullYear(cutoffDate.getFullYear() - 10);
             interval = 'month';
-        }
-        if (range === 'ALL') {
+        } else if (range === 'ALL') {
             cutoffDate.setFullYear(1900);
-            interval = 'month'; // Or week if data is short, but monthly is safer for long history
+            interval = 'month';
         }
 
         const rawFiltered = data.filter(d => new Date(d.date) >= cutoffDate && d.open && d.close);
@@ -224,7 +174,6 @@ export default function CandleChart({
     }, [data, range]);
 
     // Calculate Y domain for Candles (Price)
-    // We want some padding
     const prices = filteredData.flatMap(d => [d.low, d.high]);
     let yDomain = ['auto', 'auto'];
     if (prices.length > 0) {
@@ -234,11 +183,17 @@ export default function CandleChart({
         yDomain = [Math.floor(minPrice - padding), Math.ceil(maxPrice + padding)];
     }
 
+    // Calculate Y domain for Volume
+    // Goal: Volume bars occupy bottom 15-20% of the chart.
+    // Solution: Set Volume Axis max to (MaxVolume * 5).
+    const volumes = filteredData.map(d => d.volume || 0);
+    const maxVolume = Math.max(...volumes, 1);
+    const volumeDomain = [0, maxVolume * 5];
+
     // Data Transformation for Recharts
-    // We need a specific dataKey that holds [min, max] for the invisible bar that drives the scale logic
     const chartData = filteredData.map(d => ({
         ...d,
-        range: [d.low, d.high]
+        range: [d.low, d.high] // Drives the "Candle" bar vertical span
     }));
 
     return (
@@ -247,32 +202,6 @@ export default function CandleChart({
             <div className="flex flex-wrap items-center justify-between mb-4 gap-4">
                 <div className="flex items-center gap-3">
                     <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Biểu Đồ Nến</h3>
-
-                    {/* Share Button logic... */}
-                    {chartId && (
-                        <button
-                            onClick={() => {
-                                const url = `${window.location.origin}${window.location.pathname}?chart=vnindex`;
-
-                                if (navigator.share) {
-                                    navigator.share({
-                                        title: 'Biểu Đồ VNINDEX',
-                                        url: url
-                                    }).catch(console.error);
-                                } else {
-                                    navigator.clipboard.writeText(url);
-                                    alert('Đã copy link: ' + url);
-                                }
-                            }}
-                            className="text-slate-500 hover:text-blue-400 transition-colors"
-                            title="Chia sẻ"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.287.696.345 1.074.059.378.044.76-.042 1.135l-2.471 5.925M7.5 12a2.3 2.3 0 0 0 .5-1.5m-5.409 6.273a2.25 2.25 0 1 1 3.182-3.182m-3.182 3.182c.324.18.696.287 1.074.345.378.059.76.044 1.135-.042l5.925-2.471m-6.273-5.409A2.25 2.25 0 0 1 12 7.5m2.273 5.409-2.273-5.409a2.25 2.25 0 0 1 5.409 2.273 2.25 2.25 0 0 1-5.409 2.273" />
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                            </svg>
-                        </button>
-                    )}
                 </div>
 
                 <div className="flex space-x-1 bg-slate-900 p-1 rounded-lg">
@@ -290,57 +219,65 @@ export default function CandleChart({
 
             <div style={{ width: '100%', height: height }}>
                 <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={chartData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} vertical={false} />
+                    <ComposedChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.2} vertical={false} />
                         <XAxis
                             dataKey="date"
                             stroke="#64748b"
-                            tick={{ fontSize: 11 }}
+                            tick={{ fontSize: 10 }}
                             minTickGap={30}
+                            axisLine={false}
+                            tickLine={false}
+                            dy={10}
                         />
+
                         {/* Right Axis for Price */}
                         <YAxis
-                            yAxisId="right"
+                            yAxisId="price"
                             orientation="right"
                             domain={yDomain}
                             stroke="#94a3b8"
-                            tick={{ fontSize: 11 }}
+                            tick={{ fontSize: 10 }}
                             tickFormatter={v => v.toLocaleString()}
-                        />
-                        {/* Left Axis for Volume (Hidden/Subtle) */}
-                        <YAxis
-                            yAxisId="left"
-                            orientation="left"
-                            hide={true} // or show minimal
+                            axisLine={false}
+                            tickLine={false}
+                            dx={-5}
                         />
 
-                        <Tooltip content={<CustomTooltip />} />
+                        {/* Left Axis for Volume (Used to scale volume bars) */}
+                        <YAxis
+                            yAxisId="volume"
+                            orientation="left"
+                            domain={volumeDomain}
+                            hide={true} // Hidden axis
+                        />
+
+                        <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#475569', strokeDasharray: '4 4' }} />
 
                         {/* Volume Bars */}
-                        {/* We want Volume to be roughly 20-30% of height at bottom */}
-                        {/* Recharts doesn't strictly stack axis easily on same chart without "height" hacks. */}
-                        {/* Simple way: Put volume on separate axis with huge max domain so they look small */}
-
+                        {/* Always rendered at the bottom due to the scaled domain */}
                         <Bar
                             dataKey="volume"
-                            yAxisId="left"
-                            barSize={filteredData.length > 100 ? 3 : 8}
+                            yAxisId="volume"
+                            barSize={filteredData.length > 150 ? 2 : 6}
+                            isAnimationActive={false}
                             shape={(props) => {
-                                // Color volume based on Price action
                                 const { payload, x, y, width, height } = props;
                                 const isUp = payload.close >= payload.open;
-                                return <rect x={x} y={y} width={width} height={height} fill={isUp ? '#22c55e' : '#ef4444'} opacity={0.3} />;
+                                const color = isUp ? '#22c55e' : '#ef4444';
+                                // Slight opacity for volume to distinguish from candles
+                                return <rect x={x} y={y} width={width} height={height} fill={color} opacity={0.4} />;
                             }}
                         />
 
-                        {/* Candle Stick using Custom Shape Bar */}
-                        {/* Logic: dataKey range=[low, high] ensures the Bar covers the full wick area vertically */}
+                        {/* Candle Stick */}
+                        {/* Using transparent Bar with custom shape */}
                         <Bar
-                            dataKey="range"
-                            yAxisId="right"
+                            dataKey="range" // [low, high]
+                            yAxisId="price"
                             shape={<CandleStick />}
-                            barSize={filteredData.length > 100 ? 4 : 10}
-                            isAnimationActive={false} // Performance
+                            barSize={filteredData.length > 150 ? 4 : 10}
+                            isAnimationActive={false}
                         />
 
                     </ComposedChart>
