@@ -84,18 +84,25 @@ async function fetchAndProcessEvent(event) {
     // 2. Logic Analysis
     const analysis = compareEventData(event);
 
-    // 3. AI Analysis
+    // 3. AI Analysis (with Graceful Degradation)
     console.log("   🤖 Triggering AI Analyst...");
-    let aiResult = { sentiment: 'NEUTRAL', commentary: 'Data released. Analysis pending.' };
+    let aiResult = {
+        sentiment: 'NEUTRAL',
+        commentary: 'ℹ️ Dữ liệu đã cập nhật. Đang chờ phân tích từ Cú...',
+        vn_impact: 'Đang xử lý...'
+    };
 
     try {
         // Inject History into AI Context if available
         const context = {
-            past: historicalData.slice(0, 5) // Give AI the last 5 relevant data points
+            past: historicalData.slice(0, 5), // Give AI the last 5 relevant data points
+            future: [] // Fetcher doesn't have future context
         };
         aiResult = await getFinancialCommentary(event, analysis, context);
+        console.log("   ✅ AI analysis completed successfully");
     } catch (err) {
-        console.error("   ❌ AI Failed:", err.message);
+        console.error("   ⚠️ AI Failed (using fallback):", err.message);
+        // Continue with fallback message - don't block data save
     }
 
     // 4. Update Database

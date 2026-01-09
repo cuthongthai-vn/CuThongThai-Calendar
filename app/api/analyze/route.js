@@ -17,27 +17,34 @@ export async function POST(request) {
 
         if (fetchError || !event) throw new Error('Event not found');
 
-        // 2a. Fetch Context (Past 7 Days)
+        // 2. Fetch Context (Past + Future in Parallel)
         const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-        const { data: pastContext } = await supabase
-            .from('economic_events')
-            .select('event_name, actual, forecast, event_time')
-            .gte('event_time', sevenDaysAgo)
-            .lt('event_time', new Date().toISOString())
-            .not('actual', 'is', null) // Only completed events
-            .order('event_time', { ascending: false })
-            .limit(10);
-
-        // 2b. Fetch Context (Future 7 Days - High Impact Only)
         const sevenDaysFuture = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-        const { data: futureContext } = await supabase
-            .from('economic_events')
-            .select('event_name, forecast, event_time, impact_level')
-            .gt('event_time', new Date().toISOString())
-            .lte('event_time', sevenDaysFuture)
-            .eq('impact_level', 'High') // Only High impact
-            .order('event_time', { ascending: true })
-            .limit(5);
+        const now = new Date().toISOString();
+
+        const [pastContext, futureContext] = await Promise.all([
+            // Past 7 Days
+            supabase
+                .from('economic_events')
+                .select('event_name, actual, forecast, event_time')
+                .gte('event_time', sevenDaysAgo)
+                .lt('event_time', now)
+                .not('actual', 'is', null) // Only completed events
+                .order('event_time', { ascending: false })
+                .limit(10)
+                .then(res => res.data || []),
+
+            // Future 7 Days - High Impact Only
+            supabase
+                .from('economic_events')
+                .select('event_name, forecast, event_time, impact_level')
+                .gt('event_time', now)
+                .lte('event_time', sevenDaysFuture)
+                .eq('impact_level', 'High')
+                .order('event_time', { ascending: true })
+                .limit(5)
+                .then(res => res.data || [])
+        ]);
 
         // 3. Run Logic
         const analysis = compareEventData(event);
@@ -50,8 +57,8 @@ export async function POST(request) {
 
         // 4. Run AI with Context
         const context = {
-            past: pastContext || [],
-            future: futureContext || []
+            past: pastContext,
+            future: futureContext
         };
         const aiResult = await getFinancialCommentary(event, analysis, context);
 
