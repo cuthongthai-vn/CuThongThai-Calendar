@@ -9,7 +9,7 @@ import PolicyStanceSection from '../../components/features/macro/PolicyStanceSec
 import DebtSustainabilitySection from '../../components/features/macro/DebtSustainabilitySection';
 import OverheatingMonitorSection from '../../components/features/macro/OverheatingMonitorSection';
 
-export const dynamic = 'force-dynamic'; // Disable caching to fetch fresh data on every request
+export const revalidate = 3600; // Cache for 1 hour
 
 export async function generateMetadata({ searchParams }) {
     const charId = searchParams?.chart;
@@ -40,26 +40,7 @@ const supabase = createClient(
     process.env.SUPABASE_KEY
 );
 
-// Helper to pivot data: { '2024-01-01': { date: '...', USD: 25000, ... } }
-const pivotData = (rows) => {
-    const map = {};
-    rows.forEach(r => {
-        // Normalize date to YYYY-MM-DD
-        const dateStr = r.date.split('T')[0];
-        if (!map[dateStr]) map[dateStr] = { date: dateStr };
-
-        // Map indicator keys to simplified props
-        if (r.indicator_key === 'USDVND_OFFICIAL') map[dateStr].official = Number(r.value);
-        if (r.indicator_key === 'USDVND_BLACK_MARKET') map[dateStr].black_market = Number(r.value);
-        if (r.indicator_key === 'VN_GDP_YOY') map[dateStr].gdp = Number(r.value);
-        if (r.indicator_key === 'VN_GDP_ABS_BUSD') map[dateStr].gdp_abs = Number(r.value);
-        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value);
-        if (r.indicator_key === 'VN_INTEREST_RATE') map[dateStr].ref_rate = Number(r.value);
-        if (r.indicator_key === 'VN_SAVINGS_RATE_12M') map[dateStr].savings_rate = Number(r.value);
-    });
-    // Convert to sorted array
-    return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
-};
+// ... (pivotData) ...
 
 export default async function MacroPage() {
     // Robust Fetching Strategy: Loop to bypass 1000-row API limits
@@ -68,10 +49,20 @@ export default async function MacroPage() {
     const step = 1000;
     let keepFetching = true;
 
+    // OPTIMIZED: Only fetch Macro-related keys
+    const filterStr = 'indicator_key.eq.USDVND_OFFICIAL,' +
+        'indicator_key.eq.USDVND_BLACK_MARKET,' +
+        'indicator_key.eq.VN_GDP_YOY,' +
+        'indicator_key.eq.VN_GDP_ABS_BUSD,' +
+        'indicator_key.eq.VN_CPI_YOY,' +
+        'indicator_key.eq.VN_INTEREST_RATE,' +
+        'indicator_key.eq.VN_SAVINGS_RATE_12M';
+
     while (keepFetching) {
         const { data, error } = await supabase
             .from('macro_indicators')
             .select('date, indicator_key, value')
+            .or(filterStr) // Apply Filter
             .order('date', { ascending: true })
             .range(from, from + step - 1);
 
@@ -83,7 +74,6 @@ export default async function MacroPage() {
         if (data && data.length > 0) {
             allRows = [...allRows, ...data];
             from += step;
-            // If we got fewer than 'step', we are done
             if (data.length < step) {
                 keepFetching = false;
             }
