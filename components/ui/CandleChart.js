@@ -140,8 +140,53 @@ const CustomTooltip = ({ active, payload, label }) => {
     return null;
 };
 
+const resampleData = (data, interval) => {
+    if (!data || data.length === 0) return [];
+    if (interval === 'day') return data;
+
+    const grouped = {};
+    data.forEach(d => {
+        const date = new Date(d.date);
+        let key;
+        if (interval === 'week') {
+            // ISO Week would be better but simple Monday-start logic is fine
+            // Or just YYYY-WW
+            const firstDay = new Date(date.setDate(date.getDate() - date.getDay() + 1));
+            key = firstDay.toISOString().split('T')[0];
+        } else if (interval === 'month') {
+            key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`;
+        } else {
+            key = d.date;
+        }
+
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(d);
+    });
+
+    return Object.entries(grouped).map(([date, group]) => {
+        // Sort group by date to ensure Open/Close are correct
+        group.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const open = group[0].open;
+        const close = group[group.length - 1].close;
+        const high = Math.max(...group.map(g => g.high));
+        const low = Math.min(...group.map(g => g.low));
+        const volume = group.reduce((sum, g) => sum + (g.volume || 0), 0);
+
+        return {
+            date,
+            open,
+            high,
+            low,
+            close,
+            volume
+        };
+    }).sort((a, b) => new Date(a.date) - new Date(b.date));
+};
+
 export default function CandleChart({
     data, // Expected: { date, open, high, low, close, volume }[]
+    chartId,
     height = 400
 }) {
     const [range, setRange] = useState('1Y');
@@ -151,14 +196,31 @@ export default function CandleChart({
         let cutoff = new Date('1900-01-01');
         const now = new Date();
         const cutoffDate = new Date();
+        let interval = 'day';
 
-        if (range === '1Y') cutoffDate.setFullYear(now.getFullYear() - 1);
-        if (range === '3Y') cutoffDate.setFullYear(now.getFullYear() - 3);
-        if (range === '5Y') cutoffDate.setFullYear(now.getFullYear() - 5);
-        if (range === '10Y') cutoffDate.setFullYear(now.getFullYear() - 10);
-        if (range === 'ALL') cutoffDate.setFullYear(1900);
+        if (range === '1Y') {
+            cutoffDate.setFullYear(now.getFullYear() - 1);
+            interval = 'day';
+        }
+        if (range === '3Y') {
+            cutoffDate.setFullYear(now.getFullYear() - 3);
+            interval = 'week';
+        }
+        if (range === '5Y') {
+            cutoffDate.setFullYear(now.getFullYear() - 5);
+            interval = 'week';
+        }
+        if (range === '10Y') {
+            cutoffDate.setFullYear(now.getFullYear() - 10);
+            interval = 'month';
+        }
+        if (range === 'ALL') {
+            cutoffDate.setFullYear(1900);
+            interval = 'month'; // Or week if data is short, but monthly is safer for long history
+        }
 
-        return data.filter(d => new Date(d.date) >= cutoffDate && d.open && d.close); // Valid candle only
+        const rawFiltered = data.filter(d => new Date(d.date) >= cutoffDate && d.open && d.close);
+        return resampleData(rawFiltered, interval);
     }, [data, range]);
 
     // Calculate Y domain for Candles (Price)
@@ -182,33 +244,38 @@ export default function CandleChart({
     return (
         <div className="w-full bg-slate-900/50 p-4 rounded-xl border border-slate-800">
             {/* Header / Controls */}
-            <div className="flex justify-between mb-4">
-                <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Biểu Đồ Nến</h3>
-                <div className="flex space-x-1 bg-slate-900 p-1 rounded-lg">
-                    {/* Share Button */}
-                    {/* Need chartId prop first, assumed passed */}
-                    <button
-                        onClick={() => {
-                            const url = `${window.location.origin}${window.location.pathname}?chart=vnindex`; // Hardcoded for now as it's the only one using Candle
+            <div className="flex flex-wrap items-center justify-between mb-4 gap-4">
+                <div className="flex items-center gap-3">
+                    <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Biểu Đồ Nến</h3>
 
-                            if (navigator.share) {
-                                navigator.share({
-                                    title: 'Biểu Đồ VNINDEX',
-                                    url: url
-                                }).catch(console.error);
-                            } else {
-                                navigator.clipboard.writeText(url);
-                                alert('Đã copy link: ' + url);
-                            }
-                        }}
-                        className="px-2 py-1 text-slate-500 hover:text-blue-400 transition-colors border-r border-slate-700 mr-1"
-                        title="Chia sẻ"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.287.696.345 1.074.059.378.044.76-.042 1.135l-2.471 5.925M7.5 12a2.3 2.3 0 0 0 .5-1.5m-5.409 6.273a2.25 2.25 0 1 1 3.182-3.182m-3.182 3.182c.324.18.696.287 1.074.345.378.059.76.044 1.135-.042l5.925-2.471m-6.273-5.409A2.25 2.25 0 0 1 12 7.5m2.273 5.409-2.273-5.409a2.25 2.25 0 0 1 5.409 2.273 2.25 2.25 0 0 1-5.409 2.273" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                    </button>
+                    {/* Share Button logic... */}
+                    {chartId && (
+                        <button
+                            onClick={() => {
+                                const url = `${window.location.origin}${window.location.pathname}?chart=vnindex`;
+
+                                if (navigator.share) {
+                                    navigator.share({
+                                        title: 'Biểu Đồ VNINDEX',
+                                        url: url
+                                    }).catch(console.error);
+                                } else {
+                                    navigator.clipboard.writeText(url);
+                                    alert('Đã copy link: ' + url);
+                                }
+                            }}
+                            className="text-slate-500 hover:text-blue-400 transition-colors"
+                            title="Chia sẻ"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.287.696.345 1.074.059.378.044.76-.042 1.135l-2.471 5.925M7.5 12a2.3 2.3 0 0 0 .5-1.5m-5.409 6.273a2.25 2.25 0 1 1 3.182-3.182m-3.182 3.182c.324.18.696.287 1.074.345.378.059.76.044 1.135-.042l5.925-2.471m-6.273-5.409A2.25 2.25 0 0 1 12 7.5m2.273 5.409-2.273-5.409a2.25 2.25 0 0 1 5.409 2.273 2.25 2.25 0 0 1-5.409 2.273" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </button>
+                    )}
+                </div>
+
+                <div className="flex space-x-1 bg-slate-900 p-1 rounded-lg">
                     {['1Y', '3Y', '5Y', '10Y', 'ALL'].map(r => (
                         <button
                             key={r}
