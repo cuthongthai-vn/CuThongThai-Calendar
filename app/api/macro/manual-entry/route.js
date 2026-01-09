@@ -1,36 +1,36 @@
-
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase/client';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY // Using available key from env
-);
-
 /**
  * POST /api/macro/manual-entry
- * Secret Admin Endpoint to adding daily data.
+ * Admin endpoint for adding daily macro data manually.
  * Request Body:
  * {
  *   "date": "2025-01-08",
  *   "items": [
  *      { "key": "USDVND_BLACK_MARKET", "value": 25500 },
  *      { "key": "USDVND_OFFICIAL", "value": 24500 }
- *   ],
- *   "secret": "..."
+ *   ]
+ * }
+ * OR flat format:
+ * {
+ *   "indicator_key": "USDVND_BLACK_MARKET",
+ *   "date": "2025-01-08",
+ *   "value": 25500,
+ *   "text_content": "Optional text"
  * }
  */
 export async function POST(request) {
     try {
+        const supabase = getSupabaseClient();
         const body = await request.json();
-        // Support both old Format (items array) or new Flat Format (indicator_key)
 
         let rows = [];
 
         if (body.items && Array.isArray(body.items)) {
-            // Old format
+            // Old format (items array)
             rows = body.items.map(item => ({
                 indicator_key: item.key,
                 date: body.date,
@@ -38,7 +38,7 @@ export async function POST(request) {
                 source: 'MANUAL_ADMIN'
             }));
         } else if (body.indicator_key) {
-            // New Flat Format from MacroUpdateModal
+            // New flat format from MacroUpdateModal
             const { indicator_key, date, value, text_content } = body;
             rows = [{
                 indicator_key,
@@ -62,6 +62,9 @@ export async function POST(request) {
 
         return NextResponse.json({ success: true, inserted: rows.length });
     } catch (e) {
-        return NextResponse.json({ error: e.message }, { status: 500 });
+        return NextResponse.json({
+            error: 'Failed to insert macro data',
+            details: e.message
+        }, { status: 500 });
     }
 }

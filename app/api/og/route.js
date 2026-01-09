@@ -1,18 +1,13 @@
 import { ImageResponse } from 'next/og';
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase/client';
 
 export const runtime = 'edge';
-
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-);
 
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const chartId = searchParams.get('chart');
 
-    // Configs
+    // Chart configurations
     const CHART_CONFIG = {
         'vnindex': { title: 'VNINDEX', color: '#22c55e', key: 'VNINDEX' },
         'exchange-rate': { title: 'Tỷ Giá USD/VND', color: '#3b82f6', key: 'USDVND_OFFICIAL' },
@@ -29,17 +24,22 @@ export async function GET(request) {
     let latestDate = '';
 
     if (config.key) {
-        const { data } = await supabase
-            .from('macro_indicators')
-            .select('value, date')
-            .eq('indicator_key', config.key)
-            .order('date', { ascending: false })
-            .limit(1)
-            .single();
+        try {
+            const supabase = getSupabaseClient();
+            const { data } = await supabase
+                .from('macro_indicators')
+                .select('value, date')
+                .eq('indicator_key', config.key)
+                .order('date', { ascending: false })
+                .limit(1)
+                .single();
 
-        if (data) {
-            latestValue = data.value.toLocaleString();
-            latestDate = data.date.split('T')[0];
+            if (data) {
+                latestValue = data.value.toLocaleString();
+                latestDate = data.date.split('T')[0];
+            }
+        } catch (error) {
+            console.error('Failed to fetch OG data:', error);
         }
     }
 

@@ -1,19 +1,12 @@
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase/client';
 import { NextResponse } from 'next/server';
 
 export async function PUT(request, { params }) {
-    const { id } = await params;
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
-        return NextResponse.json({ error: 'Supabase credentials missing' }, { status: 500 });
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     try {
+        const { id } = await params;
+        const supabase = getSupabaseClient();
         const body = await request.json();
+
         const { data, error } = await supabase
             .from('economic_events')
             .update(body)
@@ -24,22 +17,18 @@ export async function PUT(request, { params }) {
 
         return NextResponse.json(data[0]);
     } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({
+            error: 'Failed to update event',
+            details: error.message
+        }, { status: 500 });
     }
 }
 
 export async function DELETE(request, { params }) {
-    const { id } = await params;
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
-        return NextResponse.json({ error: 'Supabase credentials missing' }, { status: 500 });
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     try {
+        const { id } = await params;
+        const supabase = getSupabaseClient();
+
         const { error } = await supabase
             .from('economic_events')
             .delete()
@@ -49,6 +38,9 @@ export async function DELETE(request, { params }) {
 
         return NextResponse.json({ message: 'Event deleted' });
     } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({
+            error: 'Failed to delete event',
+            details: error.message
+        }, { status: 500 });
     }
 }

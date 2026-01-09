@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase/client';
 import MacroChart from '../../components/ui/MacroChart';
 import MacroHeader from '../../components/features/macro/MacroHeader';
 import FloatingCTA from '../../components/ui/FloatingCTA';
@@ -36,10 +36,7 @@ export async function generateMetadata({ searchParams }) {
     };
 }
 
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-);
+
 
 // Helper to pivot data: { '2024-01-01': { date: '...', USD: 25000, ... } }
 const pivotData = (rows) => {
@@ -79,6 +76,7 @@ export default async function MacroPage() {
         'indicator_key.eq.VN_SAVINGS_RATE_12M';
 
     while (keepFetching) {
+        const supabase = getSupabaseClient();
         const { data, error } = await supabase
             .from('macro_indicators')
             .select('date, indicator_key, value')

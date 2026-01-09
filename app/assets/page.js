@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase/client';
 import AssetsDashboard from './AssetsDashboard';
 
 export const revalidate = 3600; // Cache for 1 hour
@@ -27,11 +27,6 @@ export async function generateMetadata({ searchParams }) {
         },
     };
 }
-
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-);
 
 // Helper to pivot data.
 const pivotData = (rows) => {
@@ -152,6 +147,7 @@ export default async function AssetsPage() {
         'indicator_key.eq.VN_CPI_YOY';
 
     while (more) {
+        const supabase = getSupabaseClient();
         const { data: chunk, error } = await supabase
             .from('macro_indicators')
             .select('*')

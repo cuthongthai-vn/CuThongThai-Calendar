@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
@@ -24,9 +25,12 @@ export default function Navigation() {
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0">
-                    <img
+                    <Image
                         src="/logo.png"
                         alt="Cú Thông Thái Logo"
+                        width={120}
+                        height={40}
+                        priority
                         className="h-10 w-auto object-contain hover:opacity-90 transition-opacity"
                     />
                 </Link>

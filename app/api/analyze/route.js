@@ -1,19 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase/client';
 import { NextResponse } from 'next/server';
 import { compareEventData } from '../../../src/logic_processor';
 import { getFinancialCommentary } from '../../../src/ai_analyst';
 
 export async function POST(request) {
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
-        return NextResponse.json({ error: 'Supabase credentials missing' }, { status: 500 });
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     try {
+        const supabase = getSupabaseClient();
         const { event_id } = await request.json();
 
         // 1. Fetch event from DB
@@ -50,7 +42,10 @@ export async function POST(request) {
         // 3. Run Logic
         const analysis = compareEventData(event);
         if (analysis.status !== "COMPLETED") {
-            return NextResponse.json({ error: 'Analysis failed (missing data?)', details: analysis }, { status: 400 });
+            return NextResponse.json({
+                error: 'Analysis failed (missing data?)',
+                details: analysis
+            }, { status: 400 });
         }
 
         // 4. Run AI with Context
@@ -60,7 +55,7 @@ export async function POST(request) {
         };
         const aiResult = await getFinancialCommentary(event, analysis, context);
 
-        // 4. Update DB
+        // 5. Update DB
         const { data: updatedEvent, error: updateError } = await supabase
             .from('economic_events')
             .update({
@@ -79,6 +74,9 @@ export async function POST(request) {
 
     } catch (error) {
         console.error("AI Analyze Error:", error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({
+            error: 'Failed to analyze event',
+            details: error.message
+        }, { status: 500 });
     }
 }
