@@ -41,7 +41,26 @@ const supabase = createClient(
     process.env.SUPABASE_KEY
 );
 
-// ... (pivotData) ...
+// Helper to pivot data: { '2024-01-01': { date: '...', USD: 25000, ... } }
+const pivotData = (rows) => {
+    const map = {};
+    rows.forEach(r => {
+        // Normalize date to YYYY-MM-DD
+        const dateStr = r.date.split('T')[0];
+        if (!map[dateStr]) map[dateStr] = { date: dateStr };
+
+        // Map indicator keys to simplified props
+        if (r.indicator_key === 'USDVND_OFFICIAL') map[dateStr].official = Number(r.value);
+        if (r.indicator_key === 'USDVND_BLACK_MARKET') map[dateStr].black_market = Number(r.value);
+        if (r.indicator_key === 'VN_GDP_YOY') map[dateStr].gdp = Number(r.value);
+        if (r.indicator_key === 'VN_GDP_ABS_BUSD') map[dateStr].gdp_abs = Number(r.value);
+        if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value);
+        if (r.indicator_key === 'VN_INTEREST_RATE') map[dateStr].ref_rate = Number(r.value);
+        if (r.indicator_key === 'VN_SAVINGS_RATE_12M') map[dateStr].savings_rate = Number(r.value);
+    });
+    // Convert to sorted array
+    return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
+};
 
 export default async function MacroPage() {
     // Robust Fetching Strategy: Loop to bypass 1000-row API limits
@@ -215,7 +234,6 @@ export default async function MacroPage() {
                             <h2 className="text-xl font-bold text-white flex items-center">
                                 <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
                                 Lãi Suất (%)
-                                <ShareButton chartId="rates" className="ml-3" />
                             </h2>
                             <div className="text-right">
                                 <p className="text-xs text-slate-400">Tiết Kiệm 12T ({latestSavings.date})</p>
@@ -237,7 +255,6 @@ export default async function MacroPage() {
                             <h2 className="text-xl font-bold text-white flex items-center">
                                 <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
                                 Quy Mô GDP (Tỷ USD)
-                                <ShareButton chartId="gdp-abs" className="ml-3" />
                             </h2>
                             <div className="text-right">
                                 <p className="text-xs text-slate-400">Năm {latestGdpAbs.date?.substring(0, 4)}</p>
@@ -258,7 +275,6 @@ export default async function MacroPage() {
                             <h2 className="text-xl font-bold text-white flex items-center">
                                 <span className="bg-cyan-500 w-1 h-6 mr-3 rounded-full"></span>
                                 Tăng Trưởng & Lạm Phát (%)
-                                <ShareButton chartId="gdp-cpi" className="ml-3" />
                             </h2>
                             <div className="flex gap-4">
                                 <div className="text-right">
