@@ -164,10 +164,13 @@ export default function CandleChart({
     // Calculate Y domain for Candles (Price)
     // We want some padding
     const prices = filteredData.flatMap(d => [d.low, d.high]);
-    const minPrice = Math.min(...prices);
-    const maxPrice = Math.max(...prices);
-    const padding = (maxPrice - minPrice) * 0.05;
-    const yDomain = [Math.floor(minPrice - padding), Math.ceil(maxPrice + padding)];
+    let yDomain = ['auto', 'auto'];
+    if (prices.length > 0) {
+        const minPrice = Math.min(...prices);
+        const maxPrice = Math.max(...prices);
+        const padding = (maxPrice - minPrice) * 0.05;
+        yDomain = [Math.floor(minPrice - padding), Math.ceil(maxPrice + padding)];
+    }
 
     // Data Transformation for Recharts
     // We need a specific dataKey that holds [min, max] for the invisible bar that drives the scale logic
