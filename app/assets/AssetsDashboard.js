@@ -91,6 +91,52 @@ export default function AssetsDashboard({ data }) {
     const latestPho = getLatest(phoData, 'pho');
     const phoGrowth = calculateGrowth(phoData, 'pho', phoRange);
 
+    // --- NEW METRICS PROCESSING ---
+
+    // 1. Gold Spread
+    const goldSpreadData = goldData.map(d => {
+        if (d.sjc && d.world_converted) {
+            return {
+                ...d,
+                spread: d.sjc - d.world_converted
+            };
+        }
+        return d;
+    }).filter(d => d.spread !== undefined);
+    const latestSpread = getLatest(goldSpreadData, 'spread');
+
+
+    // 2. Housing Affordability (Years to Buy 50m2)
+    // salary_per_sqm = Months of salary to buy 1m2
+    // 50m2 cost in months = salary_per_sqm * 50
+    // Years = (salary_per_sqm * 50) / 12
+    const housingData = data.filter(d => d.salary_per_sqm).map(d => ({
+        ...d,
+        years_buy_50m2: (d.salary_per_sqm * 50) / 12
+    }));
+    const latestHousingYears = getLatest(housingData, 'years_buy_50m2');
+
+    // 3. Rental Burden (% Income)
+    const rentData = data.filter(d => d.rent_han_single || d.rent_sgn_single).map(d => {
+        let loadHan = null;
+        let loadSgn = null;
+
+        if (d.rent_han_single && d.income_han_single) {
+            loadHan = (d.rent_han_single / d.income_han_single) * 100;
+        }
+        if (d.rent_sgn_single && d.income_sgn_single) {
+            loadSgn = (d.rent_sgn_single / d.income_sgn_single) * 100;
+        }
+
+        return {
+            ...d,
+            burden_han: loadHan,
+            burden_sgn: loadSgn
+        };
+    });
+    const latestBurdenHan = getLatest(rentData, 'burden_han');
+    const latestBurdenSgn = getLatest(rentData, 'burden_sgn');
+
     return (
         <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-[500px]">
 
@@ -99,7 +145,7 @@ export default function AssetsDashboard({ data }) {
 
                 <div className="text-center py-5">
                     <h1 className="text-3xl font-bold text-theme-yellow mb-2">Tài Sản & Giá Cả</h1>
-                    <p className="text-slate-400">Theo dõi biến động Vàng, Bất Động Sản và "Phở Index"</p>
+                    <p className="text-slate-400">Theo dõi biến động Vàng và Bất Động Sản qua các thời kỳ</p>
                 </div>
 
                 {/* SECTION 1: GOLD */}
@@ -218,14 +264,90 @@ export default function AssetsDashboard({ data }) {
                     </div>
                 </section>
 
+                {/* SECTION 3: GOLD SPREAD (NEW) */}
+                <section>
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-xl font-bold text-white flex items-center">
+                            <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
+                            Chênh Lệch Giá Vàng (Spread)
+                        </h2>
+                        <div className="text-right">
+                            <p className="text-xs text-slate-400">Chênh SJC - TG ({latestSpread.date})</p>
+                            <p className="text-lg font-bold text-red-500">{latestSpread.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Tr/Lượng</p>
+                        </div>
+                    </div>
+                    <p className="text-sm text-slate-500 mb-4 italic">
+                        * Số tiền "chênh" bạn phải trả thêm cho mỗi lượng vàng SJC so với giá thế giới quy đổi.
+                    </p>
+                    <MacroChart
+                        data={goldSpreadData}
+                        dataKeys={[
+                            { key: 'spread', color: '#ef4444', name: 'Chênh Lệch (Tr)', type: 'area' }
+                        ]}
+                        height={300}
+                    />
+                </section>
 
+                {/* SECTION 4: HOUSING AFFORDABILITY (NEW) */}
+                <section>
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-xl font-bold text-white flex items-center">
+                            <span className="bg-emerald-500 w-1 h-6 mr-3 rounded-full"></span>
+                            Khả Năng Mua Nhà (50m2)
+                        </h2>
+                        <div className="text-right">
+                            <p className="text-xs text-slate-400">Số năm thu nhập ({latestHousingYears.date})</p>
+                            <p className="text-lg font-bold text-emerald-400">{latestHousingYears.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })} Năm</p>
+                        </div>
+                    </div>
+                    <p className="text-sm text-slate-500 mb-4 italic">
+                        * Số năm cần tích lũy 100% thu nhập trung bình để mua được căn hộ 50m2.
+                    </p>
+                    <MacroChart
+                        data={housingData}
+                        dataKeys={[
+                            { key: 'years_buy_50m2', color: '#10b981', name: 'Số Năm Cần Thiết' }
+                        ]}
+                        height={300}
+                    />
+                </section>
 
+                {/* SECTION 5: RENTAL BURDEN (NEW) */}
+                <section>
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-xl font-bold text-white flex items-center">
+                            <span className="bg-purple-500 w-1 h-6 mr-3 rounded-full"></span>
+                            Áp Lực Tiền Thuê (% Thu Nhập)
+                        </h2>
+                        <div className="flex gap-4">
+                            <div className="text-right">
+                                <p className="text-xs text-slate-400">Hà Nội</p>
+                                <p className="text-base font-bold text-purple-400">{latestBurdenHan.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</p>
+                            </div>
+                            <div className="text-right">
+                                <p className="text-xs text-slate-400">TP.HCM</p>
+                                <p className="text-base font-bold text-pink-400">{latestBurdenSgn.value?.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p className="text-sm text-slate-500 mb-4 italic">
+                        * Tỷ lệ chi phí thuê nhà trên thu nhập hàng tháng (Người độc thân).
+                    </p>
+                    <MacroChart
+                        data={rentData}
+                        dataKeys={[
+                            { key: 'burden_han', color: '#a855f7', name: 'Hà Nội (%)' },
+                            { key: 'burden_sgn', color: '#ec4899', name: 'TP.HCM (%)' }
+                        ]}
+                        height={300}
+                    />
+                </section>
             </div>
 
             {/* SPACER DIV TO PREVENT OVERLAP */}
             <div style={{ height: '300px' }} className="w-full"></div>
 
             <FloatingCTA />
-        </div>
+        </div >
     );
 }

@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = {
     title: 'Tài Sản & Giá Cả | Cú Thông Thái',
-    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt (Phở Index) tại Việt Nam.',
+    description: 'Biến động Vàng SJC, Vàng Thế Giới, Bất Động Sản và giá cả sinh hoạt tại Việt Nam.',
     openGraph: {
         title: 'Tài Sản & Giá Cả - Theo dõi Vàng & BĐS',
         description: 'So sánh hiệu suất đầu tư giữa Vàng, Đất và Tiền gửi qua các thời kỳ.',
@@ -47,6 +47,13 @@ const pivotData = (rows) => {
         if (r.indicator_key === 'PRICE_BIA_HOI_VN') map[dateStr].beer = Number(r.value);
         if (r.indicator_key === 'INCOME_AVG_VN') map[dateStr].income = Number(r.value);
         if (r.indicator_key === 'RE_CONDO_VN') map[dateStr].condo = Number(r.value);
+        if (r.indicator_key === 'METRIC_SALARY_PER_SQM') map[dateStr].salary_per_sqm = Number(r.value);
+
+        // Rental / Survival Keys
+        if (r.indicator_key === 'SURVIVAL_HAN_SINGLE_RENT') map[dateStr].rent_han_single = Number(r.value);
+        if (r.indicator_key === 'SURVIVAL_SGN_SINGLE_RENT') map[dateStr].rent_sgn_single = Number(r.value);
+        if (r.indicator_key === 'SURVIVAL_HAN_SINGLE_INCOME') map[dateStr].income_han_single = Number(r.value);
+        if (r.indicator_key === 'SURVIVAL_SGN_SINGLE_INCOME') map[dateStr].income_sgn_single = Number(r.value);
     });
     return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
 };
@@ -113,6 +120,8 @@ export default async function AssetsPage() {
         'indicator_key.like.PHO%,' +
         'indicator_key.like.PRICE%,' + // New: Fetch all PRICE_... keys
         'indicator_key.like.INCOME%,' + // New: Fetch INCOME...
+        'indicator_key.like.SURVIVAL%,' + // New: Fetch SURVIVAL...
+        'indicator_key.like.METRIC%,' + // New: Fetch METRIC...
         'indicator_key.eq.USDVND_OFFICIAL,' +
         'indicator_key.eq.VN_CPI_YOY';
 
@@ -179,6 +188,11 @@ export default async function AssetsPage() {
     chartData = interpolateData(chartData, 'income');
     chartData = interpolateData(chartData, 'iphone');
     chartData = interpolateData(chartData, 'sh');
+    chartData = interpolateData(chartData, 'salary_per_sqm'); // New
+    chartData = interpolateData(chartData, 'rent_han_single'); // New
+    chartData = interpolateData(chartData, 'rent_sgn_single'); // New
+    chartData = interpolateData(chartData, 'income_han_single'); // New
+    chartData = interpolateData(chartData, 'income_sgn_single'); // New
 
     // Real Estate Interpolation (Fix missing data gaps)
     chartData = interpolateData(chartData, 'hn_vnd');
