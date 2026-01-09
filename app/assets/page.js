@@ -56,6 +56,7 @@ const pivotData = (rows) => {
         if (r.indicator_key === 'SURVIVAL_SGN_SINGLE_INCOME') map[dateStr].income_sgn_single = Number(r.value);
 
         if (r.indicator_key === 'VNINDEX') map[dateStr].vnindex = Number(r.value);
+        if (r.indicator_key === 'VNINDEX_VOLUME') map[dateStr].vnindex_vol = Number(r.value);
     });
     return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
 };
@@ -125,6 +126,7 @@ export default async function AssetsPage() {
         'indicator_key.like.SURVIVAL%,' + // New: Fetch SURVIVAL...
         'indicator_key.like.METRIC%,' + // New: Fetch METRIC...
         'indicator_key.eq.VNINDEX,' + // New: Fetch VNINDEX
+        'indicator_key.eq.VNINDEX_VOLUME,' + // FETCH VOLUME
         'indicator_key.eq.USDVND_OFFICIAL,' +
         'indicator_key.eq.VN_CPI_YOY';
 

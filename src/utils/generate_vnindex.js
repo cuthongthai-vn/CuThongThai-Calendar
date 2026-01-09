@@ -27,8 +27,38 @@ const MILESTONES = [
     { date: '2026-01-08', val: 1850 }  // User provided
 ];
 
+const VOLUME_MILESTONES = [
+    { date: '2000-07-28', val: 10000 },       // Very low start
+    { date: '2006-01-01', val: 5000000 },     // 5M shares
+    { date: '2008-01-01', val: 20000000 },    // 20M shares
+    { date: '2016-01-01', val: 100000000 },   // 100M shares
+    { date: '2020-01-01', val: 300000000 },   // 300M shares
+    { date: '2022-01-01', val: 1000000000 },  // 1B shares boom
+    { date: '2023-01-01', val: 600000000 },   // Low liquidity
+    { date: '2026-01-08', val: 900000000 }    // Current levels
+];
+
+// Helper to get volume at a specific date
+function getInterpolatedVolume(date) {
+    const d = new Date(date);
+    for (let i = 0; i < VOLUME_MILESTONES.length - 1; i++) {
+        const start = VOLUME_MILESTONES[i];
+        const end = VOLUME_MILESTONES[i + 1];
+        if (d >= new Date(start.date) && d <= new Date(end.date)) {
+            const totalTime = new Date(end.date) - new Date(start.date);
+            const progress = (d - new Date(start.date)) / totalTime;
+            // Volume noise is huge
+            const base = start.val + (end.val - start.val) * progress;
+            const noise = (Math.random() * 0.4 - 0.2) * base; // +/- 20%
+            return Math.max(0, Math.floor(base + noise));
+        }
+    }
+    return 100000000; // Fallback
+}
+
+
 function generateDaily() {
-    let rows = ['Date,Close'];
+    let rows = ['Date,Close,Volume'];
 
     for (let i = 0; i < MILESTONES.length - 1; i++) {
         const start = MILESTONES[i];
@@ -55,13 +85,16 @@ function generateDaily() {
             curDate.setDate(startDate.getDate() + d);
             const dateStr = curDate.toISOString().split('T')[0];
 
-            rows.push(`${dateStr},${val.toFixed(2)}`);
+            const vol = getInterpolatedVolume(dateStr);
+
+            rows.push(`${dateStr},${val.toFixed(2)},${vol}`);
         }
     }
 
     // Add last point
     const last = MILESTONES[MILESTONES.length - 1];
-    rows.push(`${last.date},${last.val}`);
+    const lastVol = getInterpolatedVolume(last.date);
+    rows.push(`${last.date},${last.val},${lastVol}`);
 
     return rows.join('\n');
 }

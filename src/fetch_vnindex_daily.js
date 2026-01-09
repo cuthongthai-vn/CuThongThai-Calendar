@@ -23,15 +23,16 @@ async function fetchVNINDEX() {
             const lastIdx = json.t.length - 1;
             const timestamp = json.t[lastIdx];
             const closePrice = json.c[lastIdx];
+            const volume = json.v[lastIdx]; // Volume
 
             // Convert timestamp to YYYY-MM-DD
             const dateObj = new Date(timestamp * 1000);
             const dateStr = dateObj.toISOString().split('T')[0];
 
-            console.log(`   🎯 Latest Data: ${dateStr} - Close: ${closePrice}`);
+            console.log(`   🎯 Latest Data: ${dateStr} - Close: ${closePrice} - Vol: ${volume}`);
 
-            // Upsert to DB
-            const { error } = await supabase
+            // Upsert Price
+            const { error: err1 } = await supabase
                 .from('macro_indicators')
                 .upsert({
                     indicator_key: 'VNINDEX',
@@ -40,10 +41,20 @@ async function fetchVNINDEX() {
                     source: 'VNDIRECT_API'
                 }, { onConflict: 'indicator_key, date' });
 
-            if (error) {
-                console.error(`   ❌ Database Error: ${error.message}`);
+            // Upsert Volume
+            const { error: err2 } = await supabase
+                .from('macro_indicators')
+                .upsert({
+                    indicator_key: 'VNINDEX_VOLUME',
+                    date: dateStr,
+                    value: volume,
+                    source: 'VNDIRECT_API'
+                }, { onConflict: 'indicator_key, date' });
+
+            if (err1 || err2) {
+                console.error(`   ❌ Database Error: ${err1?.message} | ${err2?.message}`);
             } else {
-                console.log(`   ✅ Successfully updated VNINDEX for ${dateStr}: ${closePrice}`);
+                console.log(`   ✅ Successfully updated VNINDEX & VOLUME for ${dateStr}`);
             }
 
         } else {

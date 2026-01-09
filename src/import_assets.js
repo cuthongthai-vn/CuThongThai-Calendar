@@ -234,6 +234,7 @@ async function run() {
     // 8. VNINDEX History (Generated Daily)
     console.log("Cleaning old VNINDEX data...");
     await supabase.from('macro_indicators').delete().eq('indicator_key', 'VNINDEX');
+    await supabase.from('macro_indicators').delete().eq('indicator_key', 'VNINDEX_VOLUME'); // Clean volume
 
     await importCsv(
         path.join(__dirname, '../data_upload/vietnam-vnindex-history-daily-interpolated.csv'),
@@ -242,6 +243,12 @@ async function run() {
                 indicator_key: 'VNINDEX',
                 date: row.Date,
                 value: parseFloat(row.Close),
+                source: 'MANUAL_GENERATED'
+            },
+            {
+                indicator_key: 'VNINDEX_VOLUME',
+                date: row.Date,
+                value: parseFloat(row.Volume),
                 source: 'MANUAL_GENERATED'
             }
         ]

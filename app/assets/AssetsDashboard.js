@@ -175,7 +175,8 @@ export default function AssetsDashboard({ data }) {
                         selectedRange={goldRange}
                         onRangeChange={setGoldRange} // Re-using gold range state for simplicity
                         dataKeys={[
-                            { key: 'vnindex', color: '#4ade80', name: 'VNINDEX', unit: ' Điểm' }
+                            { key: 'vnindex', color: '#4ade80', name: 'VNINDEX', unit: ' Điểm' },
+                            { key: 'vnindex_vol', color: '#64748b', name: 'Khối lượng', unit: '', type: 'bar', yAxisId: 'right' }
                         ]}
                         height={400}
                     />
