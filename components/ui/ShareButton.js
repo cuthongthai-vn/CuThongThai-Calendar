@@ -7,28 +7,29 @@ export default function ShareButton({ title, chartId, className = "" }) {
         e.stopPropagation();
         const url = `${window.location.origin}${window.location.pathname}?chart=${chartId}`;
 
-        try {
-            if (navigator.share) {
+        // 1. Try Web Share API (Mobile/Safe Context)
+        if (navigator.share) {
+            try {
                 await navigator.share({
                     title: 'Cú Thông Thái - ' + (title || 'Biểu Đồ'),
                     text: 'Xem biểu đồ chi tiết: ' + (title || ''),
                     url: url
                 });
-            } else {
-                throw new Error('Web Share API not supported');
+                return;
+            } catch (error) {
+                if (error.name === 'AbortError') return;
+                // Continue to clipboard fallback
             }
-        } catch (error) {
-            // Fallback to clipboard if Share API fails or is unsupported
-            // (Unless it's a user abort)
-            if (error.name !== 'AbortError') {
-                try {
-                    await navigator.clipboard.writeText(url);
-                    alert('Đã sao chép liên kết vào bộ nhớ tạm!');
-                } catch (clipboardError) {
-                    console.error('Clipboard failed', clipboardError);
-                    alert('Không thể chia sẻ. Vui lòng copy URL thủ công: ' + url);
-                }
-            }
+        }
+
+        // 2. Try Clipboard (Desktop/Fallback)
+        try {
+            await navigator.clipboard.writeText(url);
+            // User requested specific message
+            alert('Đã sao chép, bạn muốn chia sẻ lên đâu?');
+        } catch (clipboardError) {
+            // 3. Last Resort: Window Prompt (For iframes/blocked permissions)
+            window.prompt('Link chia sẻ (Ctrl+C để copy):', url);
         }
     };
 
