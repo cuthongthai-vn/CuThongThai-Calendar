@@ -49,6 +49,7 @@ const CustomTooltip = ({ active, payload, label, dataKeysConfig }) => {
 export default function MacroChart({
     data,
     title,
+    chartId, // Add chartId here
     dataKeys = [{ key: 'value', color: '#10b981', name: 'Giá trị', type: 'area' }],
     height = 350,
     syncId = null,
@@ -125,10 +126,10 @@ export default function MacroChart({
                 {title && <h3 className="text-slate-400 text-sm font-semibold uppercase tracking-wider">{title}</h3>}
                 <div className="flex space-x-1 bg-slate-900 p-1 rounded-lg">
                     {/* Share Button (New) */}
-                    {props.chartId && (
+                    {chartId && (
                         <button
                             onClick={() => {
-                                const url = `${window.location.origin}${window.location.pathname}?chart=${props.chartId}`;
+                                const url = `${window.location.origin}${window.location.pathname}?chart=${chartId}`;
                                 if (navigator.share) {
                                     navigator.share({
                                         title: 'Cú Thông Thái - ' + (title || 'Biểu Đồ'),
