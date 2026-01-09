@@ -1,6 +1,7 @@
 'use client';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { RESERVES_DATA, OWL_COMMENTS } from '../../../src/data/trade_report';
+import ShareButton from '../../ui/ShareButton';
 
 export default function ReservesHealthSection() {
     return (
@@ -8,6 +9,7 @@ export default function ReservesHealthSection() {
             <h2 className="text-xl font-bold text-white flex items-center mb-4">
                 <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
                 2. Sức Khỏe Đồng Tiền: Vùng An Toàn IMF 🛡️
+                <ShareButton chartId="reserves" className="ml-3" />
             </h2>
             <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">

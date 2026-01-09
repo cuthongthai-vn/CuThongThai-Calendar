@@ -1,6 +1,7 @@
 'use client';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceLine, LabelList } from 'recharts';
 import { DEBT_SUSTAINABILITY_DATA, HEALTH_BOWL_COMMENTS } from '../../../src/data/macro_health';
+import ShareButton from '../../ui/ShareButton';
 
 export default function DebtSustainabilitySection() {
     return (
@@ -8,6 +9,7 @@ export default function DebtSustainabilitySection() {
             <h2 className="text-xl font-bold text-white flex items-center mb-4">
                 <span className="bg-blue-500 w-1 h-6 mr-3 rounded-full"></span>
                 2. Sức Bền Nợ: An Toàn Hay Rủi Ro? 💣
+                <ShareButton chartId="debt" className="ml-3" />
             </h2>
             <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
