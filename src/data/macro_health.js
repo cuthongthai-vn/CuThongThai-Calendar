@@ -12,7 +12,7 @@ export const DEBT_SUSTAINABILITY_DATA = [
 export const OVERHEATING_INDICATORS = [
     { name: "M2 Growth", value: 11.7, threshold: 12, status: "Cao" },
     { name: "Lạm Phát (CPI)", value: 3.3, threshold: 4.5, status: "Ổn định" },
-    { name: "Tăng Trưởng Tín Dụng", value: 15.0, threshold: 14, status: "Nóng!" }
+    { name: "Tăng Trưởng Tín Dụng", value: 19.0, threshold: 14, status: "Nóng!" } // Updated 2025 forecast from media
 ];
 
 export const HEALTH_BOWL_COMMENTS = {

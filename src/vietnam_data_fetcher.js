@@ -40,12 +40,12 @@ async function fetchVietcombankExchangeRate() {
             return null;
         }
 
-        // Extract rates
-        const buyRate = parseFloat(usdEntry.$?.Buy || 0);
-        const sellRate = parseFloat(usdEntry.$?.Sell || 0);
-        const transferRate = parseFloat(usdEntry.$?.Transfer || 0);
+        // Extract rates (VCB returns in thousands, e.g., 26 = 26,000 VND)
+        const buyRate = parseFloat(usdEntry.$?.Buy || 0) * 1000;
+        const sellRate = parseFloat(usdEntry.$?.Sell || 0) * 1000;
+        const transferRate = parseFloat(usdEntry.$?.Transfer || 0) * 1000;
 
-        console.log(`   ✅ VCB Rates: Buy=${buyRate}, Sell=${sellRate}, Transfer=${transferRate}`);
+        console.log(`   ✅ VCB Rates: Buy=${buyRate.toLocaleString()}, Sell=${sellRate.toLocaleString()}, Transfer=${transferRate.toLocaleString()} VND`);
 
         // Save to database
         const today = new Date().toISOString().split('T')[0];
@@ -66,7 +66,7 @@ async function fetchVietcombankExchangeRate() {
             return null;
         }
 
-        console.log(`   💾 Saved official rate: ${transferRate} VND`);
+        console.log(`   💾 Saved official rate: ${transferRate.toLocaleString()} VND`);
 
         return {
             buy: buyRate,

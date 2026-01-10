@@ -261,7 +261,7 @@ export default async function MacroPage() {
                             </h2>
                             <div className="text-right">
                                 <p className="text-xs text-slate-400">Tiết Kiệm 12T ({latestSavings.date})</p>
-                                <p className="text-lg font-bold text-pink-500">{latestSavings.value}%</p>
+                                <p className="text-lg font-bold text-pink-500">{latestSavings.value !== 'N/A' ? latestSavings.value.toFixed(2) : 'N/A'}%</p>
                             </div>
                         </div>
                         <MacroChart
@@ -282,7 +282,7 @@ export default async function MacroPage() {
                             </h2>
                             <div className="text-right">
                                 <p className="text-xs text-slate-400">Năm {latestGdpAbs.date?.substring(0, 4)}</p>
-                                <p className="text-lg font-bold text-emerald-400">{latestGdpAbs.value} Tỷ $</p>
+                                <p className="text-lg font-bold text-emerald-400">{latestGdpAbs.value !== 'N/A' ? latestGdpAbs.value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'N/A'} Tỷ $</p>
                             </div>
                         </div>
                         <MacroChart
@@ -303,11 +303,11 @@ export default async function MacroPage() {
                             <div className="flex gap-4">
                                 <div className="text-right">
                                     <p className="text-xs text-slate-400">GDP ({latestGdp.date})</p>
-                                    <p className="text-lg font-bold text-cyan-400">{latestGdp.value}%</p>
+                                    <p className="text-lg font-bold text-cyan-400">{latestGdp.value !== 'N/A' ? latestGdp.value.toFixed(2) : 'N/A'}%</p>
                                 </div>
                                 <div className="text-right">
                                     <p className="text-xs text-slate-400">CPI ({latestCpi.date})</p>
-                                    <p className="text-lg font-bold text-orange-500">{latestCpi.value}%</p>
+                                    <p className="text-lg font-bold text-orange-500">{latestCpi.value !== 'N/A' ? latestCpi.value.toFixed(2) : 'N/A'}%</p>
                                 </div>
                             </div>
                         </div>
@@ -350,11 +350,11 @@ export default async function MacroPage() {
                             <div className="flex gap-4">
                                 <div className="text-right">
                                     <p className="text-xs text-slate-400">Dân số ({latestPopulation.date?.substring(0, 4)})</p>
-                                    <p className="text-lg font-bold text-indigo-400">{latestPopulation.value !== 'N/A' ? latestPopulation.value.toFixed(1) : 'N/A'}M</p>
+                                    <p className="text-lg font-bold text-indigo-400">{latestPopulation.value !== 'N/A' ? latestPopulation.value.toFixed(2) : 'N/A'}M</p>
                                 </div>
                                 <div className="text-right">
                                     <p className="text-xs text-slate-400">Tuổi thọ ({latestLifeExpectancy.date?.substring(0, 4)})</p>
-                                    <p className="text-lg font-bold text-violet-400">{latestLifeExpectancy.value !== 'N/A' ? latestLifeExpectancy.value.toFixed(1) : 'N/A'} năm</p>
+                                    <p className="text-lg font-bold text-violet-400">{latestLifeExpectancy.value !== 'N/A' ? latestLifeExpectancy.value.toFixed(2) : 'N/A'} năm</p>
                                 </div>
                             </div>
                         </div>
