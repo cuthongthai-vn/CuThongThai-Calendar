@@ -51,9 +51,19 @@ const pivotData = (rows) => {
         if (r.indicator_key === 'USDVND_BLACK_MARKET') map[dateStr].black_market = Number(r.value);
         if (r.indicator_key === 'VN_GDP_YOY') map[dateStr].gdp = Number(r.value);
         if (r.indicator_key === 'VN_GDP_ABS_BUSD') map[dateStr].gdp_abs = Number(r.value);
+        if (r.indicator_key === 'VN_GDP_ABS_USD') {
+            // Convert from absolute USD to Billion USD
+            map[dateStr].gdp_abs_usd = Number(r.value) / 1000000000;
+        }
         if (r.indicator_key === 'VN_CPI_YOY') map[dateStr].cpi = Number(r.value);
         if (r.indicator_key === 'VN_INTEREST_RATE') map[dateStr].ref_rate = Number(r.value);
         if (r.indicator_key === 'VN_SAVINGS_RATE_12M') map[dateStr].savings_rate = Number(r.value);
+        if (r.indicator_key === 'VN_UNEMPLOYMENT_RATE') map[dateStr].unemployment = Number(r.value);
+        if (r.indicator_key === 'VN_POPULATION') {
+            // Convert to millions
+            map[dateStr].population = Number(r.value) / 1000000;
+        }
+        if (r.indicator_key === 'VN_LIFE_EXPECTANCY') map[dateStr].life_expectancy = Number(r.value);
     });
     // Convert to sorted array
     return Object.values(map).sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -73,7 +83,11 @@ export default async function MacroPage() {
         'indicator_key.eq.VN_GDP_ABS_BUSD,' +
         'indicator_key.eq.VN_CPI_YOY,' +
         'indicator_key.eq.VN_INTEREST_RATE,' +
-        'indicator_key.eq.VN_SAVINGS_RATE_12M';
+        'indicator_key.eq.VN_SAVINGS_RATE_12M,' +
+        'indicator_key.eq.VN_UNEMPLOYMENT_RATE,' +
+        'indicator_key.eq.VN_GDP_ABS_USD,' +
+        'indicator_key.eq.VN_POPULATION,' +
+        'indicator_key.eq.VN_LIFE_EXPECTANCY';
 
     while (keepFetching) {
         const supabase = getSupabaseClient();
@@ -148,6 +162,9 @@ export default async function MacroPage() {
     chartData = interpolateData(chartData, 'cpi');
     chartData = interpolateData(chartData, 'ref_rate');
     chartData = interpolateData(chartData, 'savings_rate');
+    chartData = interpolateData(chartData, 'unemployment');
+    chartData = interpolateData(chartData, 'population');
+    chartData = interpolateData(chartData, 'life_expectancy');
 
     // Filter subsets for specific charts
 
@@ -163,6 +180,12 @@ export default async function MacroPage() {
 
     // 4. Interest Rates
     const ratesData = chartData.filter(d => d.ref_rate !== undefined || d.savings_rate !== undefined);
+
+    // 5. Unemployment
+    const unemploymentData = chartData.filter(d => d.unemployment !== undefined);
+
+    // 6. Demographics (Population + Life Expectancy)
+    const demographicsData = chartData.filter(d => d.population !== undefined || d.life_expectancy !== undefined);
 
 
     // Helper to get latest valid value and date for a key
@@ -183,6 +206,9 @@ export default async function MacroPage() {
     const latestGdpAbs = getLatest('gdp_abs');
     const latestGdp = getLatest('gdp');
     const latestCpi = getLatest('cpi');
+    const latestUnemployment = getLatest('unemployment');
+    const latestPopulation = getLatest('population');
+    const latestLifeExpectancy = getLatest('life_expectancy');
 
     return (
         <div className="min-h-screen bg-slate-950 p-6 md:p-10 pb-[500px]">
@@ -290,6 +316,53 @@ export default async function MacroPage() {
                             dataKeys={[
                                 { key: 'gdp', color: '#06b6d4', name: 'GDP (YoY)' },
                                 { key: 'cpi', color: '#f97316', name: 'CPI (Lạm phát)' }
+                            ]}
+                        />
+                    </section>
+
+                    {/* SECTION 5: UNEMPLOYMENT RATE */}
+                    <section>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <span className="bg-red-500 w-1 h-6 mr-3 rounded-full"></span>
+                                Thất Nghiệp (%)
+                            </h2>
+                            <div className="text-right">
+                                <p className="text-xs text-slate-400">Năm {latestUnemployment.date?.substring(0, 4)}</p>
+                                <p className="text-lg font-bold text-red-400">{latestUnemployment.value !== 'N/A' ? latestUnemployment.value.toFixed(2) : 'N/A'}%</p>
+                            </div>
+                        </div>
+                        <MacroChart
+                            data={unemploymentData}
+                            dataKeys={[
+                                { key: 'unemployment', color: '#ef4444', name: 'Tỷ lệ thất nghiệp' }
+                            ]}
+                        />
+                    </section>
+
+                    {/* SECTION 6: DEMOGRAPHICS */}
+                    <section>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <span className="bg-indigo-500 w-1 h-6 mr-3 rounded-full"></span>
+                                Dân Số & Tuổi Thọ
+                            </h2>
+                            <div className="flex gap-4">
+                                <div className="text-right">
+                                    <p className="text-xs text-slate-400">Dân số ({latestPopulation.date?.substring(0, 4)})</p>
+                                    <p className="text-lg font-bold text-indigo-400">{latestPopulation.value !== 'N/A' ? latestPopulation.value.toFixed(1) : 'N/A'}M</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-xs text-slate-400">Tuổi thọ ({latestLifeExpectancy.date?.substring(0, 4)})</p>
+                                    <p className="text-lg font-bold text-violet-400">{latestLifeExpectancy.value !== 'N/A' ? latestLifeExpectancy.value.toFixed(1) : 'N/A'} năm</p>
+                                </div>
+                            </div>
+                        </div>
+                        <MacroChart
+                            data={demographicsData}
+                            dataKeys={[
+                                { key: 'population', color: '#6366f1', name: 'Dân số (Triệu người)' },
+                                { key: 'life_expectancy', color: '#8b5cf6', name: 'Tuổi thọ TB (Năm)' }
                             ]}
                         />
                     </section>
