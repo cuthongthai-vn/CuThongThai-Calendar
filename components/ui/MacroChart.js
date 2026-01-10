@@ -28,7 +28,10 @@ const CustomTooltip = ({ active, payload, label, dataKeysConfig }) => {
                         ? payload[0].payload[config.originalValueKey]
                         : entry.value;
 
-                    const displayVal = typeof rawVal === 'number' ? rawVal.toLocaleString() : rawVal;
+                    // Format number: 2 decimals + thousand separator
+                    const displayVal = typeof rawVal === 'number'
+                        ? rawVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                        : rawVal;
                     const displayUnit = config?.originalValueKey
                         ? (config.originalUnit || '')
                         : entry.unit;
@@ -188,7 +191,7 @@ export default function MacroChart({
                             <div className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: k.color }}></div>
                             <span className="text-slate-400 mr-1">{k.name}:</span>
                             <span className="text-slate-200 font-bold">
-                                {typeof val === 'number' ? val.toLocaleString() : val}
+                                {typeof val === 'number' ? val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : val}
                                 <span className="text-slate-500 ml-1">{unit}</span>
                             </span>
                         </div>
@@ -224,7 +227,11 @@ export default function MacroChart({
                             stroke="#64748b"
                             tick={{ fontSize: 11 }}
                             domain={[minVal, maxVal]}
-                            tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}
+                            tickFormatter={(val) => {
+                                if (val >= 1000000) return `${(val / 1000000).toFixed(2)}M`;
+                                if (val >= 1000) return `${(val / 1000).toFixed(2)}k`;
+                                return val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            }}
                         />
                         {hasRightAxis && (
                             <YAxis
